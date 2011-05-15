@@ -1,0 +1,6 @@
+
+Sehr geehrter Kunde,
+
+vielen Dank für Ihre Bestellung.
+
+Im Anhang der E-Mail finden Sie {$PDF_TYPE} für die bestellten Artikel.

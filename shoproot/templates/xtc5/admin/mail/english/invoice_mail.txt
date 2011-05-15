@@ -1,0 +1,5 @@
+
+Dear customer,
+thank you for your order.
+We attached you a {$PDF_TYPE} for your articles.
+
