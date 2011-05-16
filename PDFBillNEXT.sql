@@ -13,7 +13,6 @@ INSERT INTO `configuration_group` (`configuration_group_id`, `configuration_grou
 (99, 'PDFBill Configuration', 'PDFBill Overall Configuration', NULL, 99);
 
 INSERT INTO `configuration` (`configuration_id`, `configuration_key`, `configuration_value`, `configuration_group_id`, `sort_order`, `last_modified`, `date_added`, `use_function`, `set_function`) VALUES
-(158, 'SMTP_PASSWORD', 'Please Enter', 12, 7, NULL, '0000-00-00 00:00:00', NULL, NULL),
 (262, 'PDF_BILL_LASTNR', '1', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
 (263, 'PDF_SEND_ORDER', 'true', 99, 0, NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(''true'', ''false''),'),
 (264, 'PDF_MASTER_PASS', 'heresomepass', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
