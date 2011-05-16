@@ -1,0 +1,5 @@
+1.0.1 - 16.05.2011
+=============================================
+- FIXED: Bill-Date was the current date, but should the purchased date
+- FIXED: Problems with German Umlauts
+- FIXED: Wrong download link at adminpanel for bill pdf

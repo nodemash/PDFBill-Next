@@ -53,7 +53,7 @@ if (isset($_GET['send'])) {
 <?php echo PDF_PRINT_ORDER_SEND_TEXT; ?> <a href="<?php echo $_SERVER['PHP_SELF']; ?>?oID=<?php echo $_GET['oID']; ?>&send=1"><?php echo PDF_PRINT_ORDER_SEND; ?></a>
 <br/>
 <br/>
-<?php echo PDF_PRINT_ORDER_DL_TEXT; ?> <a href="invoice/<?php echo PDF_FILENAME_SLIP . $_GET['oID']; ?>.pdf"><?php echo PDF_PRINT_ORDER_DL; ?></a>
+<?php echo PDF_PRINT_ORDER_DL_TEXT; ?> <a href="invoice/<?php echo PDF_FILENAME . $_GET['oID']; ?>.pdf"><?php echo PDF_PRINT_ORDER_DL; ?></a>
 <br/>
 <br/>
 <input type="button" value="<?php echo PDF_CLOSE_WINDOW; ?>" onclick="window.close()" />

@@ -73,7 +73,7 @@ class PdfRechnung extends PdfBrief
 
     
         if(!$deliverSlip) {
-            $this->Cell(0, 6, TEXT_PDF_ZAHLUNGSWEISE . ': ' . $payment_method, 0, 1, '', 1);
+            $this->Cell(0, 6, TEXT_PDF_ZAHLUNGSWEISE . ': ' . html_entity_decode($payment_method), 0, 1, '', 1);
         }
 	}
 	

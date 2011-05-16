@@ -52,8 +52,9 @@ function xtc_pdf_bill ($oID, $send=false, $deliverSlip=false)
     $pdf->Logo(DIR_FS_CATALOG . 'templates/' . CURRENT_TEMPLATE . '/img/logo_invoice.png');
 
     // Convert Datum into  tt.mm.jj umwandeln
-    preg_match("/(\d{4})-(\d{2})-(\d{2})\s(\d{2}):(\d{2}):(\d{2})/", $order->info['date_purchased'], $dt);
-    $date_purchased = time(); // Current Daet
+    //preg_match("/(\d{4})-(\d{2})-(\d{2})\s(\d{2}):(\d{2}):(\d{2})/", $order->info['date_purchased'], $dt);
+    //$date_purchased = time(); // Current Date
+    $date_purchased = strtotime($order->info['date_purchased']);
 
     // Get Payment method
     if ($order->info['payment_method'] != '' && $order->info['payment_method'] != 'no_payment') {
@@ -140,31 +141,35 @@ function xtc_pdf_bill ($oID, $send=false, $deliverSlip=false)
             ); 
         }
     }
-    
-    // Add Total to PDF
-    $sqlOrderTotal = "
-    SELECT
-        title,
-        text,
-        class,
-        value,
-        sort_order
-    FROM " . TABLE_ORDERS_TOTAL . "
-    WHERE orders_id = '" . (int)$oID . "'
-    ORDER BY sort_order ASC";
-    $resOrderTotal = xtc_db_query($sqlOrderTotal);
 
-    // init order_data
+    // init order_data for order total
     $order_data = array();
+    
+    // dont show price on packaging slip
+    if ($deliverSlip == false) {
+        // Add Total to PDF
+        $sqlOrderTotal = "
+        SELECT
+            title,
+            text,
+            class,
+            value,
+            sort_order
+        FROM " . TABLE_ORDERS_TOTAL . "
+        WHERE orders_id = '" . (int)$oID . "'
+        ORDER BY sort_order ASC";
+        $resOrderTotal = xtc_db_query($sqlOrderTotal);
 
-    // fetch order data
-    while ($oder_total_values = xtc_db_fetch_array($resOrderTotal)) {
-        $order_data[] = array (
-            'title' => $oder_total_values['title'], 
-            'class'=> $oder_total_values['class'], 
-            'value'=> $oder_total_values['value'], 
-            'text' => $oder_total_values['text']
-        );
+
+        // fetch order data
+        while ($oder_total_values = xtc_db_fetch_array($resOrderTotal)) {
+            $order_data[] = array (
+                'title' => $oder_total_values['title'], 
+                'class'=> $oder_total_values['class'], 
+                'value'=> $oder_total_values['value'], 
+                'text' => $oder_total_values['text']
+            );
+        }
     }
 
     // Generate PDF
