@@ -26,6 +26,7 @@ require_once(DIR_FS_INC . 'xtc_get_order_data.inc.php');
 require_once(DIR_FS_INC . 'xtc_get_attributes_model.inc.php');
 require_once(DIR_FS_INC . 'xtc_not_null.inc.php');
 require_once(DIR_FS_INC . 'xtc_format_price_order.inc.php');
+require_once(DIR_FS_INC . 'xtc_utf8_decode.inc.php');
 
 // check for oID
 if (!isset($_GET['oID'])) {

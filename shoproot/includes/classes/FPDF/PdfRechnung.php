@@ -60,7 +60,7 @@ class PdfRechnung extends PdfBrief
         // no develiperSlip? We have a bill!
 		if(!$deliverSlip) {	
             // use oID instead of bill_nr
-            if (PDF_USE_ORDERID) {
+            if (PDF_USE_ORDERID == 'true') {
                 $this->Cell(0, 6, TEXT_PDF_RECHNUNGSNUMMER . ': '. PDF_USE_ORDERID_PREFIX . $oID, 0, 1, '', 1); 
             } else { 
                 $this->Cell(0, 6, TEXT_PDF_RECHNUNGSNUMMER . ': '. $bill_nr, 0, 1, '', 1); 
@@ -98,19 +98,20 @@ class PdfRechnung extends PdfBrief
 		
 		$this->SetFont($this->fontfamily, '', 12);
 		
-		switch($gender) {
-			case 'm':
-				$message = TEXT_PDF_DANKE_MANN;
-				break;
-			case 'f':
-				$message = TEXT_PDF_DANKE_FRAU;
-				break;
-			case 'u':
-			default:
-				$message = TEXT_PDF_DANKE_UNISEX;
-		}
+        switch($gender)
+        {
+            case 'm':
+                $message = xtc_utf8_decode(TEXT_PDF_DANKE_MANN);
+                break;
+            case 'f':
+                $message = xtc_utf8_decode(TEXT_PDF_DANKE_FRAU);
+                break;
+            case 'u':
+            default:
+                $message = xtc_utf8_decode(TEXT_PDF_DANKE_UNISEX);
+        }
 	
-		$this->MultiCell(0, 6, sprintf($message, $customers_name), 0);
+		$this->MultiCell(0, 6, sprintf($message, xtc_utf8_decode($customers_name)), 0);
 	}
 	
     /**
@@ -153,7 +154,7 @@ class PdfRechnung extends PdfBrief
 		$this->SetFont($this->fontfamily,'', 11);
 				
         // split products description into parts
-		$parts = preg_split("/[\s]+/", html_entity_decode($artikel), -1, PREG_SPLIT_DELIM_CAPTURE);
+		$parts = preg_split("/[\s]+/", html_entity_decode(xtc_utf8_decode($artikel)), -1, PREG_SPLIT_DELIM_CAPTURE);
 		$line = 0;
 		
 		foreach($parts as $part) {
@@ -215,7 +216,7 @@ class PdfRechnung extends PdfBrief
 		if($zusinfos != '') {
 			$this->SetFont($this->fontfamily, 'I', 9);
 			
-			$zusinfos_arr = split("\n", $zusinfos);
+			$zusinfos_arr = split("\n", xtc_utf8_decode($zusinfos));
 			$zusinfoartnr_arr = split("\n", $zusinfoartnr);
 			
 			for($i = 0; $i < count($zusinfos_arr); $i++) {
@@ -316,7 +317,7 @@ class PdfRechnung extends PdfBrief
 	function RechnungEnde($deliverSlip = false) {
 		$this->Ln(10); 
         $this->SetFont($this->fontfamily, '', 12); 
-        $endText = ($deliverSlip === true)? TEXT_PDF_LSCHLUSSTEXT : TEXT_PDF_SCHLUSSTEXT;
+        $endText = ($deliverSlip === true)? xtc_utf8_decode(TEXT_PDF_LSCHLUSSTEXT) : xtc_utf8_decode(TEXT_PDF_SCHLUSSTEXT);
         $this->MultiCell(0, 6, $endText); 
     }
 }

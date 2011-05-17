@@ -669,5 +669,5 @@ define('DELETE_TEMP_CACHE_SUCCESSFUL', 'Templatecache erfolgreich geleert.');
 
 // PDFBillNext
 define('BILL_LASTNR_TITLE' , 'Letzte Rechnungsnummer');
-define('BILL_LASTNR_DESC' , 'Letzte Rechnungsnummer. <b>Bitte nicht ver&auml;ndern!</b>')
+define('BILL_LASTNR_DESC' , 'Letzte Rechnungsnummer. <b>Bitte nicht ver&auml;ndern!</b>');
 ?>

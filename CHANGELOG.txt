@@ -1,3 +1,9 @@
+1.0.4 - 16.05.2011
+=============================================
+- FIXED: Can't disable automated E-Mail or Ordernumber as Billnumber
+- NEW: Additional UTF-8 conversion with new function xtc_utf8_decode()
+- Several small fixes
+
 1.0.2 - 16.05.2011
 =============================================
 - FIXED: Obsolete INSERT Value removed

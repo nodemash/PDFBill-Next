@@ -48,6 +48,7 @@ require_once(DIR_FS_INC . 'xtc_get_order_data.inc.php');
 require_once(DIR_FS_INC . 'xtc_get_attributes_model.inc.php');
 require_once(DIR_FS_INC . 'xtc_not_null.inc.php');
 require_once(DIR_FS_INC . 'xtc_format_price_order.inc.php');
+require_once(DIR_FS_INC . 'xtc_utf8_decode.inc.php');
 
 
 // initialize smarty
@@ -374,7 +375,7 @@ if (!$tmp) {
 
     
     // PDFBill NEXT - Send invoice if needed
-    if (PDF_SEND_ORDER) {
+    if (PDF_SEND_ORDER == 'true') {
         // get current maxbil
         $sqlBill = "SELECT configuration_value FROM " . TABLE_CONFIGURATION . " WHERE configuration_key = 'PDF_BILL_LASTNR'";
         $resBill = xtc_db_query($sqlBill);

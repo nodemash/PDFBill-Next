@@ -46,10 +46,10 @@ class PdfBrief extends FPDF_Protection
 		$this->Line(5, 297.0/2.0, 8, 297.0/2.0);
     
         // add info boxes
-		$left = $this->PutInfoBlock(0, TEXT_PDF_ANSCHRIFT, $this->footer_y);
-		$left = $this->PutInfoBlock($left, TEXT_PDF_KONTAKT, $this->footer_y);
-		$left = $this->PutInfoBlock($left, TEXT_PDF_BANK, $this->footer_y);
-		$left = $this->PutInfoBlock($left, TEXT_PDF_GESCHAEFT, $this->footer_y);
+		$left = $this->PutInfoBlock(0, xtc_utf8_decode(TEXT_PDF_ANSCHRIFT), $this->footer_y);
+		$left = $this->PutInfoBlock($left, xtc_utf8_decode(TEXT_PDF_KONTAKT), $this->footer_y);
+		$left = $this->PutInfoBlock($left, xtc_utf8_decode(TEXT_PDF_BANK), $this->footer_y);
+		$left = $this->PutInfoBlock($left, xtc_utf8_decode(TEXT_PDF_GESCHAEFT), $this->footer_y);
 
         // add bottom line
         $this->SetLineWidth(0.1); 
@@ -165,7 +165,7 @@ class PdfBrief extends FPDF_Protection
 		$this->SetY($this->addresswindowtop + 7);
 		
 		$this->SetFont($this->fontfamily,'',12); // normal
-		$this->MultiCell($this->addresswindowmaxlen - 5, 4, $kundenadresse);
+		$this->MultiCell($this->addresswindowmaxlen - 5, 4, xtc_utf8_decode($kundenadresse));
 		
 		// Shopadresse ausgeben
 		$this->SetX($this->left_textoffset);
@@ -174,7 +174,7 @@ class PdfBrief extends FPDF_Protection
 		$this->SetY($this->addresswindowtop);
 		
 		$this->SetFont($this->fontfamily,'',6); // klein
-		$this->Cell($this->addresswindowmaxlen, 4, $geschaeftsadresse);
+		$this->Cell($this->addresswindowmaxlen, 4, xtc_utf8_decode($geschaeftsadresse));
 		
 		//$this->Rect($this->left_textoffset, $this->addresswindowtop, $this->addresswindowmaxlen, 40);
 	}
