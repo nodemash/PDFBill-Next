@@ -1,4 +1,9 @@
-1.0.4 - 16.05.2011
+1.0.5 - 18.05.2011
+=============================================
+- FIXED: mb_detect_encoding removed fixed Encoding names
+- FIXED: redirect error because of earlier HTML Output
+
+1.0.4 - 17.05.2011
 =============================================
 - FIXED: Can't disable automated E-Mail or Ordernumber as Billnumber
 - NEW: Additional UTF-8 conversion with new function xtc_utf8_decode()

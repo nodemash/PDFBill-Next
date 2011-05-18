@@ -11,14 +11,7 @@
  * 
  */
 require_once ('includes/application_top.php');
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head>
-<title><?php echo PDF_BILL_NR_TITLE; ?></title>
-</head>
-<body>
-<?php
+
 // Bestellungsnummer holen
 $oID = $_GET['oID'];
 $last_bill = 0;
@@ -33,6 +26,32 @@ if (!xtc_db_num_rows($resBillNr)) {
 
 // get data
 $rowBillNr = xtc_db_fetch_array($resBillNr);
+
+
+// set new if needed
+if(isset($_POST['new_billnr'])) {
+    // get bill_nr from POST 
+    $new_billnr = $_POST['new_billnr'];
+
+    // save new bill_nr 
+    $sqlUpOrder = "UPDATE " . TABLE_ORDERS . " SET bill_nr = '" . $new_billnr . "' WHERE orders_id = '" . $oID . "'";
+    $resUpOrder = xtc_db_query($sqlUpOrder);
+
+    // update last bill_nr        
+    $sqlUpLast = "UPDATE " . TABLE_CONFIGURATION . " SET configuration_value='" . $new_billnr . "' WHERE configuration_key = 'PDF_BILL_LASTNR'";
+    $resUpLast = xtc_db_query($sqlUpLast);
+
+    // redirec to print_order_pdf
+    xtc_redirect(xtc_href_link(FILENAME_PRINT_ORDER_PDF, 'oID=' . $_GET['oID']));
+}
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<title><?php echo PDF_BILL_NR_TITLE; ?></title>
+</head>
+<body>
+<?php
+
 if (isset($order_bill['bill_nr']) && $order_bill['bill_nr'] != '') {
     $order_bill = $rowBillNr['bill_nr'];
 
@@ -58,21 +77,7 @@ if (isset($order_bill['bill_nr']) && $order_bill['bill_nr'] != '') {
     <input type="button" value="<?php echo PDF_CANCEL; ?>" onclick="window.close()" style="padding:2px;"/>
 </form>
 <?php
-    } else {
-        // get bill_nr from POST 
-        $new_billnr = $_POST['new_billnr'];
-
-        // save new bill_nr 
-        $sqlUpOrder = "UPDATE " . TABLE_ORDERS . " SET bill_nr = '" . $new_billnr . "' WHERE orders_id = '" . $oID . "'";
-        $resUpOrder = xtc_db_query($sqlUpOrder);    
-
-        // update last bill_nr
-        $sqlUpLast = "UPDATE " . TABLE_CONFIGURATION . " SET configuration_value='" . $new_billnr . "' WHERE configuration_key = 'PDF_BILL_LASTNR'";
-        $resUpLast = xtc_db_query($sqlUpLast);
-
-        // redirec to print_order_pdf
-        xtc_redirect(xtc_href_link(FILENAME_PRINT_ORDER_PDF, 'oID=' . $_GET['oID']));
-    }
+    } 
 }
 ?>
 </body>

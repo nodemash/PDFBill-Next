@@ -154,7 +154,7 @@ class PdfRechnung extends PdfBrief
 		$this->SetFont($this->fontfamily,'', 11);
 				
         // split products description into parts
-		$parts = preg_split("/[\s]+/", html_entity_decode(xtc_utf8_decode($artikel)), -1, PREG_SPLIT_DELIM_CAPTURE);
+		$parts = preg_split("/[\s]+/", xtc_utf8_decode(html_entity_decode($artikel)), -1, PREG_SPLIT_DELIM_CAPTURE);
 		$line = 0;
 		
 		foreach($parts as $part) {
