@@ -493,4 +493,7 @@ define('PDF_MASTER_PASS_TITLE', 'PDF Masterpassword');
 define('PDF_MASTER_PASS_DESC', 'Prevent PDF from edit with a Masterpassword');
 define('PDF_SEND_ORDER_TITLE', 'Automated Bill-PDF Mail Send');
 define('PDF_SEND_ORDER_DESC', 'Bill-PDF will be automatically send after the order process is finished.');
+
+define('PDF_USE_CUSTOMER_ID_TITLE', 'Use customers-id instead of customers-csid');
+define('PDF_USE_CUSTOMER_ID_DESC', 'Use the customers-id instead of customers-csi. Sometime needed if csi is not automatically set.');
 ?>

@@ -1,3 +1,7 @@
+1.0.6 - 18.05.2011
+=============================================
+- NEW: Customer-ID / Customer-CSI Switch for Bill/Slip Generation
+
 1.0.5 - 18.05.2011
 =============================================
 - FIXED: mb_detect_encoding removed fixed Encoding names

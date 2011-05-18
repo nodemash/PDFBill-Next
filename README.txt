@@ -6,6 +6,7 @@ Please visit http://pdfnext.katado.com for newer Versions
  
 Released under the GNU General Public License 
 -----------------------------------------------------------------------------------------
+### => ACHTUNG:
 
 In dieses Modul is viel Zeit geflossen. Erfuelle mir doch einfach einen meiner 
 Wuensche auf Amazon um deine Dankbarkeit zu zeigen:

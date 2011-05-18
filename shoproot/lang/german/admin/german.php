@@ -494,4 +494,7 @@ define('PDF_MASTER_PASS_TITLE', 'PDF Masterpasswort');
 define('PDF_MASTER_PASS_DESC', 'Damit Ihre PDF-Rechnungen/Lieferscheine nicht ohne weiteres editiert werden k&oum;nnen.');
 define('PDF_SEND_ORDER_TITLE', 'Rechnungs-PDF automatisch versenden');
 define('PDF_SEND_ORDER_DESC', 'Wenn diese Option aktiviert ist, wird die Rechnungs-PDF direkt nach der Bestellung automatisch verschickt.');
+
+define('PDF_USE_CUSTOMER_ID_TITLE', 'Nutze Kunden-ID als Kundennummer');
+define('PDF_USE_CUSTOMER_ID_DESC', 'Die Kunden-ID wird als Kundennummer verwendet. Bitte auf false stellen, falls eine Kundennummer vergeben wird.');
 ?>

@@ -29,10 +29,16 @@ function xtc_pdf_bill ($oID, $send=false, $deliverSlip=false)
     $pdf->Init("Rechnung");
 
     // Get Customers ID
-    $sqlGetCustomer = "SELECT customers_id FROM ".TABLE_ORDERS." WHERE orders_id = '" . (int)$oID . "'";
+    $sqlGetCustomer = "SELECT customers_id, customers_cid FROM ".TABLE_ORDERS." WHERE orders_id = '" . (int)$oID . "'";
     $resGetCustomer = xtc_db_query($sqlGetCustomer);
     $rowGetCustomer = xtc_db_fetch_array($resGetCustomer);
-    $customers_id = $rowGetCustomer['customers_id'];
+
+    // use customers_id as the real id?
+    if (PDF_USE_CUSTOMER_ID == 'true') {
+        $customers_id = $rowGetCustomer['customers_id'];
+    } else {
+        $customers_id = $rowGetCustomer['customers_cid'];
+    }
 
     // Get customer gender
     $sqlGetGender = "SELECT customers_gender FROM ".TABLE_CUSTOMERS." WHERE customers_id = '" . (int)$customers_id . "'";
