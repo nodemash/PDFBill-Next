@@ -496,4 +496,9 @@ define('PDF_SEND_ORDER_DESC', 'Bill-PDF will be automatically send after the ord
 
 define('PDF_USE_CUSTOMER_ID_TITLE', 'Use customers-id instead of customers-csid');
 define('PDF_USE_CUSTOMER_ID_DESC', 'Use the customers-id instead of customers-csi. Sometime needed if csi is not automatically set.');
+
+define('PDF_STATUS_ID_BILL_TITLE', 'Order Status ID - Bill-PDF');
+define('PDF_STATUS_ID_BILL_DESC', 'You are able to find the Order Status ID in the Browser URL-Line <strong>oID=</strong> while editing the Order Status.');
+define('PDF_STATUS_ID_SLIP_TITLE', 'Order Status ID - Slip-PDF');
+define('PDF_STATUS_ID_SLIP_DESC', 'You are able to find the Order Status ID in the Browser URL-Line <strong>oID=</strong> while editing the Order Status..');
 ?>

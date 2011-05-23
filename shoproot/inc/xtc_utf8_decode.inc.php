@@ -13,12 +13,14 @@
 function xtc_utf8_decode($string, $force=false) 
 {
     // check if string is utf8
-    if (function_exists('mb_detect_encoding') && mb_detect_encoding($str) === 'UTF-8') {
+    if (function_exists('mb_detect_encoding') && mb_detect_encoding($string) === 'UTF-8') {
         $is_utf8 = true;
     
     // use different way to check for UTF-8 - Does not always work!
-    } else {
+    } else if (!function_exists('mb_detect_encoding')){
         $is_utf8 = is_utf8($string); 
+    } else {
+        $is_utf8 = false;
     }
 
     // decode UTF-8

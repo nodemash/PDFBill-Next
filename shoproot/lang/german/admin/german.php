@@ -497,4 +497,9 @@ define('PDF_SEND_ORDER_DESC', 'Wenn diese Option aktiviert ist, wird die Rechnun
 
 define('PDF_USE_CUSTOMER_ID_TITLE', 'Nutze Kunden-ID als Kundennummer');
 define('PDF_USE_CUSTOMER_ID_DESC', 'Die Kunden-ID wird als Kundennummer verwendet. Bitte auf false stellen, falls eine Kundennummer vergeben wird.');
+
+define('PDF_STATUS_ID_BILL_TITLE', 'Bestellstatus-ID - Rechnungs-PDF');
+define('PDF_STATUS_ID_BILL_DESC', 'Die Bestellstatus-ID finden Sie in der Browserzeile nach <strong>oID=</strong> wenn Sie den Bestellstatus editieren.');
+define('PDF_STATUS_ID_SLIP_TITLE', 'Bestellstatus-ID - Lieferschein');
+define('PDF_STATUS_ID_SLIP_DESC', 'Die Bestellstatus-ID finden Sie in der Browserzeile nach <strong>oID=</strong> wenn Sie den Bestellstatus editieren.');
 ?>

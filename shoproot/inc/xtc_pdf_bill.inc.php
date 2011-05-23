@@ -253,10 +253,18 @@ function xtc_pdf_bill ($oID, $send=false, $deliverSlip=false)
         // Update Status to notified
         $customer_notified = '1';
 
+        // switch status with deliverSlip
         if ($deliverSlip == true) {
             $comments = PDF_STATUS_COMMENT_SLIP;
         } else { 
             $comments = PDF_STATUS_COMMENT;
+        }
+
+        // switch Order Status id with deliverSlip
+        if ($deliverSlip == true) {
+            $orders_status_id = (is_numeric(PDF_STATUS_ID_SLIP))? PDF_STATUS_ID_SLIP : '1';
+        } else {
+            $orders_status_id = (is_numeric(PDF_STATUS_ID_BILL))? PDF_STATUS_ID_BILL : '1';
         }
 
         $sqlStatus = "
@@ -268,7 +276,7 @@ function xtc_pdf_bill ($oID, $send=false, $deliverSlip=false)
             comments
         ) VALUES (
             '" . xtc_db_input($oID) ."', 
-            '" . xtc_db_input($status) . "', 
+            '" . $orders_status_id . "', 
             now(), 
             '" . $customer_notified . "',
              '" . xtc_db_input($comments) . "'

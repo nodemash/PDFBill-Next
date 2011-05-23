@@ -1,3 +1,7 @@
+1.0.7 - 23.05.2011
+=============================================
+- NEW: Customer Order Status ID for Bill and Slip
+
 1.0.6 - 18.05.2011
 =============================================
 - NEW: Customer-ID / Customer-CSI Switch for Bill/Slip Generation

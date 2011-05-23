@@ -27,4 +27,6 @@ INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `config
 ('PDF_FILENAME_SLIP', 'SomeSlip', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
 ('PDF_STATUS_COMMENT_SLIP', 'Lieferschein verschickt', 99, 1, NULL, '0000-00-00 00:00:00', NULL, NULL),
 ('PDF_MAIL_SUBJECT_SLIP', 'Ihr Lieferschein', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
-('PDF_USE_CUSTOMER_ID', 'false', 99, 0, NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(''true'', ''false''),');
+('PDF_USE_CUSTOMER_ID', 'false', 99, 0, NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(''true'', ''false''),'),
+('PDF_STATUS_ID_BILL', '1', 99, 3, NULL, '0000-00-00 00:00:00', NULL, NULL),
+('PDF_STATUS_ID_SLIP', '1', 99, 3, NULL, '0000-00-00 00:00:00', NULL, NULL);
