@@ -29,7 +29,7 @@ function xtc_pdf_bill ($oID, $send=false, $deliverSlip=false)
     $pdf->Init("Rechnung");
 
     // Get Customers ID
-    $sqlGetCustomer = "SELECT customers_id, customers_cid FROM ".TABLE_ORDERS." WHERE orders_id = '" . (int)$oID . "'";
+    $sqlGetCustomer = "SELECT customers_id, customers_cid FROM " . TABLE_ORDERS . " WHERE orders_id = '" . (int)$oID . "'";
     $resGetCustomer = xtc_db_query($sqlGetCustomer);
     $rowGetCustomer = xtc_db_fetch_array($resGetCustomer);
 
@@ -41,7 +41,7 @@ function xtc_pdf_bill ($oID, $send=false, $deliverSlip=false)
     }
 
     // Get customer gender
-    $sqlGetGender = "SELECT customers_gender FROM ".TABLE_CUSTOMERS." WHERE customers_id = '" . (int)$customers_id . "'";
+    $sqlGetGender = "SELECT customers_gender FROM " . TABLE_CUSTOMERS . " WHERE customers_id = '" . (int)$customers_id . "'";
     $resGetGender = xtc_db_query($sqlGetGender);
     $rowGetGender = xtc_db_fetch_array($resGetGender);
     $customer_gender = $rowGetGender['customers_gender'];
@@ -136,11 +136,19 @@ function xtc_pdf_bill ($oID, $send=false, $deliverSlip=false)
                 ''
             ); 
         } else { 
+            // get truncate length of product_model
+            if (is_numeric(PDF_PRODUCT_MODEL_LENGTH) && PDF_PRODUCT_MODEL_LENGTH > 0) {
+                $truncAfter = PDF_PRODUCT_MODEL_LENGTH;
+            } else {
+                $truncAfter = 7;
+            }
+
             $pdf->ListeProduktHinzu(
                 $order_data_values['products_quantity'], 
                 $order_data_values['products_name'], 
                 trim(html_entity_decode($attributes_data)), 
-                substr($order_data_values['products_model'], 0,7), 
+                // cut product_model to defined length
+                substr($order_data_values['products_model'], 0, $truncAfter), 
                 trim(html_entity_decode($attributes_model)), 
                 xtc_format_price_order($order_data_values['products_price'], 1, $order->info['currency']), 
                 xtc_format_price_order($order_data_values['final_price'], 1, $order ->info['currency'])
@@ -190,8 +198,16 @@ function xtc_pdf_bill ($oID, $send=false, $deliverSlip=false)
         $filePrefix = PDF_FILENAME_SLIP;
     }
 
+    // replace Variables for filePrefix
+    $filePrefix = trim($filePrefix);
+    $filePrefix = str_replace('{oID}', $oID, $filePrefix);
+    $filePrefix = str_replace('{bill}', $order_bill, $filePrefix);
+    $filePrefix = str_replace('{cID}', $customers_id, $filePrefix);
+    $filePrefix = str_replace(' ', '_', $filePrefix);
+    if ($filePrefix == '') $filePrefix = $oID;
+
     // Filename for BILL or SLIP
-    $filename = DIR_FS_DOCUMENT_ROOT . 'admin/invoice/' . $filePrefix . $oID . '.pdf';
+    $filename = DIR_FS_DOCUMENT_ROOT . 'admin/invoice/' . $filePrefix . '.pdf';
     $pdf->Output($filename , 'F');
 
     // Send PDF to Customer and maybe to copy-Address
@@ -266,7 +282,9 @@ function xtc_pdf_bill ($oID, $send=false, $deliverSlip=false)
         } else {
             $orders_status_id = (is_numeric(PDF_STATUS_ID_BILL))? PDF_STATUS_ID_BILL : '1';
         }
+        $orders_status_id = trim($orders_status_id);
 
+        // insert notice
         $sqlStatus = "
         INSERT INTO " . TABLE_ORDERS_STATUS_HISTORY . " (
             orders_id, 
@@ -282,6 +300,12 @@ function xtc_pdf_bill ($oID, $send=false, $deliverSlip=false)
              '" . xtc_db_input($comments) . "'
         )";
         $resStatus = xtc_db_query($sqlStatus);
+
+        // update orders_status on order
+        if (PDF_UPDATE_STATUS == 'true') {
+            $sqlUpdateStatus = "UPDATE " . TABLE_ORDERS . " SET orders_status = '" . $orders_status_id . "' WHERE orders_id = '" . xtc_db_input($oID) . "'";
+            $resUpdateStatus = xtc_db_query($sqlUpdateStatus); 
+        }
     }
 }
 

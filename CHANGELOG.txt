@@ -1,3 +1,17 @@
+1.0.9 - 04.06.2011
+=============================================
+- UPDATE: UTF8 FIX improved and should work now properly
+- NEW: Update orders_status on mail send if needed
+- NEW: Flexible truncate of products_model
+- NEW: bill number suffix
+- README: Added advice to apply 777/Write-rights to admin/invoice
+- NEW: More variables for PDF-Filename {bill}, {oID}, {cID}
+- NEW: Minor code changes in xtc_pdf_bill() function
+
+1.0.8 - 04.06.2011
+=============================================
+- UPDATE: Remove Deprecated Split-Function in regard to PHP 5.3
+
 1.0.7 - 23.05.2011
 =============================================
 - NEW: Customer Order Status ID for Bill and Slip

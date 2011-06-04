@@ -135,7 +135,7 @@ class PdfBrief extends FPDF_Protection
 		$this->SetY($y);
 		
 		//$body .= "\n";
-		$body_arr = split("\n", $body);
+		$body_arr = explode("\n", $body);
 		$maxlen = $this->maxlen($body_arr);
 		
 		$this->SetLeftMargin($left + $this->left_margin);

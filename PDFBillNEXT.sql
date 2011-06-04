@@ -16,7 +16,7 @@ INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `config
 ('PDF_BILL_LASTNR', '1', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
 ('PDF_SEND_ORDER', 'true', 99, 0, NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(''true'', ''false''),'),
 ('PDF_MASTER_PASS', 'heresomepass', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
-('PDF_FILENAME', 'SomeBill', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
+('PDF_FILENAME', 'SomeBill{oID}', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
 ('PDF_MAIL_BILL_COPY', '', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
 ('PDF_MAIL_SLIP_COPY', '', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
 ('PDF_MAIL_SUBJECT', 'Your PDFBill NEXT', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
@@ -24,9 +24,12 @@ INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `config
 ('PDF_CUSTOM_TEXT', '', 99, 2, NULL, '0000-00-00 00:00:00', NULL, NULL),
 ('PDF_USE_ORDERID', 'true', 99, 0, NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(''true'', ''false''),'),
 ('PDF_USE_ORDERID_PREFIX', 'RE', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
-('PDF_FILENAME_SLIP', 'SomeSlip', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
+('PDF_FILENAME_SLIP', 'SomeSlip{oID}', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
 ('PDF_STATUS_COMMENT_SLIP', 'Lieferschein verschickt', 99, 1, NULL, '0000-00-00 00:00:00', NULL, NULL),
 ('PDF_MAIL_SUBJECT_SLIP', 'Ihr Lieferschein', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
 ('PDF_USE_CUSTOMER_ID', 'false', 99, 0, NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(''true'', ''false''),'),
 ('PDF_STATUS_ID_BILL', '1', 99, 3, NULL, '0000-00-00 00:00:00', NULL, NULL),
-('PDF_STATUS_ID_SLIP', '1', 99, 3, NULL, '0000-00-00 00:00:00', NULL, NULL);
+('PDF_STATUS_ID_SLIP', '1', 99, 3, NULL, '0000-00-00 00:00:00', NULL, NULL),
+('PDF_PRODUCT_MODEL_LENGTH', '7', 99, 3, NULL, '0000-00-00 00:00:00', NULL, NULL)
+('PDF_UPDATE_STATUS', 'true', 99, 0, NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(''true'', ''false''),')
+('PDF_USE_ORDERID_SUFFIX', '', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL);

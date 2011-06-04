@@ -479,7 +479,7 @@ define('PDF_STATUS_COMMENT_DESC', 'Kommentar der beim Verschicken einer Rechnung
 define('PDF_STATUS_COMMENT_SLIP_TITLE', 'Lieferschein-PDF Status Kommentar');
 define('PDF_STATUS_COMMENT_SLIP_DESC', 'Kommentar der beim Verschicken eines Lieferschein in das System hinzugef&uuml;gt wird.');
 define('PDF_FILENAME_SLIP_TITLE', 'Lieferschein Dateiname');
-define('PDF_FILENAME_SLIP_DESC', 'Dateiname des Lieferscheins. <strong>Bitte ohne .pdf und Leerzeichen</strong>.');
+define('PDF_FILENAME_SLIP_DESC', 'Dateiname des Lieferscheins. Leerzeichen werden durch einen Unterstrich ersetzt. Variablen: <strong>{oID}</strong>, <strong>{bill}</strong>, <strong>{cID}</strong>. <strong>Bitte ohne .pdf</strong>.');
 define('PDF_MAIL_SUBJECT_TITLE', 'Rechnungs-Mail Betreff');
 define('PDF_MAIL_SUBJECT_DESC', 'Geben Sie hier den Betreff f&uuml;r die Rechnungsmail an. <strong>{oID}</strong> dient als Platzhalter f&uuml;r die Bestellnummer.');
 define('PDF_MAIL_SUBJECT_SLIP_TITLE', 'Lieferschein-Mail Betreff');
@@ -489,7 +489,7 @@ define('PDF_MAIL_SLIP_COPY_DESC', 'Geben Sie hier eine E-Mailaddresse an, wenn S
 define('PDF_MAIL_BILL_COPY_TITLE', 'Rechnung - Weiterleitungsadresse');
 define('PDF_MAIL_BILL_COPY_DESC', 'Geben Sie hier eine E-Mailaddresse an, wenn Sie eine Kopie erhalten wollen.');
 define('PDF_FILENAME_TITLE', 'Rechnung Dateiname');
-define('PDF_FILENAME_DESC', 'Dateiname der Rechnung. <strong>Bitte ohne .pdf und Leerzeichen</strong>.');
+define('PDF_FILENAME_DESC', 'Dateiname der Rechnung. Leerzeichen werden durch einen Unterstrich ersetzt. Variablen: <strong>{oID}</strong>, <strong>{bill}</strong>, <strong>{cID}</strong>. <strong>Bitte ohne .pdf</strong>.');
 define('PDF_MASTER_PASS_TITLE', 'PDF Masterpasswort');
 define('PDF_MASTER_PASS_DESC', 'Damit Ihre PDF-Rechnungen/Lieferscheine nicht ohne weiteres editiert werden k&oum;nnen.');
 define('PDF_SEND_ORDER_TITLE', 'Rechnungs-PDF automatisch versenden');
@@ -502,4 +502,11 @@ define('PDF_STATUS_ID_BILL_TITLE', 'Bestellstatus-ID - Rechnungs-PDF');
 define('PDF_STATUS_ID_BILL_DESC', 'Die Bestellstatus-ID finden Sie in der Browserzeile nach <strong>oID=</strong> wenn Sie den Bestellstatus editieren.');
 define('PDF_STATUS_ID_SLIP_TITLE', 'Bestellstatus-ID - Lieferschein');
 define('PDF_STATUS_ID_SLIP_DESC', 'Die Bestellstatus-ID finden Sie in der Browserzeile nach <strong>oID=</strong> wenn Sie den Bestellstatus editieren.');
+
+define('PDF_PRODUCT_MODEL_LENGTH_TITLE', 'Maximall&auml;nge Artikelnummer');
+define('PDF_PRODUCT_MODEL_LENGTH_DESC', 'Anzahl der Zeichen nachdem eine Artikelnummer abgeschnitten wird. Bitte beachten, dass zu Lange Artikelnummer das Layout der PDF zerst&ouml;ren k&oum;nnen.');
+define('PDF_UPDATE_STATUS_TITLE', 'Bestellstatus aktualisieren');
+define('PDF_UPDATE_STATUS_DESC', 'Bestellstatus wird nach dem Mailversand der PDF automatisch aktualisiert.');
+define('PDF_USE_ORDERID_SUFFIX_TITLE', 'Rechnungsnummer Suffix');
+define('PDF_USE_ORDERID_SUFFIX_DESC', 'Suffix f&uuml;r die Rechnungsnummer, falls die Bestellnummer als Rechnungsnummer verwendet wird.');
 ?>

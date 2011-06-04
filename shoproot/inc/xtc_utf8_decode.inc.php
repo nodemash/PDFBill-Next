@@ -10,18 +10,10 @@
  * Released under the GNU General Public License 
  * 
  */
-function xtc_utf8_decode($string, $force=false) 
+function xtc_utf8_decode($string, $force=false)
 {
     // check if string is utf8
-    if (function_exists('mb_detect_encoding') && mb_detect_encoding($string) === 'UTF-8') {
-        $is_utf8 = true;
-    
-    // use different way to check for UTF-8 - Does not always work!
-    } else if (!function_exists('mb_detect_encoding')){
-        $is_utf8 = is_utf8($string); 
-    } else {
-        $is_utf8 = false;
-    }
+    $is_utf8 = is_utf8($string);
 
     // decode UTF-8
     if ($is_utf8 === true || $force === true) {
@@ -30,6 +22,7 @@ function xtc_utf8_decode($string, $force=false)
 
     return $string;
 }
+
 
 /**
  * alternative way to check for utf8

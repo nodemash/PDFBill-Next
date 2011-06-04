@@ -31,17 +31,51 @@ require_once(DIR_FS_INC . 'xtc_utf8_decode.inc.php');
 // check for oID
 if (!isset($_GET['oID'])) {
     die('Something went wrong! No oID was given!');
+} else {
+    $oID = xtc_db_input($_GET['oID']);
 }
 
 // Send PDF to customer if requested
 if (isset($_GET['send'])) {
     // generate bill and send to customer
-    xtc_pdf_bill($_GET['oID'], true);
+    xtc_pdf_bill($oID, true);
 
 // without Mail - just generate
 } else { 
-    xtc_pdf_bill($_GET['oID'], false);
+    xtc_pdf_bill($oID, false);
 }
+
+
+// replace Variables for filePrefix
+$sqlODetail = "
+SELECT 
+    customers_id,
+    customers_cid,
+    bill_nr
+FROM  " . TABLE_ORDERS . "
+WHERE orders_id = '" . $oID . "'
+";
+$resODetail = xtc_db_query($sqlODetail);
+$rowODetail = xtc_db_fetch_array($resODetail);
+
+// use customers_id as the real id?
+if (PDF_USE_CUSTOMER_ID == 'true') {
+    $customers_id = $rowODetail['customers_id'];
+} else {
+    $customers_id = $rowODetail['customers_cid'];
+}
+
+// bill_nr if exists
+$order_bill = $rowODetail['bill_nr'];
+
+// create FilePrefix
+$filePrefix = trim(PDF_FILENAME); 
+$filePrefix = str_replace('{oID}', $oID, $filePrefix);
+$filePrefix = str_replace('{bill}', $order_bill, $filePrefix);
+$filePrefix = str_replace('{cID}', $customers_id, $filePrefix);
+$filePrefix = str_replace(' ', '_', $filePrefix);
+if ($filePrefix == '') $filePrefix = $oID;
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
@@ -54,7 +88,7 @@ if (isset($_GET['send'])) {
 <?php echo PDF_PRINT_ORDER_SEND_TEXT; ?> <a href="<?php echo $_SERVER['PHP_SELF']; ?>?oID=<?php echo $_GET['oID']; ?>&send=1"><?php echo PDF_PRINT_ORDER_SEND; ?></a>
 <br/>
 <br/>
-<?php echo PDF_PRINT_ORDER_DL_TEXT; ?> <a href="invoice/<?php echo PDF_FILENAME . $_GET['oID']; ?>.pdf"><?php echo PDF_PRINT_ORDER_DL; ?></a>
+<?php echo PDF_PRINT_ORDER_DL_TEXT; ?> <a href="invoice/<?php echo $filePrefix; ?>.pdf"><?php echo PDF_PRINT_ORDER_DL; ?></a>
 <br/>
 <br/>
 <input type="button" value="<?php echo PDF_CLOSE_WINDOW; ?>" onclick="window.close()" />

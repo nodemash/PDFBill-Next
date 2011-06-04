@@ -61,7 +61,7 @@ class PdfRechnung extends PdfBrief
 		if(!$deliverSlip) {	
             // use oID instead of bill_nr
             if (PDF_USE_ORDERID == 'true') {
-                $this->Cell(0, 6, TEXT_PDF_RECHNUNGSNUMMER . ': '. PDF_USE_ORDERID_PREFIX . $oID, 0, 1, '', 1); 
+                $this->Cell(0, 6, TEXT_PDF_RECHNUNGSNUMMER . ': '. PDF_USE_ORDERID_PREFIX . $oID . PDF_USE_ORDERID_SUFFIX, 0, 1, '', 1); 
             } else { 
                 $this->Cell(0, 6, TEXT_PDF_RECHNUNGSNUMMER . ': '. $bill_nr, 0, 1, '', 1); 
             }

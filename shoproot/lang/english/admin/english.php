@@ -488,7 +488,7 @@ define('PDF_MAIL_SLIP_COPY_DESC', 'Please enter forwarding addresses for mails o
 define('PDF_MAIL_BILL_COPY_TITLE', 'Bill - Forward Mail');
 define('PDF_MAIL_BILL_COPY_DESC', 'Please enter forwarding addresses for mails of the Bill-Mail');
 define('PDF_FILENAME_TITLE', 'Bill Filename');
-define('PDF_FILENAME_DESC', 'Filename of Bill. <strong>Please without .pdf and Spaces. Use underscore instead of spaces!</strong>.');
+define('PDF_FILENAME_DESC', 'Filename of Bill. <strong>Please without .pdf</strong>. Spaces will be replaced with underscores. Variables: <strong>{oID}</strong>, <strong>{bill}</strong>, <strong>{cID}</strong>.');
 define('PDF_MASTER_PASS_TITLE', 'PDF Masterpassword');
 define('PDF_MASTER_PASS_DESC', 'Prevent PDF from edit with a Masterpassword');
 define('PDF_SEND_ORDER_TITLE', 'Automated Bill-PDF Mail Send');
@@ -501,4 +501,11 @@ define('PDF_STATUS_ID_BILL_TITLE', 'Order Status ID - Bill-PDF');
 define('PDF_STATUS_ID_BILL_DESC', 'You are able to find the Order Status ID in the Browser URL-Line <strong>oID=</strong> while editing the Order Status.');
 define('PDF_STATUS_ID_SLIP_TITLE', 'Order Status ID - Slip-PDF');
 define('PDF_STATUS_ID_SLIP_DESC', 'You are able to find the Order Status ID in the Browser URL-Line <strong>oID=</strong> while editing the Order Status..');
+
+define('PDF_PRODUCT_MODEL_LENGTH_TITLE', 'Maximum product model length');
+define('PDF_PRODUCT_MODEL_LENGTH_DESC', 'Maximum count of characters until the product model gets truncated.');
+define('PDF_UPDATE_STATUS_TITLE', 'Update order status');
+define('PDF_UPDATE_STATUS_DESC', 'Update status automatically after PDF-Mail.');
+define('PDF_USE_ORDERID_SUFFIX_TITLE', 'Billnumber Suffix');
+define('PDF_USE_ORDERID_SUFFIX_DESC', 'Suffix for the Billnumber. Only used if order number is used as the billnumber.');
 ?>
