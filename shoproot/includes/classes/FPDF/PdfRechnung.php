@@ -216,8 +216,8 @@ class PdfRechnung extends PdfBrief
 		if($zusinfos != '') {
 			$this->SetFont($this->fontfamily, 'I', 9);
 			
-			$zusinfos_arr = split("\n", xtc_utf8_decode($zusinfos));
-			$zusinfoartnr_arr = split("\n", $zusinfoartnr);
+			$zusinfos_arr = explode("\n", xtc_utf8_decode($zusinfos));
+			$zusinfoartnr_arr = explode("\n", $zusinfoartnr);
 			
 			for($i = 0; $i < count($zusinfos_arr); $i++) {
 				$this->Cell($this->menge_len, 6, '', 0, 0, '');

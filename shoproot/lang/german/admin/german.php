@@ -504,7 +504,7 @@ define('PDF_STATUS_ID_SLIP_TITLE', 'Bestellstatus-ID - Lieferschein');
 define('PDF_STATUS_ID_SLIP_DESC', 'Die Bestellstatus-ID finden Sie in der Browserzeile nach <strong>oID=</strong> wenn Sie den Bestellstatus editieren.');
 
 define('PDF_PRODUCT_MODEL_LENGTH_TITLE', 'Maximall&auml;nge Artikelnummer');
-define('PDF_PRODUCT_MODEL_LENGTH_DESC', 'Anzahl der Zeichen nachdem eine Artikelnummer abgeschnitten wird. Bitte beachten, dass zu Lange Artikelnummer das Layout der PDF zerst&ouml;ren k&oum;nnen.');
+define('PDF_PRODUCT_MODEL_LENGTH_DESC', 'Anzahl der Zeichen nachdem eine Artikelnummer abgeschnitten wird. Bitte beachten, dass zu Lange Artikelnummer das Layout der PDF zerst&ouml;ren k&ouml;nnen.');
 define('PDF_UPDATE_STATUS_TITLE', 'Bestellstatus aktualisieren');
 define('PDF_UPDATE_STATUS_DESC', 'Bestellstatus wird nach dem Mailversand der PDF automatisch aktualisiert.');
 define('PDF_USE_ORDERID_SUFFIX_TITLE', 'Rechnungsnummer Suffix');

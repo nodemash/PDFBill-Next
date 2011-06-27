@@ -10,10 +10,10 @@
  * Released under the GNU General Public License 
  * 
  */
-function xtc_utf8_decode($string, $force=false)
+function xtc_utf8_decode($string, $force=false) 
 {
     // check if string is utf8
-    $is_utf8 = is_utf8($string);
+    $is_utf8 = is_utf8($string); 
 
     // decode UTF-8
     if ($is_utf8 === true || $force === true) {
@@ -22,7 +22,6 @@ function xtc_utf8_decode($string, $force=false)
 
     return $string;
 }
-
 
 /**
  * alternative way to check for utf8
