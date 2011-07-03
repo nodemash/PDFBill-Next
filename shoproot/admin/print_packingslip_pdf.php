@@ -68,7 +68,7 @@ if (PDF_USE_CUSTOMER_ID == 'true') {
 $order_bill = $rowODetail['bill_nr'];
 
 // create FilePrefix
-$filePrefix = trim(PDF_FILENAME); 
+$filePrefix = trim(PDF_FILENAME_SLIP); 
 $filePrefix = str_replace('{oID}', $oID, $filePrefix);
 $filePrefix = str_replace('{bill}', $order_bill, $filePrefix);
 $filePrefix = str_replace('{cID}', $customers_id, $filePrefix);
