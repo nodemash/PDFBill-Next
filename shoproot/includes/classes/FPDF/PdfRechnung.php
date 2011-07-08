@@ -156,12 +156,13 @@ class PdfRechnung extends PdfBrief
         // split products description into parts
 		$parts = preg_split("/[\s]+/", xtc_utf8_decode(html_entity_decode($artikel)), -1, PREG_SPLIT_DELIM_CAPTURE);
 		$line = 0;
+        $newtext = '';
 		
 		foreach($parts as $part) {
 			// Sum words until max length is reached
 			if($this->GetStringWidth($newtext.$part) < $this->artikel_len) {
-				$newtext .= $lastpart.$part.' ';
-				$lastpart = "";
+				$newtext .= $part . ' ';
+				//$lastpart = "";
             // Word count is now longer than allowed
 			} else {
                 // Also ouput in the first line some addtional informations
@@ -184,7 +185,7 @@ class PdfRechnung extends PdfBrief
 				}
 				
 				$this->Ln();
-				$newtext = "";
+				//$newtext = "";
 				$lastpart = $part.' ';
 				$line++;
 			}
