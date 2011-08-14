@@ -1,3 +1,7 @@
+1.1.3 - 14.08.2011
+=============================================
+- Fix in PDFRechnung.php - Unwanted entries of products 
+
 1.1.2 - 08.07.2011
 =============================================
 - FIXED: word-wrap on name of article (Thanks to sdnt)
