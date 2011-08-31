@@ -8,13 +8,14 @@ Released under the GNU General Public License
 -----------------------------------------------------------------------------------------
 ### => ACHTUNG:
 
-In dieses Modul is viel Zeit geflossen. Erfuelle mir doch einfach einen meiner 
+In dieses Modul ist viel Zeit geflossen. Erfuelle mir doch einfach einen meiner 
 Wuensche auf Amazon um deine Dankbarkeit zu zeigen:
 
 http://www.amazon.de/registry/wishlist/2DRXJOGW34YRV
 
 Jeder erfuellter Wunsch steigert meine Motivation an diesem Projekt weiter zu arbeiten!!
 
+###
 -----------------------------------------------------------------------------------------
 
 I ANLEITUNG
@@ -32,3 +33,34 @@ I ANLEITUNG
 6. Im Ordner bitte passe die 'pdfbill.php' fuer die jeweiligen Sprachen an. Diese findest du unter 'lang/SPRACHE/modules/contribution/'. Dort werden alle festen Textaenderungen fuer die PDF-Rechnung und den Lieferschein vorgenommen
 
 7. Es erscheint nun ein neues Menu unter Konfiguration im Adminpanel. Bitte nehme hier alle Einstellungen vor!
+
+
+-----------------------------------------------------------------------------------------
+
+II Fragen und Antworten
+
+1. Wo finde ich das Logo fŸr die PDF? 
+
+Das Logo ist unter templates/#DEIN_TEMPLATE#/img/logo_invoice.png zu finden.
+--
+
+2. Es kommt die Fehlermeldung "FPDF error: Alpha channel not supported:"
+
+Bitte das Logo erneut als PNG ohne Transparenz abspeichern.
+--
+
+3. Wie kombiniere ich die ANLEITUNG: Bestellnummern mit "Jahr Monat Tag - Nummer fortlaufend" mit diesem Modul?
+
+Bitte in der xtc_pdf_bill.inc.php nach der Zeile "$order_bill = $rowBill['bill_nr'];" suchen und danach folgendes einfuegen:
+
+if (!function_exists('xtc_build_order_id')) require_once(DIR_FS_INC . 'xtc_build_order_id.inc.php');
+$oID = xtc_build_order_id($order->info['date_purchased'], $oID));
+
+--
+
+4. Beim oeffnen der Popups werde ich auf die account.php weitergeleitet, was nun?
+
+Bitte im phpMyAdmin folgenden SQL-Befehl ausfuehren:
+UPDATE admin_access SET print_order_pdf = '1' WHERE customers_id = '1';
+
+--

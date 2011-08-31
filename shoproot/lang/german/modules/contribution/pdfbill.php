@@ -30,7 +30,7 @@ define('TEXT_PDF_ZAHLUNGSWEISE', "Zahlungsweise");
 define('TEXT_PDF_SHOPADRESSEKLEIN', "domain.de - NAME NAME - STRASSE 123 - D.12345 STADT");
 define('TEXT_PDF_RECHNUNG', "Ihre Rechnung");
 define('TEXT_PDF_RECHNUNG_HEAD', "Rechnung");
-define('TEXT_PDF_LIEFERSCHEIN', "Lieferschein");
+define('TEXT_PDF_LIEFERSCHEIN', "Ihr Lieferschein");
 define('TEXT_PDF_LIEFERSCHEIN_HEAD', "Lieferschein");
 
 define('TEXT_PDF_MAIL_RECHNUNG', "Ihre Rechnung");
