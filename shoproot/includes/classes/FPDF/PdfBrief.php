@@ -54,6 +54,10 @@ class PdfBrief extends FPDF_Protection
         // add bottom line
         $this->SetLineWidth(0.1); 
         $this->Line(20, $this->GetY() - 15, 195, $this->GetY() - 15);  
+
+        // bottom PageNo
+        //$this->SetY(-10);
+        //$this->Cell(0, 4, TEXT_PDF_SEITE.' '.$this->PageNo().' '.TEXT_PDF_SEITE_VON.' {nb}', 0, 0, 'R');5
 	}
 	
     /**

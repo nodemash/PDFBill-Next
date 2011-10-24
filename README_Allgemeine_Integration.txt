@@ -275,7 +275,7 @@ $mail->AddAttachment($path_to_attachement);                     // add attachmen
 
 
 ###################################################
-\lang\english\adminbuttons.php
+\lang\english\admin\buttons.php
 
 ____________________________________________________
 Zeile 88
@@ -291,7 +291,7 @@ define('BUTTON_SET_BILL_NR', 'Set Billnumber');
 
 
 ###################################################
-\lang\english\adminconfiguration.php
+\lang\english\admin\configuration.php
 
 ____________________________________________________
 Zeile 668
@@ -305,7 +305,7 @@ define('BILL_LASTNR_DESC' , 'Last bill number. <b>Please do not change!</b>');
 
 
 ###################################################
-\lang\english\adminenglish.php
+\lang\english\admin\english.php
 
 ____________________________________________________
 Zeile 465
@@ -362,7 +362,7 @@ define('PDF_USE_ORDERID_SUFFIX_DESC', 'Suffix for the Billnumber. Only used if o
 
 
 ###################################################
-\lang\english\adminorders.php
+\lang\english\admin\orders.php
 
 ____________________________________________________
 Zeile 122

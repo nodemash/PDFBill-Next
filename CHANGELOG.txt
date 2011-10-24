@@ -1,3 +1,8 @@
+1.0.5 - 24.10.2011
+=============================================
+- FIXED Customer salutation
+- ADD Billpay Support
+
 1.0.4 - 31.08.2011
 =============================================
 - FIXED: German Language FIX

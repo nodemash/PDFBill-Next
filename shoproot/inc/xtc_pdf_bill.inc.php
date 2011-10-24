@@ -41,7 +41,7 @@ function xtc_pdf_bill ($oID, $send=false, $deliverSlip=false)
     }
 
     // Get customer gender
-    $sqlGetGender = "SELECT customers_gender FROM " . TABLE_CUSTOMERS . " WHERE customers_id = '" . (int)$customers_id . "'";
+    $sqlGetGender = "SELECT customers_gender FROM " . TABLE_CUSTOMERS . " WHERE customers_id = '" . (int)$rowGetCustomer['customers_id'] . "'";
     $resGetGender = xtc_db_query($sqlGetGender);
     $rowGetGender = xtc_db_fetch_array($resGetGender);
     $customer_gender = $rowGetGender['customers_gender'];
@@ -79,6 +79,30 @@ function xtc_pdf_bill ($oID, $send=false, $deliverSlip=false)
     // Create Bill Data
     $pdf->Rechnungsdaten($customers_id, $order_bill, $oID, date("d.m.y", $date_purchased), $payment_method, $deliverSlip);
     $pdf->RechnungStart($order->customer['lastname'], $customer_gender, $deliverSlip);
+
+    // add BillPay Support
+    if($order->info['payment_method'] == 'billpay' || $order->info['payment_method'] == 'billpaydebit') {
+        // we need a workaround for billpay because its expecting $_GET['oid']
+        if (!isset($_GET['oID']) || ($_GET['oID'] != $oID) {
+            // save for compatibility reasons oID
+            if (isset($_GET['oID']) && is_numeric($_GET['oID'])) {
+                $oldOID = $_GET['oID'];
+            }
+
+            // overwrite GET - shame on this
+            $_GET['oID'] = $oID;
+        }
+
+        // get billpay stuff
+        require_once(DIR_FS_CATALOG . DIR_WS_INCLUDES . '/billpay/utils/billpay_display_pdf_data.php');
+
+        // restore oID for compatibility reasons
+        if (isset($oldOID)) {
+            $_GET['oID'] = $oldOID;
+            unset($oldOID);
+        }
+    }
+    
     $pdf->ListeKopf($deliverSlip);
 
     // Product Informations
@@ -220,6 +244,17 @@ function xtc_pdf_bill ($oID, $send=false, $deliverSlip=false)
 
         // create new Smarty Object
         $smarty = new Smarty;
+
+        // personalized mails - Only if supported
+        if (is_defied('FEMALE')) {
+            if ($customer_gender == 'f') { 
+                $smarty->assign('GENDER', FEMALE); 
+            } elseif ($customer_gender == 'm') { 
+                $smarty->assign('GENDER', MALE); 
+            } else { 
+                $smarty->assign('GENDER', ''); 
+            }
+        }
 
         // assign language to template for caching
         $smarty->assign('language', $_SESSION['language']);
