@@ -83,7 +83,7 @@ function xtc_pdf_bill ($oID, $send=false, $deliverSlip=false)
     // add BillPay Support
     if($order->info['payment_method'] == 'billpay' || $order->info['payment_method'] == 'billpaydebit') {
         // we need a workaround for billpay because its expecting $_GET['oid']
-        if (!isset($_GET['oID']) || ($_GET['oID'] != $oID) {
+        if (!isset($_GET['oID']) || $_GET['oID'] != $oID) {
             // save for compatibility reasons oID
             if (isset($_GET['oID']) && is_numeric($_GET['oID'])) {
                 $oldOID = $_GET['oID'];
@@ -246,7 +246,7 @@ function xtc_pdf_bill ($oID, $send=false, $deliverSlip=false)
         $smarty = new Smarty;
 
         // personalized mails - Only if supported
-        if (is_defied('FEMALE')) {
+        if (defined('FEMALE')) {
             if ($customer_gender == 'f') { 
                 $smarty->assign('GENDER', FEMALE); 
             } elseif ($customer_gender == 'm') { 
