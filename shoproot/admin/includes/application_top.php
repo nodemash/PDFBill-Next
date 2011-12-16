@@ -2,15 +2,15 @@
 /* --------------------------------------------------------------
    $Id: application_top.php 1323 2005-10-27 17:58:08Z mz $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+    http://www.xtc-modified.org
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2010 xtcModified
    --------------------------------------------------------------
-   based on: 
+   based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(application_top.php,v 1.158 2003/03/22); www.oscommerce.com
-   (c) 2003	 nextcommerce (application_top.php,v 1.46 2003/08/24); www.nextcommerce.org 
+   (c) 2003 nextcommerce (application_top.php,v 1.46 2003/08/24); www.nextcommerce.org
+   (c) 2006 XT-Commerce 8application_top.php 1323 2005-10-27) ; www.xt-commerce.com
 
    Released under the GNU General Public License 
    --------------------------------------------------------------
@@ -58,14 +58,14 @@
   define('SQL_CACHEDIR',DIR_FS_CATALOG.'cache/');
 
   // Define the project version
-  define('PROJECT_VERSION', 'xtcModified v1.05 dated: 2010-07-18');
+  define('PROJECT_VERSION', 'xtcModified v1.05 dated: 2010-07-18 SP1b');
 
 // BOF - Tomcraft - 2009-11-09 - Added missing definition for TAX_DECIMAL_PLACES
   define('TAX_DECIMAL_PLACES', 0);
 // EOF - Tomcraft - 2009-11-09 - Added missing definition for TAX_DECIMAL_PLACES
 
   // Set the length of the redeem code, the longer the more secure
-  define('SECURITY_CODE_LENGTH', '6');
+  //define('SECURITY_CODE_LENGTH', '6'); //DokuMan - 2010-10-29 - constant already defined in database
 
   // Used in the "Backup Manager" to compress backups
   define('LOCAL_EXE_GZIP', '/usr/bin/gzip');
@@ -191,6 +191,7 @@
   require_once(DIR_FS_INC . 'xtc_get_qty.inc.php');
   require_once(DIR_FS_INC . 'xtc_product_link.inc.php');
   require_once(DIR_FS_INC . 'xtc_cleanName.inc.php');
+  require_once(DIR_FS_INC . 'xtc_get_top_level_domain.inc.php');
 
 
   // customization for the design layout
@@ -202,7 +203,7 @@
   define('CURRENCY_SERVER_BACKUP', 'xe');
   
   // Use the DB-Logger
-  define('STORE_DB_TRANSACTIONS', 'false');
+  //define('STORE_DB_TRANSACTIONS', 'false'); //DokuMan - 2010-10-29 - constant already defined in database
 
   // include the database functions
 //  require(DIR_WS_FUNCTIONS . 'database.php');
@@ -212,14 +213,18 @@
 
   // set application wide parameters
   $configuration_query = xtc_db_query('select configuration_key as cfgKey, configuration_value as cfgValue from ' . TABLE_CONFIGURATION . '');
-// Paypal API Modul Änderungen - Cache im Admin AUS!
-  while ($configuration = xtc_db_fetch_array($configuration_query)) {
-    if($configuration['cfgKey']=='DB_CACHE'):
-      define("DB_CACHE", "false");
-    else:
+  // BOF - Tomcraft - 2009-10-03 - Paypal Express Modul (Cache im Admin AUS!)
+  /*
+    while ($configuration = xtc_db_fetch_array($configuration_query)) {
       define($configuration['cfgKey'], $configuration['cfgValue']);
-    endif;
+    }
+  */
+  while ($configuration = xtc_db_fetch_array($configuration_query)) {
+    if ($configuration['cfgKey'] != 'STORE_DB_TRANSACTIONS') {
+      define($configuration['cfgKey'], $configuration['cfgValue']);
+    }
   }
+  // EOF - Tomcraft - 2009-10-03 - Paypal Express Modul (Cache im Admin AUS!)
 
   define('FILENAME_IMAGEMANIPULATOR',IMAGE_MANIPULATOR);
     function xtDBquery($query) {
@@ -231,7 +236,6 @@
     }
     return $result;
   }
-
 
   // initialize the logger class
   require(DIR_WS_CLASSES . 'logger.php');
@@ -253,8 +257,23 @@
 
   // set the session name and save path
   session_name('XTCsid');
-	if (STORE_SESSIONS != 'mysql') session_save_path(SESSION_WRITE_DIRECTORY);
+	if (STORE_SESSIONS != 'mysql') 
+    session_save_path(SESSION_WRITE_DIRECTORY);
 
+  //BOF - DokuMan - 2010-10-29 - added missing variables for determining $current_domain
+  if (file_exists(DIR_WS_INCLUDES . 'request_type.php')) {
+    include (DIR_WS_INCLUDES . 'request_type.php');
+  }
+  else {
+    $request_type = 'NONSSL';
+  }
+  // set the top level domains
+  $http_domain = xtc_get_top_level_domain(HTTP_SERVER);
+  //$https_domain = xtc_get_top_level_domain(HTTPS_SERVER);
+  //$current_domain = (($request_type == 'NONSSL') ? $http_domain : $https_domain);
+  $current_domain = $http_domain; //currently no https_domain support
+  //EOF - DokuMan - 2010-10-29 - added missing variables for determining $current_domain
+  
   // set the session cookie parameters
   if (function_exists('session_set_cookie_params')) {
     session_set_cookie_params(0, '/', (xtc_not_null($current_domain) ? '.' . $current_domain : ''));
@@ -267,10 +286,14 @@
   // set the session ID if it exists
   if (isset($_POST[session_name()])) {
     session_id($_POST[session_name()]);
-  } elseif ( ($request_type == 'SSL') && isset($_GET[session_name()]) ) {
+  } elseif (($request_type == 'SSL') && isset($_GET[session_name()])) {
     session_id($_GET[session_name()]);
   }
 
+  //BOF - DokuMan - 2011-01-06 - set session.use_only_cookies when force cookie is enabled
+  @ini_set('session.use_only_cookies', (SESSION_FORCE_COOKIE_USE == 'True') ? 1 : 0);
+  //EOF - DokuMan - 2011-01-06 - set session.use_only_cookies when force cookie is enabled
+  
   // start the session
   $session_started = false;
   if (SESSION_FORCE_COOKIE_USE == 'True') {
@@ -344,16 +367,21 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
     include(DIR_WS_CLASSES . 'language.php');
     $lng = new language($_GET['language']);
 
-    if (!isset($_GET['language'])) $lng->get_browser_language();
+    if (!isset($_GET['language'])) 
+      $lng->get_browser_language();
 
     $_SESSION['language'] = $lng->language['directory'];
     $_SESSION['languages_id'] = $lng->language['id'];
-  }
+    $_SESSION['language_code'] = $lng->language['code']; //web28 - 2010-09-05 - add $_SESSION['language_code']
+}
 
   // include the language translations
   require(DIR_FS_LANGUAGES . $_SESSION['language'] . '/admin/'.$_SESSION['language'] . '.php');
   require(DIR_FS_LANGUAGES . $_SESSION['language'] . '/admin/buttons.php');
-  $current_page = preg_split('/\?/', basename($_SERVER['PHP_SELF'])); $current_page = $current_page[0]; // for BadBlue(Win32) webserver compatibility  // Hetfield - 2009-08-18 - replaced deprecated function split with preg_split to be ready for PHP >= 5.3
+  //BOF - GTB - 2010-11-26 - Security Fix - PHP_SELF
+  $current_page = basename($_SERVER['SCRIPT_NAME']);
+  //$current_page = preg_split('/\?/', basename($_SERVER['PHP_SELF'])); $current_page = $current_page[0]; // for BadBlue(Win32) webserver compatibility  // Hetfield - 2009-08-18 - replaced deprecated function split with preg_split to be ready for PHP >= 5.3
+  //EOF - GTB - 2010-11-26 - Security Fix - PHP_SELF
   if (file_exists(DIR_FS_LANGUAGES . $_SESSION['language'] . '/admin/'.$current_page)) {
     include(DIR_FS_LANGUAGES . $_SESSION['language'] . '/admin/'.  $current_page);
   }
@@ -364,13 +392,13 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
 
   // for tracking of customers
   $_SESSION['user_info'] = array();
-  if (!$_SESSION['user_info']['user_ip']) {
-    $_SESSION['user_info']['user_ip'] = $_SERVER['REMOTE_ADDR'];
-//    $user_info['user_ip_date'] =  value will be in fact added when login ;
-    $_SESSION['user_info']['user_host'] = gethostbyaddr( $_SERVER['REMOTE_ADDR'] );;
-    $_SESSION['user_info']['advertiser'] = $_GET['ad'];
-    $_SESSION['user_info']['referer_url'] = $_SERVER['HTTP_REFERER'];
-  }
+  if (!isset($_SESSION['user_info']['user_ip'])) {
+  $_SESSION['user_info']['user_ip'] = $_SERVER['REMOTE_ADDR'];
+  // $user_info['user_ip_date'] =  value will be in fact added when login ;
+  $_SESSION['user_info']['user_host'] = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+  $_SESSION['user_info']['advertiser'] = isset($_GET['ad']) ? $_GET['ad'] : '';
+  $_SESSION['user_info']['referer_url'] = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+}
 
 
   // define our localization functions
@@ -385,7 +413,7 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
 
   // initialize the message stack for output messages
   require(DIR_WS_CLASSES . 'message_stack.php');
-  $messageStack = new messageStack;
+  $messageStack = new messageStack();
 
   // split-page-results
   require(DIR_WS_CLASSES . 'split_page_results.php');
@@ -415,7 +443,7 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
     $_SESSION['selected_box'] = 'configuration';
   }
   if (isset($_GET['selected_box'])) {
-    $_SESSION['selected_box'] = $_GET['selected_box'];
+    $_SESSION['selected_box'] = xtc_db_prepare_input($_GET['selected_box']);
   }
 
   // the following cache blocks are used in the Tools->Cache section

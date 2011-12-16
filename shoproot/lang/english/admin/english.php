@@ -49,7 +49,7 @@ define('HTML_PARAMS','dir="ltr" xml:lang="en"');
 
 
 // page title
-define('TITLE', 'XT-Commerce');
+define('TITLE', PROJECT_VERSION);
 
 // header text in includes/header.php
 define('HEADER_TITLE_TOP', 'Administration');
@@ -73,6 +73,10 @@ define('BOX_HEADING_CUSTOMERS','Customers');
 define('BOX_HEADING_PRODUCTS','Catalog');
 define('BOX_HEADING_STATISTICS','Statistics');
 define('BOX_HEADING_TOOLS','Tools');
+define('BOX_HEADING_LOCALIZATION', 'Languages/Currencies');
+define('BOX_HEADING_TEMPLATES','Templates');
+define('BOX_HEADING_LOCATION_AND_TAXES', 'Location / Tax');
+define('BOX_HEADING_CATALOG', 'Catalog');
 
 define('BOX_CONTENT','Content Manager');
 define('TEXT_ALLOWED', 'Permission');
@@ -139,9 +143,9 @@ define('BOX_CURRENCIES', 'Currencies');
 define('BOX_LANGUAGES', 'Languages');
 define('BOX_ORDERS_STATUS', 'Order Status');
 define('BOX_ATTRIBUTES_MANAGER','Attribute Manager');
-define('BOX_PRODUCTS_ATTRIBUTES','Option-Groups');
+
 define('BOX_MODULE_NEWSLETTER','Newsletter');
-define('BOX_ORDERS_STATUS','Orders Status');
+
 define('BOX_SHIPPING_STATUS','Shipping status');
 define('BOX_SALES_REPORT','Sales Report');
 define('BOX_MODULE_EXPORT','XT-Modules');
@@ -164,16 +168,16 @@ define('TXT_STATISTICS','Statistics');
 define('TXT_TOOLS','Tools');
 define('TEXT_ACCOUNTING','Admin-access for:');
 
-//Dividers text for menu
 
-define('BOX_HEADING_MODULES', 'Modules');
-define('BOX_HEADING_LOCALIZATION', 'Languages/Currencies');
-define('BOX_HEADING_TEMPLATES','Templates');
-define('BOX_HEADING_TOOLS', 'Tools');
-define('BOX_HEADING_LOCATION_AND_TAXES', 'Location / Tax');
-define('BOX_HEADING_CUSTOMERS', 'Customers');
-define('BOX_HEADING_CATALOG', 'Catalog');
-define('BOX_MODULE_NEWSLETTER','Newsletter');
+
+
+
+
+
+
+
+
+
 
 // javascript messages
 define('JS_ERROR', 'Error have occured during the process of your form!\nPlease make the following corrections:\n\n');
@@ -390,7 +394,7 @@ define('TXT_ALL','All');
 
 // UST ID
 define('HEADING_TITLE_VAT','Vat-ID');
-define('HEADING_TITLE_VAT','Vat-ID');
+
 define('ENTRY_VAT_ID','Vat-ID');
 define('ENTRY_CUSTOMERS_VAT_ID', 'Vat-ID:');
 define('TEXT_VAT_FALSE','<font color="#ff0000">Checked/False!</font>');
@@ -408,9 +412,11 @@ define('TEXT_REFERER','Referer: ');
 define('BOX_GOOGLE_SITEMAP', 'Google Sitemap');
 // EOF - Tomcraft - 2009-06-17 Google Sitemap
 
-// BOF - web28 - 2010-05-07 - PayPal API Modul
+
+// BOF - Tomcraft - 2009-10-03 - Paypal Express Modul
 define('BOX_PAYPAL','PayPal');
-// EOF  - web28 - 2010-05-07 - PayPal API Modul
+
+// EOF - Tomcraft - 2009-10-03 - Paypal Express Modul
 
 // BOF - Dokuman - 2009-10-02 - added moneybookers payment module version 2.4
 define('_PAYMENT_MONEYBOOKERS_EMAILID_TITLE','Moneybookers email address');
@@ -462,6 +468,25 @@ define('ASB_QUICK_SEARCH_EMAIL', 'E-Mail Address:');
 define('BUTTON_SET','Check All');
 define('BUTTON_UNSET','Uncheck All');
 //EOF - web28 - 2010.05.30 - accounting - set all checkboxes 
+
+
+//BOF - DokuMan - 2010-08-12 - added possibility to reset admin statistics
+define('TEXT_ROWS','Row');
+define('TABLE_HEADING_RESET','Reset statistics');
+//EOF - DokuMan - 2010-08-12 - added possibility to reset admin statistics
+
+//BOF - web28 - 2010-11-13 - add BUTTON_CLOSE_WINDOW
+define('BUTTON_CLOSE_WINDOW' , 'Close Window');
+//EOF - web28 - 2010-11-13 - add BUTTON_CLOSE_WINDOW
+
+//BOF - hendrik - 2011-05-14 - independent invoice number and date
+define('ENTRY_INVOICE_NUMBER',  'Invoice number:'); 
+define('ENTRY_INVOICE_DATE',    'Invoice date:'); 
+//EOF - hendrik - 2011-05-14 - independent invoice number and date 
+
+//BOF - web28 - 2010-07-06 - added missing error text
+define('ENTRY_VAT_ERROR', '&nbsp;<span class="errorText">OUT OF RANGE VAT Reg.</span>');
+//EOF - web28 - 2010-07-06 - added missing error text
 
 // PDFBill NEXT
 define('BOX_CONFIGURATION_99', 'PDFBill Configuration');

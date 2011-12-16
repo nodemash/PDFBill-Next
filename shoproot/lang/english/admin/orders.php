@@ -1,16 +1,17 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: orders.php 1308 2005-10-15 14:22:18Z hhgag $   
+   $Id: orders.php 1185 2010-08-20 09:00:29Z web28 $   
 
    XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   http://www.xtc-modified.org
 
-   Copyright (c) 2003 XT-Commerce
-   --------------------------------------------------------------
+   Copyright (c) 2010 xtcModified
+   -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(orders.php,v 1.27 2003/02/16); www.oscommerce.com 
-   (c) 2003	 nextcommerce (orders.php,v 1.7 2003/08/14); www.nextcommerce.org
+   (c) 2002-2003 osCommerce; www.oscommerce.com 
+   (c) 2003      nextcommerce; www.nextcommerce.org
+   (c) 2006      xt:Commerce; www.xt-commerce.com
 
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
@@ -119,6 +120,18 @@ define('TEXT_VALIDATING','Not validated');
 // BOF - Tomcraft - 2010-04-22 - Added a missing language definition
 define('TEXT_PRODUCTS', 'Products');
 // EOF - Tomcraft - 2010-04-22 - Added a missing language definition
+
+//BOF - web28 - 2010-03-20 - Send Order by Admin
+define('COMMENT_SEND_ORDER_BY_ADMIN' , 'Order confirmation is sent'); //ACHTUNG hier  keine HTML-Entities verwenden
+define('BUTTON_ORDER_CONFIRMATION', 'Send confirmation');
+define('SUCCESS_ORDER_SEND', 'Order confirmation sent successfully');
+//EOF - web28 - 2010-03-20 - Send Order by Admin
+
+// web28 2010-12-07 add new defines
+define('ENTRY_CUSTOMERS_ADDRESS', 'Customers Address:');
+define('TEXT_ORDER', 'Order:');
+define('TEXT_ORDER_HISTORY', 'Order History:');
+define('TEXT_ORDER_STATUS', 'Order Status:');
 
 // PDFBill NEXT
 define('TABLE_HEADING_BILL_NR', 'Billnr.');

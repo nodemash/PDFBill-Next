@@ -49,7 +49,7 @@ define('HTML_PARAMS','dir="ltr" xml:lang="de"');
 
 
 // page title
-define('TITLE', 'XT-Commerce');
+define('TITLE', PROJECT_VERSION);
 
 // header text in includes/header.php
 define('HEADER_TITLE_TOP', 'Administration');
@@ -73,6 +73,11 @@ define('BOX_HEADING_CUSTOMERS','Kunden');
 define('BOX_HEADING_PRODUCTS','Artikelkatalog');
 define('BOX_HEADING_STATISTICS','Statistiken');
 define('BOX_HEADING_TOOLS','Hilfsprogramme');
+define('BOX_HEADING_LOCALIZATION', 'Sprachen/W&auml;hrungen');
+define('BOX_HEADING_TEMPLATES','Templates');
+define('BOX_HEADING_LOCATION_AND_TAXES', 'Land / Steuer');
+define('BOX_HEADING_CATALOG', 'Katalog');
+define('BOX_MODULE_NEWSLETTER','Rundschreiben');
 
 define('BOX_CONTENT','Content Manager');
 define('TEXT_ALLOWED', 'Erlaubnis');
@@ -139,17 +144,15 @@ define('BOX_CURRENCIES', 'W&auml;hrungen');
 define('BOX_LANGUAGES', 'Sprachen');
 define('BOX_ORDERS_STATUS', 'Bestellstatus');
 define('BOX_ATTRIBUTES_MANAGER','Attribut Verwaltung');
-define('BOX_PRODUCTS_ATTRIBUTES','Optionsgruppen');
-define('BOX_ORDERS_STATUS','Bestellstatus');
 define('BOX_SHIPPING_STATUS','Lieferstatus');
 define('BOX_SALES_REPORT','Umsatzstatistik');
 define('BOX_MODULE_EXPORT','XT-Module');
-define('BOX_HEADING_GV_ADMIN', 'Gutscheine/Kupons');
+define('BOX_HEADING_GV_ADMIN', 'Gutscheine/Coupons');
 define('BOX_GV_ADMIN_QUEUE', 'Gutschein Queue');
 define('BOX_GV_ADMIN_MAIL', 'Gutschein E-Mail');
 define('BOX_GV_ADMIN_SENT', 'Gutscheine versandt');
-define('BOX_HEADING_COUPON_ADMIN','Rabattkupons');
-define('BOX_COUPON_ADMIN','Kupon Admin');
+define('BOX_HEADING_COUPON_ADMIN','Rabatt Coupons');
+define('BOX_COUPON_ADMIN','Coupon Admin');
 define('BOX_TOOLS_BLACKLIST','Kreditkarten-Blacklist');
 define('BOX_IMPORT','Import/Export');
 define('BOX_PRODUCTS_VPE','Verpackungseinheit');
@@ -163,17 +166,6 @@ define('TXT_PRODUCTS','Artikel/Kategorien');
 define('TXT_STATISTICS','Statistiktools');
 define('TXT_TOOLS','Zusatzprogramme');
 define('TEXT_ACCOUNTING','Zugriffseinstellungen f&uuml;r:');
-
-//Dividers text for menu
-
-define('BOX_HEADING_MODULES', 'Module');
-define('BOX_HEADING_LOCALIZATION', 'Sprachen/W&auml;hrungen');
-define('BOX_HEADING_TEMPLATES','Templates');
-define('BOX_HEADING_TOOLS', 'Hilfsprogramme');
-define('BOX_HEADING_LOCATION_AND_TAXES', 'Land / Steuer');
-define('BOX_HEADING_CUSTOMERS', 'Kunden');
-define('BOX_HEADING_CATALOG', 'Katalog');
-define('BOX_MODULE_NEWSLETTER','Rundschreiben');
 
 // javascript messages
 define('JS_ERROR', 'W&auml;hrend der Eingabe sind Fehler aufgetreten!\nBitte korrigieren Sie folgendes:\n\n');
@@ -194,12 +186,12 @@ define('JS_SPECIALS_PRODUCTS_PRICE', '* Es muss ein neuer Preis f&uuml;r diesen 
 define('JS_GENDER', '* Die \'Anrede\' muss ausgew&auml;hlt werden.\n');
 define('JS_FIRST_NAME', '* Der \'Vorname\' muss mindestens aus ' . ENTRY_FIRST_NAME_MIN_LENGTH . ' Zeichen bestehen.\n');
 define('JS_LAST_NAME', '* Der \'Nachname\' muss mindestens aus ' . ENTRY_LAST_NAME_MIN_LENGTH . ' Zeichen bestehen.\n');
-define('JS_DOB', '* Das \'Geburtsdatum\' muss folgendes Format haben: xx.xx.xxxx (Tag/Jahr/Monat).\n');
+define('JS_DOB', '* Das \'Geburtsdatum\' muss folgendes Format haben: xx.xx.xxxx (Tag/Monat/Jahr).\n');
 define('JS_EMAIL_ADDRESS', '* Die \'E-Mail-Adresse\' muss mindestens aus ' . ENTRY_EMAIL_ADDRESS_MIN_LENGTH . ' Zeichen bestehen.\n');
 define('JS_ADDRESS', '* Die \'Strasse\' muss mindestens aus ' . ENTRY_STREET_ADDRESS_MIN_LENGTH . ' Zeichen bestehen.\n');
 define('JS_POST_CODE', '* Die \'Postleitzahl\' muss mindestens aus ' . ENTRY_POSTCODE_MIN_LENGTH . ' Zeichen bestehen.\n');
 define('JS_CITY', '* Die \'Stadt\' muss mindestens aus ' . ENTRY_CITY_MIN_LENGTH . ' Zeichen bestehen.\n');
-define('JS_STATE', '* Das \'Bundesland\' muss ausgew&uuml;hlt werden.\n');
+define('JS_STATE', '* Das \'Bundesland\' muss ausgew&auml;hlt werden.\n');
 define('JS_STATE_SELECT', '-- W&auml;hlen Sie oberhalb --');
 define('JS_ZONE', '* Das \'Bundesland\' muss aus der Liste f&uuml;r dieses Land ausgew&auml;hlt werden.');
 define('JS_COUNTRY', '* Das \'Land\' muss ausgew&auml;hlt werden.\n');
@@ -368,14 +360,14 @@ define('_DECEMBER', 'Dezember');
 define('TEXT_NEWSLETTER_REMOVE', 'Um sich von unserem Newsletter abzumelden klicken Sie hier:');
 
 define('TEXT_DISPLAY_NUMBER_OF_GIFT_VOUCHERS', 'Angezeigt werden <b>%d</b> bis <b>%d</b> (von insgesamt <b>%d</b> Gutscheinen)');
-define('TEXT_DISPLAY_NUMBER_OF_COUPONS', 'Angezeigt werden <b>%d</b> bis <b>%d</b> ((von insgesamt <b>%d</b> Kupons)');
+define('TEXT_DISPLAY_NUMBER_OF_COUPONS', 'Angezeigt werden <b>%d</b> bis <b>%d</b> (von insgesamt <b>%d</b> Coupons)');
 define('TEXT_VALID_PRODUCTS_LIST', 'Artikelliste');
-define('TEXT_VALID_PRODUCTS_ID', 'Artikelnummer');
+define('TEXT_VALID_PRODUCTS_ID', 'Artikel-ID');
 define('TEXT_VALID_PRODUCTS_NAME', 'Artikelname');
-define('TEXT_VALID_PRODUCTS_MODEL', 'Artikelmodell');
+define('TEXT_VALID_PRODUCTS_MODEL', 'Artikel-Nr.');
 
 define('TEXT_VALID_CATEGORIES_LIST', 'Kategorieliste');
-define('TEXT_VALID_CATEGORIES_ID', 'Kategorienummer');
+define('TEXT_VALID_CATEGORIES_ID', 'Kategorie-ID');
 define('TEXT_VALID_CATEGORIES_NAME', 'Kategoriename');
 
 define('SECURITY_CODE_LENGTH_TITLE', 'L&auml;nge des Gutscheincodes');
@@ -383,13 +375,12 @@ define('SECURITY_CODE_LENGTH_DESC', 'Geben Sie hier die L&auml;nge des Gutschein
 
 define('NEW_SIGNUP_GIFT_VOUCHER_AMOUNT_TITLE', 'Willkommens-Geschenk Gutschein Wert');
 define('NEW_SIGNUP_GIFT_VOUCHER_AMOUNT_DESC', 'Willkommens-Geschenk Gutschein Wert: Wenn Sie keinen Gutschein in Ihrer Willkommens-E-Mail versenden wollen, tragen Sie hier 0 ein, ansonsten geben Sie den Wert des Gutscheins an, zB. 10.00 oder 50.00, aber keine W&auml;hrungszeichen');
-define('NEW_SIGNUP_DISCOUNT_COUPON_TITLE', 'Willkommens-Rabatt Kupon Code');
-define('NEW_SIGNUP_DISCOUNT_COUPON_DESC', 'Willkommens-Rabatt Kupon Code: Wenn Sie keinen Kupon in Ihrer Willkommens-E-Mail versenden wollen, lassen Sie dieses Feld leer, ansonsten tragen Sie den Kupon Code ein, den Sie verwenden wollen');
+define('NEW_SIGNUP_DISCOUNT_COUPON_TITLE', 'Willkommens-Rabatt Coupon Code');
+define('NEW_SIGNUP_DISCOUNT_COUPON_DESC', 'Willkommens-Rabatt Coupon Code: Wenn Sie keinen Coupon in Ihrer Willkommens-E-Mail versenden wollen, lassen Sie dieses Feld leer, ansonsten tragen Sie den Coupon Code ein, den Sie verwenden wollen');
 
 define('TXT_ALL','Alle');
 
 // UST ID
-define('HEADING_TITLE_VAT','USt-IdNr.');
 define('HEADING_TITLE_VAT','USt-IdNr.');
 define('ENTRY_VAT_ID','USt-IdNr.:');
 define('ENTRY_CUSTOMERS_VAT_ID', 'USt-IdNr.:');
@@ -397,8 +388,6 @@ define('TEXT_VAT_FALSE','<font color="#ff0000">Gepr&uuml;ft/Falsch!</font>');
 define('TEXT_VAT_TRUE','<font color="#ff0000">Gepr&uuml;ft/OK!</font>');
 define('TEXT_VAT_UNKNOWN_COUNTRY','<font color="#ff0000">Nicht Gepr&uuml;ft/Land unbekannt!</font>');
 define('TEXT_VAT_UNKNOWN_ALGORITHM','<font color="#ff0000">Nicht Gepr&uuml;ft/Keine &Uuml;berpr&uuml;fung m&ouml;glich!</font>');
-define('ENTRY_VAT_ID_ERROR', '<font color="#ff0000">* Die Eingegebene UST ID Nummer ist Falsch oder kann derzeit nicht gepr&uuml;ft werden!</font>');
-
 define('ERROR_GIF_MERGE','Fehlender GDlib Gif Support, kein Wasserzeichen (Merge) m&ouml;glich');
 define('ERROR_GIF_UPLOAD','Fehlender GDlib Gif Support, kein Upload von GIF Bildern m&ouml;glich');
 
@@ -408,9 +397,9 @@ define('TEXT_REFERER','Referer: ');
 define('BOX_GOOGLE_SITEMAP', 'Google Sitemap');
 // EOF - Tomcraft - 2009-06-17 Google Sitemap
 
-// BOF - web28 - 2010-05-07 - PayPal API Modul
+// BOF - Tomcraft - 2009-10-03 - Paypal Express Modul
 define('BOX_PAYPAL','PayPal');
-// EOF - web28 - 2010-05-07 - PayPal API Modul
+// EOF - Tomcraft - 2009-10-03 - Paypal Express Modul
 
 // BOF - Dokuman - 2009-10-02 - added moneybookers payment module version 2.4
 define('_PAYMENT_MONEYBOOKERS_EMAILID_TITLE','Moneybookers E-Mail Adresse');
@@ -463,6 +452,25 @@ define('ASB_QUICK_SEARCH_EMAIL', 'E-Mail Adresse: ');
 define('BUTTON_SET','Alle aktivieren');
 define('BUTTON_UNSET','Alle deaktivieren');
 //EOF - web28 - 2010.05.30 - accounting - set all checkboxes 
+
+//BOF - DokuMan - 2010-08-12 - added possibility to reset admin statistics
+define('TEXT_ROWS','Zeile');
+define('TABLE_HEADING_RESET','Statistik zur&uuml;cksetzen');
+//EOF - DokuMan - 2010-08-12 - added possibility to reset admin statistics
+
+//BOF - web28 - 2010-11-13 - added BUTTON_CLOSE_WINDOW
+define('BUTTON_CLOSE_WINDOW' , 'Fenster schliessen');
+//EOF - web28 - 2010-11-13 - added BUTTON_CLOSE_WINDOW
+
+
+//BOF - hendrik - 2011-05-14 - independent invoice number and date
+define('ENTRY_INVOICE_NUMBER',  'Rechnungsnummer:'); 
+define('ENTRY_INVOICE_DATE',    'Rechnungdatum:'); 
+//EOF - hendrik - 2011-05-14 - independent invoice number and date  
+
+//BOF - web28 - 2010-07-06 - added missing error text
+define('ENTRY_VAT_ERROR', '&nbsp;<span class="errorText">Ung&uuml;ltge USt-IdNr.</span>');
+//EOF - web28 - 2010-07-06 - added missing error text
 
 // PDFBill NEXT
 define('BOX_CONFIGURATION_99', 'PDFBill Konfiguration');

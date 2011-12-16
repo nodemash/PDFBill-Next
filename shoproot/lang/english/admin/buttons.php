@@ -85,6 +85,10 @@ define('BUTTON_DELETE_CACHE', 'Delete Cache');
 define('BUTTON_DELETE_TEMP_CACHE', 'Delete Templatecache');
 // EOF - Dokuman - 2010-02-04 - delete cache files in admin section
 
+// BOF - web28 - 2011-07-13 - New Button
+define('BUTTON_VIEW_PRODUCT', 'View Product');
+//EOF - web28 - 2011-07-13 - New Button
+
 // PDFBill NEXT
 define('BUTTON_INVOICE_PDF', 'Bill PDF');
 define('BUTTON_PACKINGSLIP_PDF', 'Packingslip PDF');

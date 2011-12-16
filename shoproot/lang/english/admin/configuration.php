@@ -451,6 +451,10 @@ define('GZIP_COMPRESSION_DESC' , 'Enable HTTP gzip compression.');
 define('GZIP_LEVEL_TITLE' , 'Compression Level');
 define('GZIP_LEVEL_DESC' , 'Set a compression level from 0-9 (0 = minimum, 9 = maximum).');
 
+define('SESSION_WARNING', '<br /><br /><font color="#FF0000"><strong>ATTENTION:</strong></font>
+This feature might reduce the operability of the shop system. Change it only when you are aware of the following consequences and your webserver supports the corresponding feature.');
+
+
 define('SESSION_WRITE_DIRECTORY_TITLE' , 'Session Directory');
 define('SESSION_WRITE_DIRECTORY_DESC' , 'If sessions are file based, store them in this directory.');
 define('SESSION_FORCE_COOKIE_USE_TITLE' , 'Force Cookie Use');

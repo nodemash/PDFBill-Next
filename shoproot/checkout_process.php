@@ -59,8 +59,11 @@ if (!isset ($_SESSION['customer_id'])) {
 	xtc_redirect(xtc_href_link(FILENAME_LOGIN, '', 'SSL'));
 }
 
-if ($_SESSION['customers_status']['customers_status_show_price'] != '1') {
-	xtc_redirect(xtc_href_link(FILENAME_DEFAULT, '', ''));
+if ($_SESSION['customers_status']['customers_status_show_price'] != '1') {	
+	//BOF - web28.de - FIX redirect to NONSSL
+	//xtc_redirect(xtc_href_link(FILENAME_DEFAULT, '', ''));
+	xtc_redirect(xtc_href_link(FILENAME_DEFAULT),'NONSSL');
+	//EOF - web28.de - FIX redirect to NONSSL
 }
 
 if (!isset ($_SESSION['sendto'])) {
@@ -81,7 +84,7 @@ if (isset ($_SESSION['cart']->cartID) && isset ($_SESSION['cartID'])) {
 // load selected payment module
 require (DIR_WS_CLASSES.'payment.php');
 if (isset ($_SESSION['credit_covers']))
-	$_SESSION['payment'] = ''; //ICW added for CREDIT CLASS
+	$_SESSION['payment'] = ''; //ICW added for CREDIT CLASS 
 $payment_modules = new payment($_SESSION['payment']);
 
 // load the selected shipping module
@@ -149,7 +152,12 @@ xtc_db_perform(TABLE_ORDERS, $sql_data_array);
 $insert_id = xtc_db_insert_id();
 $_SESSION['tmp_oID'] = $insert_id;
 for ($i = 0, $n = sizeof($order_totals); $i < $n; $i ++) {
-	$sql_data_array = array ('orders_id' => $insert_id, 'title' => $order_totals[$i]['title'], 'text' => $order_totals[$i]['text'], 'value' => $order_totals[$i]['value'], 'class' => $order_totals[$i]['code'], 'sort_order' => $order_totals[$i]['sort_order']);
+	$sql_data_array = array ('orders_id' => $insert_id, 
+                           'title' => $order_totals[$i]['title'], 
+                           'text' => $order_totals[$i]['text'], 
+                           'value' => $order_totals[$i]['value'],
+                           'class' => $order_totals[$i]['code'], 
+                           'sort_order' => $order_totals[$i]['sort_order']);
 	xtc_db_perform(TABLE_ORDERS_TOTAL, $sql_data_array);
 }
 

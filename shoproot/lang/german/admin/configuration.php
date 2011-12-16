@@ -453,18 +453,22 @@ define('GZIP_COMPRESSION_DESC' , 'Schalten Sie HTTP GZip Kompression ein um die 
 define('GZIP_LEVEL_TITLE' , 'Kompressions Level');
 define('GZIP_LEVEL_DESC' , 'W&auml;hlen Sie einen Kompressionslevel zwischen 0-9 (0 = Minimum, 9 = Maximum).');
 
+define('SESSION_WARNING', '<br /><br /><font color="#FF0000"><strong>ACHTUNG:</strong></font>
+Diese Funktion kann eventuell die Funktionsf&auml;higkeit des Shops
+beeinflussen. Bitte nur &auml;ndern, wenn man sich &uuml;ber die m&ouml;glichen Folgen im Klaren ist und der Server diese Funktion auch wirklich unterst&uuml;tzt!');
+
 define('SESSION_WRITE_DIRECTORY_TITLE' , 'Session Speicherort');
 define('SESSION_WRITE_DIRECTORY_DESC' , 'Wenn Sessions als Files gespeichert werden sollen, benutzen Sie folgenden Ordner.');
 define('SESSION_FORCE_COOKIE_USE_TITLE' , 'Cookie Benutzung bevorzugen');
-define('SESSION_FORCE_COOKIE_USE_DESC' , 'Session starten falls Cookies vom Browser erlaubt werden.');
+define('SESSION_FORCE_COOKIE_USE_DESC' , 'Session starten falls Cookies vom Browser erlaubt werden. (Standard &quot;false&quot;)'.SESSION_WARNING);
 define('SESSION_CHECK_SSL_SESSION_ID_TITLE' , 'Checken der SSL Session ID');
-define('SESSION_CHECK_SSL_SESSION_ID_DESC' , '&Uuml;berpr&uuml;fen der SSL_SESSION_ID bei jedem HTTPS Seitenaufruf.');
+define('SESSION_CHECK_SSL_SESSION_ID_DESC' , '&Uuml;berpr&uuml;fen der SSL_SESSION_ID bei jedem HTTPS Seitenaufruf. (Standard &quot;false&quot;)'.SESSION_WARNING);
 define('SESSION_CHECK_USER_AGENT_TITLE' , 'Checken des User Browsers');
-define('SESSION_CHECK_USER_AGENT_DESC' , '&Uuml;berpr&uuml;fen des Browsers den der User benutzt, bei jedem Seitenaufruf.');
+define('SESSION_CHECK_USER_AGENT_DESC' , '&Uuml;berpr&uuml;fen des Browsers den der User benutzt, bei jedem Seitenaufruf. (Standard &quot;false&quot;)'.SESSION_WARNING);
 define('SESSION_CHECK_IP_ADDRESS_TITLE' , 'Checken der IP Adresse');
-define('SESSION_CHECK_IP_ADDRESS_DESC' , '&Uuml;berpr&uuml;fen der IP Adresse des Users bei jedem Seitenaufruf.');
+define('SESSION_CHECK_IP_ADDRESS_DESC' , '&Uuml;berpr&uuml;fen der IP Adresse des Users bei jedem Seitenaufruf. (Standard &quot;false&quot;)'.SESSION_WARNING);
 define('SESSION_RECREATE_TITLE' , 'Session erneuern');
-define('SESSION_RECREATE_DESC' , 'Erneuern der Session und Zuweisung einer neuen Session ID sobald ein User einloggt oder sich registriert (PHP >=4.1 needed).');
+define('SESSION_RECREATE_DESC' , 'Erneuern der Session und Zuweisung einer neuen Session ID sobald ein User einloggt oder sich registriert (PHP >=4.1 needed). (Standard &quot;false&quot;)'.SESSION_WARNING);
 
 define('DISPLAY_CONDITIONS_ON_CHECKOUT_TITLE' , 'Unterzeichnen der AGB');
 define('DISPLAY_CONDITIONS_ON_CHECKOUT_DESC' , 'Anzeigen und Unterzeichnen der AGB beim Bestellvorgang');
