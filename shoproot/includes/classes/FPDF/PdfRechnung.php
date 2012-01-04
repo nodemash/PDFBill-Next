@@ -31,12 +31,13 @@ class PdfRechnung extends PdfBrief
      * @var int $customers_id
      * @var int $bill_nr
      * @var int $oID
-     * @var string $orders_date
-     * @var $string $payment_method
+     * @var String $orders_date
+     * @var String $payment_method
+     * @var String $order_vat_id
      * @var boolean $deliverSlip
      * @return void
      */
-	function Rechnungsdaten($customers_id, $bill_nr, $oID, $orders_date, $payment_method, $deliverSlip = false)  
+	function Rechnungsdaten($customers_id, $bill_nr, $oID, $orders_date, $payment_method, $order_vat_id="", $deliverSlip = false)  
 	{ 
 		$this->SetX($this->rechnungsdaten_x); 
 		$this->SetLeftMargin($this->rechnungsdaten_x); 
@@ -74,6 +75,11 @@ class PdfRechnung extends PdfBrief
     
         if(!$deliverSlip) {
             $this->Cell(0, 6, TEXT_PDF_ZAHLUNGSWEISE . ': ' . html_entity_decode($payment_method), 0, 1, '', 1);
+        }
+
+        // check for given vat_id
+        if ($order_vat_id != "") {
+            $this->Cell(0, 6, TEXT_PDF_VATID . ': '. $order_vat_id, 0, 1, '', 1);
         }
 	}
 	

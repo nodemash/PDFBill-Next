@@ -1,17 +1,20 @@
 <table  width="100%" border="0" align="center" cellpadding="4" cellspacing="0">
-  <tr> 
-    <td style="border-bottom: 1px solid; border-color: #cccccc;"><div align="right"><img src="{$logo_path}logo.gif"></div></td>
-  </tr>
-  <tr> 
-    <td><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>Sehr geehrter Kunde,</strong></font> <br />
-      <br />
-      <font size="2" face="Verdana, Arial, Helvetica, sans-serif">vielen Dank f&uuml;r Ihre Bestellung</font><br /> 
-      <br />
-      <font size="2" face="Verdana, Arial, Helvetica, sans-serif">Im Anhang der E-Mail finden Sie {$PDF_TYPE} f&uuml;r die bestellten Artikel.</font><br /> 
-      <br />
-    <br />
-	
-	
-</font></td>
-  </tr>
+    <tr> 
+        <td style="border-bottom: 1px solid; border-color: #cccccc;" align="right">
+            <img src="{$logo_path}logo.gif" alt="Shop" />
+        </td>
+    </tr>
+    <tr> 
+        <td>
+            <font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+                <strong>Sehr geehrte{if $GENDER=='Herr'}r{/if} {$GENDER} {$LASTNAME},</strong><br />
+                <br />
+                vielen Dank f&uuml;r Ihre Bestellung<br /> 
+                <br />
+                Im Anhang der E-Mail finden Sie {$PDF_TYPE} f&uuml;r die bestellten Artikel.<br /> 
+                <br />
+                <br />
+            </font>
+        </td>
+    </tr>
 </table>

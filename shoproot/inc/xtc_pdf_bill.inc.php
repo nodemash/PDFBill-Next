@@ -70,14 +70,22 @@ function xtc_pdf_bill ($oID, $send=false, $deliverSlip=false)
         $payment_method = constant(strtoupper('MODULE_PAYMENT_' . $order->info['payment_method'] . '_TEXT_TITLE'));
     }
 
-    // Get bill_nr
-    $sqlBill = "SELECT bill_nr FROM " . TABLE_ORDERS . " WHERE orders_id = '" . $oID . "'";
-    $resBill = xtc_db_query($sqlBill);
-    $rowBill = xtc_db_fetch_array($resBill);
-    $order_bill = $rowBill['bill_nr'];
+    // Get bill_nr and customers vat_id
+    $sqlOrder = "
+    SELECT 
+        bill_nr,
+        customers_vat_id 
+    FROM " . TABLE_ORDERS . " 
+    WHERE 
+        orders_id = '" . $oID . "'";
+    $resOrder = xtc_db_query($sqlOrder);
+    $rowOrder = xtc_db_fetch_array($resOrder);
+    $order_bill = $rowOrder['bill_nr'];
+    $order_vat_id = $rowOrder['customers_vat_id'];
+    
 
     // Create Bill Data
-    $pdf->Rechnungsdaten($customers_id, $order_bill, $oID, date("d.m.y", $date_purchased), $payment_method, $deliverSlip);
+    $pdf->Rechnungsdaten($customers_id, $order_bill, $oID, date("d.m.y", $date_purchased), $payment_method, $order_vat_id, $deliverSlip);
     $pdf->RechnungStart($order->customer['lastname'], $customer_gender, $deliverSlip);
 
     // add BillPay Support
@@ -254,6 +262,8 @@ function xtc_pdf_bill ($oID, $send=false, $deliverSlip=false)
             } else { 
                 $smarty->assign('GENDER', ''); 
             }
+
+            $smarty->assign('LASTNAME', $order->customer['lastname']);
         }
 
         // assign language to template for caching

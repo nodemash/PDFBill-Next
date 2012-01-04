@@ -26,6 +26,7 @@ define('TEXT_PDF_RECHNUNGSNUMMER', "Rechnungsnummer");
 define('TEXT_PDF_BESTELLNUMMER', "Bestellnummer");
 define('TEXT_PDF_DATUM', "Datum");
 define('TEXT_PDF_ZAHLUNGSWEISE', "Zahlungsweise");
+define('TEXT_PDF_VATID', "Ust-ID");
 
 define('TEXT_PDF_SHOPADRESSEKLEIN', "domain.de - NAME NAME - STRASSE 123 - D.12345 STADT");
 define('TEXT_PDF_RECHNUNG', "Ihre Rechnung");

@@ -1,13 +1,21 @@
-1.0.5a - 24.10.2011
+1.1.6 - 03.12.2011
 =============================================
-- FIXED Syntax Error
+- UPDATE: files to support xtcModified 1.05 SP1a/b
+- ADD: database installer (Thanks to h-h-h)
+- FXIED: personalization (Missing lastname)
+- ADD: Personalized Mails
+- ADD: Support for VATID in PDF (Thanks to Hunter)
 
-1.0.5 - 24.10.2011
+1.1.5a - 24.10.2011
 =============================================
-- FIXED Customer salutation
-- ADD Billpay Support
+- FIXED: Syntax Error
 
-1.0.4 - 31.08.2011
+1.1.5 - 24.10.2011
+=============================================
+- FIXED: Customer salutation
+- ADD: Billpay Support
+
+1.1.4 - 31.08.2011
 =============================================
 - FIXED: German Language FIX
 - FIXED: br linebreak on Invoice 

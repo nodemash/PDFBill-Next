@@ -25,6 +25,7 @@ define('TEXT_PDF_RECHNUNGSNUMMER', "Billing No.");
 define('TEXT_PDF_BESTELLNUMMER', "Order No.");
 define('TEXT_PDF_DATUM', "Date");
 define('TEXT_PDF_ZAHLUNGSWEISE', "Payment");
+define('TEXT_PDF_VATID', "VAT ID");
 
 define('TEXT_PDF_SHOPADRESSEKLEIN', "AdresseDesShops.de - Max Mustermann - Strasse 12, 12345 Stadt");
 define('TEXT_PDF_RECHNUNG', "Your bill");
