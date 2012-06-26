@@ -1,6 +1,6 @@
 -----------------------------------------------------------------------------------------
 PDF-RechnungNEXT by Robert Hoppe
-Copyright 2011 Robert Hoppe - xtcm@katado.com - http://www.katado.com
+Copyright 2012 Robert Hoppe - xtcm@katado.com - http://www.katado.com
 
 Please visit http://pdfnext.katado.com for newer Versions
  
@@ -84,5 +84,78 @@ in folgenden Code aendern
 // send customer mail
 $agbpdf = DIR_FS_DOCUMENT_ROOT . 'media/AGB.pdf';
 xtc_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $order->customer['email_address'], $name, '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, $attachement_filename, $agbpdf, $mail_subject, $html_mail, $txt_mail);
+
+--
+
+6. Wie versende ich die Rechnung automatisch bei Umstellung des Bestellstatus der ID X
+orders.php anpassen und folgende Zeilen nach 
+
+case 'update_order' : 
+
+einfuegen:
+
+    // sende Rechnung bei bestimmten Bestellstatus
+    $sendBill = 1;
+    if (isset($_POST['status']) && $sendBill == $_POST['status']) {
+        if (!defined('FPDF_FONTPATH')) {
+            define('FPDF_FONTPATH', DIR_FS_CATALOG . DIR_WS_CLASSES . 'FPDF/font/');
+        }
+        require_once(DIR_FS_CATALOG . DIR_WS_CLASSES . 'class.phpmailer.php');
+        require_once(DIR_FS_CATALOG . DIR_WS_CLASSES . 'FPDF/PdfRechnung.php');
+    
+        // include needed functions
+        require_once(DIR_FS_INC . 'xtc_get_order_data.inc.php');
+        require_once(DIR_FS_INC . 'xtc_get_attributes_model.inc.php');
+        require_once(DIR_FS_INC . 'xtc_not_null.inc.php');
+        require_once(DIR_FS_INC . 'xtc_format_price_order.inc.php');
+        require_once(DIR_FS_INC . 'xtc_utf8_decode.inc.php');
+        require_once(DIR_FS_INC . 'xtc_pdf_bill.inc.php');
+
+
+        // generate bill and send to customer
+        xtc_pdf_bill(xtc_db_prepare_input($_GET['oID']), true);
+    }
+
+--
+
+7. Wie kann ich noch die Telefonnummer und die Faxnummer auf der Rechnung einfuegen?
+
+Die folgende Zeile:
+$sqlGetGender = "SELECT customers_gender, customers_fax, customers_telephone FROM " . TABLE_CUSTOMERS . " WHERE customers_id = '" . (int)$rowGetCustomer['customers_id'] . "'";
+
+durch diese hier ersetzen:
+
+    $sqlGetGender = "SELECT customers_gender, customers_fax, customers_telephone FROM " . TABLE_CUSTOMERS . " WHERE customers_id  = '" . (int)$rowGetCustomer['customers_id'] . "'";
+
+und nach dem folgenden Code:
+
+    // Change Adress on Delivery Slip
+    if ($deliverSlip === true) {
+        $customer_address = xtc_address_format($order->customer['format_id'], $order->delivery, 1, '', '<br>');
+    } else {
+        $customer_address = xtc_address_format($order->customer['format_id'], $order->billing, 1, '', '<br>');
+    }
+
+das hier einfuegen:
+
+    if ($rowGetGender['customers_telephone'] != '' || $rowGetGender['customers_fax'] != '') $customer_address .= "<br>";
+    if ($rowGetGender['customers_telephone'] != '') $customer_address .= "<br>Tele: " . $rowGetGender['customers_telephone'];
+    if ($rowGetGender['customers_fax'] != '') $customer_address .= "<br>Fax: " . $rowGetGender['customers_fax']; 
+
+--
+
+8. Wie kann ich die Seitenzahl im unteren Bereich der Rechnung anzeigen lassen?
+
+In der PdfBrief.php folgende Anpassungen durchfuehren:
+
+
+Folgende Zeilen in der Funktion Footer() einkommentieren:
+
+        // bottom PageNo
+        //$this->SetY(-10);
+        //$this->Cell(0, 4, TEXT_PDF_SEITE.' '.$this->PageNo().' '.TEXT_PDF_SEITE_VON.' {nb}', 0, 0, 'R');
+
+Folgende Zeile in der Funktion Header() auskommentieren:
+	$this->Cell(0, 4, TEXT_PDF_SEITE.' '.$this->PageNo().' '.TEXT_PDF_SEITE_VON.' {nb}', 0, 0, 'R');
 
 --

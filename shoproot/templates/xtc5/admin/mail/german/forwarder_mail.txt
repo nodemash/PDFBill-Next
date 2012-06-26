@@ -1,0 +1,6 @@
+
+Sehr geehrte{if $GENDER=='Herr'}r{/if} {$GENDER} {$LASTNAME},
+
+vielen Dank für Ihre Bestellung.
+
+Im Anhang der E-Mail finden Sie {$PDF_TYPE} für die bestellten Artikel.

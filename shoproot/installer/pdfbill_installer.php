@@ -31,21 +31,26 @@ xtc_db_query("INSERT INTO `configuration` (`configuration_key`, `configuration_v
 ('PDF_MASTER_PASS', 'heresomepass', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
 ('PDF_FILENAME', 'SomeBill{oID}', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
 ('PDF_MAIL_BILL_COPY', '', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
-('PDF_MAIL_SLIP_COPY', '', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
 ('PDF_MAIL_SUBJECT', 'Your PDFBill NEXT', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
 ('PDF_STATUS_COMMENT', 'Rechnung versendet', 99, 1, NULL, '0000-00-00 00:00:00', NULL, NULL),
 ('PDF_CUSTOM_TEXT', '', 99, 2, NULL, '0000-00-00 00:00:00', NULL, NULL),
 ('PDF_USE_ORDERID', 'true', 99, 0, NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(''true'', ''false''),'),
-('PDF_USE_ORDERID_PREFIX', 'RE', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
-('PDF_FILENAME_SLIP', 'SomeSlip{oID}', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
-('PDF_STATUS_COMMENT_SLIP', 'Lieferschein verschickt', 99, 1, NULL, '0000-00-00 00:00:00', NULL, NULL),
-('PDF_MAIL_SUBJECT_SLIP', 'Ihr Lieferschein', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
 ('PDF_USE_CUSTOMER_ID', 'false', 99, 0, NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(''true'', ''false''),'),
 ('PDF_STATUS_ID_BILL', '1', 99, 3, NULL, '0000-00-00 00:00:00', NULL, NULL),
 ('PDF_STATUS_ID_SLIP', '1', 99, 3, NULL, '0000-00-00 00:00:00', NULL, NULL),
 ('PDF_PRODUCT_MODEL_LENGTH', '7', 99, 3, NULL, '0000-00-00 00:00:00', NULL, NULL),
 ('PDF_UPDATE_STATUS', 'true', 99, 0, NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(''true'', ''false''),'),
-('PDF_USE_ORDERID_SUFFIX', '', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL);");
+('PDF_USE_ORDERID_PREFIX', 'RE', 99, 84, NULL, '0000-00-00 00:00:00', NULL, NULL),
+('PDF_USE_ORDERID_SUFFIX', '', 99, 0, NULL, '0000-00-00 00:00:00', NULL, NULL),
+('PDF_STATUS_SEND', 'false', 99, 4, NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(''true'', ''false''),'),
+('PDF_STATUS_SEND_ID', '1', 99, 4, NULL, '0000-00-00 00:00:00', NULL, NULL),
+('PDF_FILENAME_SLIP', 'SomeSlip{oID}', 99, 80, NULL, '0000-00-00 00:00:00', NULL, NULL),
+('PDF_STATUS_COMMENT_SLIP', 'Lieferschein verschickt', 99, 79, NULL, '0000-00-00 00:00:00', NULL, NULL),
+('PDF_MAIL_SUBJECT_SLIP', 'Ihr Lieferschein', 99, 80, NULL, '0000-00-00 00:00:00', NULL, NULL),
+('PDF_MAIL_SLIP_FORWARDER_NAME', '', 99, 81, NULL, '0000-00-00 00:00:00', NULL, NULL),
+('PDF_MAIL_SLIP_FORWARDER_EMAIL', '', 99, 82, NULL, '0000-00-00 00:00:00', NULL, NULL),
+('PDF_MAIL_SLIP_COPY', '', 99, 83, NULL, '0000-00-00 00:00:00', NULL, NULL),
+('PDF_MAIL_SLIP_FORWARDER', 'false', 99, 85, NULL, '0000-00-00 00:00:00', NULL, 'xtc_cfg_select_option(array(''true'', ''false''),');");
 
 // finished
 echo 'Datenbank wurde f&uuml;r PDF-Bill Next aktualisiert.';

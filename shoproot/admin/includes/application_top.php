@@ -1,9 +1,8 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: application_top.php 1323 2005-10-27 17:58:08Z mz $
+   $Id: application_top.php 2798 2012-04-28 09:45:32Z web28 $
 
-    http://www.xtc-modified.org
-
+   http://www.xtc-modified.org
    Copyright (c) 2010 xtcModified
    --------------------------------------------------------------
    based on:
@@ -12,7 +11,7 @@
    (c) 2003 nextcommerce (application_top.php,v 1.46 2003/08/24); www.nextcommerce.org
    (c) 2006 XT-Commerce 8application_top.php 1323 2005-10-27) ; www.xt-commerce.com
 
-   Released under the GNU General Public License 
+   Released under the GNU General Public License
    --------------------------------------------------------------
    Third Party contribution:
 
@@ -21,25 +20,24 @@
    Credit Class/Gift Vouchers/Discount Coupons (Version 5.10)
    http://www.oscommerce.com/community/contributions,282
    Copyright (c) Strider | Strider@oscworks.com
-   Copyright (c  Nick Stanko of UkiDev.com, nick@ukidev.com
+   Copyright (c) Nick Stanko of UkiDev.com, nick@ukidev.com
    Copyright (c) Andre ambidex@gmx.net
    Copyright (c) 2001,2002 Ian C Wilson http://www.phesis.org
 
    Released under the GNU General Public License
    --------------------------------------------------------------*/
 
+  // Define the project version
+  define('PROJECT_VERSION', 'xtcModified v1.05 dated: 2010-07-18 SP1d');
   // Start the clock for the page parse time log
-  define('PAGE_PARSE_START_TIME', microtime());
-  
+  define('PAGE_PARSE_START_TIME', microtime(true));
+
   // security
   define('_VALID_XTC',true);
 
-  // Set the level of error reporting
-  error_reporting(E_ALL & ~E_NOTICE);
-
   // Disable use_trans_sid as xtc_href_link() does this manually
   if (function_exists('ini_set')) {
-    ini_set('session.use_trans_sid', 0);
+    @ini_set('session.use_trans_sid', 0);
   }
 
   // Set the local configuration parameters - mainly for developers or the main-configure
@@ -49,23 +47,32 @@
     require('includes/configure.php');
   }
 
-// BOF - Tomcraft - 2009-11-08 - FIX for PHP5.3 date_default_timezone_set
+  // set the level of error reporting
+  if (file_exists(DIR_FS_CATALOG.'export/_error_reporting.all') || file_exists(DIR_FS_CATALOG.'export/_error_reporting.admin')) {
+    error_reporting(E_ALL & ~E_NOTICE);
+    //error_reporting(-1); // Development value
+  } else {
+    error_reporting(0);
+  }
+
+  // solve compatibility issues
+  require_once (DIR_WS_FUNCTIONS.'compatibility.php');
+
+// default time zone
   if (version_compare(PHP_VERSION, '5.1.0', '>=')) {
 	date_default_timezone_set('Europe/Berlin');
   }
-// EOF - Tomcraft - 2009-11-08 - FIX for PHP5.3 date_default_timezone_set
 
+  // Base/PHP_SELF/SSL-PROXY
+  $PHP_SELF = $_SERVER['SCRIPT_NAME'];
+
+  //compatibility for xtcModified 1.06 files
+  define('DIR_WS_BASE', '');
+
+  // SQL caching dir
   define('SQL_CACHEDIR',DIR_FS_CATALOG.'cache/');
 
-  // Define the project version
-  define('PROJECT_VERSION', 'xtcModified v1.05 dated: 2010-07-18 SP1b');
-
-// BOF - Tomcraft - 2009-11-09 - Added missing definition for TAX_DECIMAL_PLACES
   define('TAX_DECIMAL_PLACES', 0);
-// EOF - Tomcraft - 2009-11-09 - Added missing definition for TAX_DECIMAL_PLACES
-
-  // Set the length of the redeem code, the longer the more secure
-  //define('SECURITY_CODE_LENGTH', '6'); //DokuMan - 2010-10-29 - constant already defined in database
 
   // Used in the "Backup Manager" to compress backups
   define('LOCAL_EXE_GZIP', '/usr/bin/gzip');
@@ -146,25 +153,19 @@
   define('FILENAME_PRODUCTS_VPE','products_vpe.php');
   define('FILENAME_CAMPAIGNS_REPORT','stats_campaigns.php');
   define('FILENAME_XSELL_GROUPS','cross_sell_groups.php');
+  define('FILENAME_GOOGLE_SITEMAP', '../google_sitemap.php');
+  define('FILENAME_PAYPAL','paypal.php');
+  define('FILENAME_PAYPAL_CHECKOUT', 'paypal_checkout.php');
 
-  // PDFBill NEXT
+  // PDFBill NEXT - Change START
   define('FILENAME_PDF_BILL_NR','bill_nr.php');
   define('FILENAME_PRINT_ORDER_PDF','print_order_pdf.php');
   define('FILENAME_PRINT_PACKINGSLIP_PDF','print_packingslip_pdf.php');
+  // PDFBill NEXT - Change END
 
-  // GOOGLE SITEMAP - JUNG GESTALTEN - 07.10.2008
-  define('FILENAME_GOOGLE_SITEMAP', '../google_sitemap.php'); 
-  
-  // BOF - web28 - 2010-05-06 - PayPal API Modul
-  define('FILENAME_PAYPAL','paypal.php');
-  define('FILENAME_PAYPAL_CHECKOUT', 'paypal_checkout.php');
-  // EOF - web28 - 2010-05-06 - PayPal API Modul
 
-  // define the database table names used in the project
-  // BOF - 2010-01-20 - vr - revised unified version based on database_tables.php and admin/incudes/application_top.php,
-  // list of TABLE MAPPINGS is now MAINTAINED in database_tables.php ONLY
-  require_once('../' . DIR_WS_INCLUDES . 'database_tables.php');
-  // BOF - 2010-01-20 vr - revised unified version based on database_tables.php and admin/incudes/application_top.php,
+  // list of project database tables
+  require_once(DIR_FS_CATALOG.DIR_WS_INCLUDES.'database_tables.php');
 
   // include needed functions
   require_once(DIR_FS_INC . 'xtc_db_connect.inc.php');
@@ -192,62 +193,47 @@
   require_once(DIR_FS_INC . 'xtc_product_link.inc.php');
   require_once(DIR_FS_INC . 'xtc_cleanName.inc.php');
   require_once(DIR_FS_INC . 'xtc_get_top_level_domain.inc.php');
+  require_once (DIR_FS_INC . 'xtc_update_whos_online.inc.php');
 
-
-  // customization for the design layout
-  define('BOX_WIDTH', 125); // how wide the boxes should be in pixels (default: 125)
+  // design layout (wide of boxes in pixels) (default: 125)
+  define('BOX_WIDTH', 125);
 
   // Define how do we update currency exchange rates
   // Possible values are 'oanda' 'xe' or ''
   define('CURRENCY_SERVER_PRIMARY', 'oanda');
   define('CURRENCY_SERVER_BACKUP', 'xe');
-  
-  // Use the DB-Logger
-  //define('STORE_DB_TRANSACTIONS', 'false'); //DokuMan - 2010-10-29 - constant already defined in database
-
-  // include the database functions
-//  require(DIR_WS_FUNCTIONS . 'database.php');
 
   // make a connection to the database... now
   xtc_db_connect() or die('Unable to connect to database server!');
 
   // set application wide parameters
   $configuration_query = xtc_db_query('select configuration_key as cfgKey, configuration_value as cfgValue from ' . TABLE_CONFIGURATION . '');
-  // BOF - Tomcraft - 2009-10-03 - Paypal Express Modul (Cache im Admin AUS!)
-  /*
-    while ($configuration = xtc_db_fetch_array($configuration_query)) {
-      define($configuration['cfgKey'], $configuration['cfgValue']);
-    }
-  */
   while ($configuration = xtc_db_fetch_array($configuration_query)) {
     if ($configuration['cfgKey'] != 'STORE_DB_TRANSACTIONS') {
       define($configuration['cfgKey'], $configuration['cfgValue']);
     }
   }
-  // EOF - Tomcraft - 2009-10-03 - Paypal Express Modul (Cache im Admin AUS!)
 
   define('FILENAME_IMAGEMANIPULATOR',IMAGE_MANIPULATOR);
-    function xtDBquery($query) {
-       if (DB_CACHE=='true') {
-             $result=xtc_db_queryCached($query);
-             //echo 'cached query: '.$query.'<br />';
-          } else {
-             $result=xtc_db_query($query);
+
+  // move to xtc_db_queryCached.inc.php
+  function xtDBquery($query) {
+    if (DB_CACHE=='true') {
+      $result=xtc_db_queryCached($query);
+    } else {
+      $result=xtc_db_query($query);
     }
-    return $result;
+  return $result;
   }
 
   // initialize the logger class
   require(DIR_WS_CLASSES . 'logger.php');
 
-  // include shopping cart class
+  // shopping cart class
   require(DIR_WS_CLASSES . 'shopping_cart.php');
 
-  // some code to solve compatibility issues
-  require(DIR_WS_FUNCTIONS . 'compatibility.php');
-
+  // todo
   require(DIR_WS_FUNCTIONS . 'general.php');
-
 
   // define how the session functions will be used
   require(DIR_WS_FUNCTIONS . 'sessions.php');
@@ -257,23 +243,23 @@
 
   // set the session name and save path
   session_name('XTCsid');
-	if (STORE_SESSIONS != 'mysql') 
+	if (STORE_SESSIONS != 'mysql') {
     session_save_path(SESSION_WRITE_DIRECTORY);
+  }
 
-  //BOF - DokuMan - 2010-10-29 - added missing variables for determining $current_domain
+  // set the type of request (secure or not)
   if (file_exists(DIR_WS_INCLUDES . 'request_type.php')) {
     include (DIR_WS_INCLUDES . 'request_type.php');
-  }
-  else {
+  } else {
     $request_type = 'NONSSL';
   }
+
   // set the top level domains
   $http_domain = xtc_get_top_level_domain(HTTP_SERVER);
   //$https_domain = xtc_get_top_level_domain(HTTPS_SERVER);
   //$current_domain = (($request_type == 'NONSSL') ? $http_domain : $https_domain);
   $current_domain = $http_domain; //currently no https_domain support
-  //EOF - DokuMan - 2010-10-29 - added missing variables for determining $current_domain
-  
+
   // set the session cookie parameters
   if (function_exists('session_set_cookie_params')) {
     session_set_cookie_params(0, '/', (xtc_not_null($current_domain) ? '.' . $current_domain : ''));
@@ -290,26 +276,19 @@
     session_id($_GET[session_name()]);
   }
 
-  //BOF - DokuMan - 2011-01-06 - set session.use_only_cookies when force cookie is enabled
-  @ini_set('session.use_only_cookies', (SESSION_FORCE_COOKIE_USE == 'True') ? 1 : 0);
-  //EOF - DokuMan - 2011-01-06 - set session.use_only_cookies when force cookie is enabled
-  
+  @ini_set('session.use_only_cookies', (SESSION_FORCE_COOKIE_USE == 'True') ? 1 : 0); //DokuMan - 2011-01-06 - set session.use_only_cookies when force cookie is enabled
+
   // start the session
   $session_started = false;
   if (SESSION_FORCE_COOKIE_USE == 'True') {
     xtc_setcookie('cookie_test', 'please_accept_for_session', time()+60*60*24*30, '/', $current_domain);
-
-	//BOF - Hetfield - 2009-08-16 - fix for some admin-login problems
-	//if (isset($HTTP_COOKIE_VARS['cookie_test'])) {
-	if (isset($_COOKIE['cookie_test'])) {
-	//EOF - Hetfield - 2009-08-16 - fix for some admin-login problems
-      session_start();
-      $session_started = true;
-    }
+    if (isset($_COOKIE['cookie_test'])) {
+        session_start();
+        $session_started = true;
+      }
   } elseif (CHECK_CLIENT_AGENT == 'True') {
     $user_agent = strtolower(getenv('HTTP_USER_AGENT'));
     $spider_flag = false;
-
     if ($spider_flag == false) {
       session_start();
       $session_started = true;
@@ -322,10 +301,9 @@
   // verify the ssl_session_id if the feature is enabled
   if ( ($request_type == 'SSL') && (SESSION_CHECK_SSL_SESSION_ID == 'True') && (ENABLE_SSL == true) && ($session_started == true) ) {
     $ssl_session_id = getenv('SSL_SESSION_ID');
-    if (!isset($_SESSION['SESSION_SSL_ID'])) {  // Hetfield - 2009-08-19 - removed deprecated function session_is_registered to be ready for PHP >= 5.3
+    if (!isset($_SESSION['SESSION_SSL_ID'])) {
       $_SESSION['SESSION_SSL_ID'] = $ssl_session_id;
     }
-
     if ($_SESSION['SESSION_SSL_ID'] != $ssl_session_id) {
       session_destroy();
       xtc_redirect(xtc_href_link(FILENAME_SSL_CHECK));
@@ -333,28 +311,25 @@
   }
 
   // verify the browser user agent if the feature is enabled
-if (SESSION_CHECK_USER_AGENT == 'True') {
-	$http_user_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
-	$http_user_agent2 = strtolower(getenv("HTTP_USER_AGENT"));
-	$http_user_agent = ($http_user_agent == $http_user_agent2) ? $http_user_agent : $http_user_agent.';'.$http_user_agent2;
-	if (!isset($_SESSION['SESSION_USER_AGENT'])) {
-		$_SESSION['SESSION_USER_AGENT'] = $http_user_agent;
-	}
-
-	if ($_SESSION['SESSION_USER_AGENT'] != $http_user_agent) {
-		session_destroy();
-		xtc_redirect(xtc_href_link(FILENAME_LOGIN));
-	} 
-}
-
+  if (SESSION_CHECK_USER_AGENT == 'True') {
+    $http_user_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
+    $http_user_agent2 = strtolower(getenv("HTTP_USER_AGENT"));
+    $http_user_agent = ($http_user_agent == $http_user_agent2) ? $http_user_agent : $http_user_agent.';'.$http_user_agent2;
+    if (!isset($_SESSION['SESSION_USER_AGENT'])) {
+      $_SESSION['SESSION_USER_AGENT'] = $http_user_agent;
+    }
+    if ($_SESSION['SESSION_USER_AGENT'] != $http_user_agent) {
+      session_destroy();
+      xtc_redirect(xtc_href_link(FILENAME_LOGIN));
+    }
+  }
 
   // verify the IP address if the feature is enabled
   if (SESSION_CHECK_IP_ADDRESS == 'True') {
     $ip_address = xtc_get_ip_address();
-    if (!isset($_SESSION['SESSION_IP_ADDRESS'])) { // Hetfield - 2009-08-19 - removed deprecated function session_is_registered to be ready for PHP >= 5.3
+    if (!isset($_SESSION['SESSION_IP_ADDRESS'])) {
       $_SESSION['SESSION_IP_ADDRESS'] = $ip_address;
     }
-
     if ($_SESSION['SESSION_IP_ADDRESS'] != $ip_address) {
       session_destroy();
       xtc_redirect(xtc_href_link(FILENAME_LOGIN));
@@ -363,43 +338,37 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
 
   // set the language
   if (!isset($_SESSION['language']) || isset($_GET['language'])) {
-
     include(DIR_WS_CLASSES . 'language.php');
     $lng = new language($_GET['language']);
-
-    if (!isset($_GET['language'])) 
+    if (!isset($_GET['language'])) {
       $lng->get_browser_language();
-
+    }
     $_SESSION['language'] = $lng->language['directory'];
     $_SESSION['languages_id'] = $lng->language['id'];
+    $_SESSION['language_charset'] = $lng->language['language_charset']; //web28 - 2012-04-29 - add $_SESSION['language_charset']
     $_SESSION['language_code'] = $lng->language['code']; //web28 - 2010-09-05 - add $_SESSION['language_code']
 }
 
   // include the language translations
   require(DIR_FS_LANGUAGES . $_SESSION['language'] . '/admin/'.$_SESSION['language'] . '.php');
   require(DIR_FS_LANGUAGES . $_SESSION['language'] . '/admin/buttons.php');
-  //BOF - GTB - 2010-11-26 - Security Fix - PHP_SELF
   $current_page = basename($_SERVER['SCRIPT_NAME']);
-  //$current_page = preg_split('/\?/', basename($_SERVER['PHP_SELF'])); $current_page = $current_page[0]; // for BadBlue(Win32) webserver compatibility  // Hetfield - 2009-08-18 - replaced deprecated function split with preg_split to be ready for PHP >= 5.3
-  //EOF - GTB - 2010-11-26 - Security Fix - PHP_SELF
   if (file_exists(DIR_FS_LANGUAGES . $_SESSION['language'] . '/admin/'.$current_page)) {
     include(DIR_FS_LANGUAGES . $_SESSION['language'] . '/admin/'.  $current_page);
   }
 
   // write customers status in session
-  require('../' . DIR_WS_INCLUDES . 'write_customers_status.php');
-
+  require(DIR_FS_CATALOG.DIR_WS_INCLUDES.'write_customers_status.php');
 
   // for tracking of customers
   $_SESSION['user_info'] = array();
   if (!isset($_SESSION['user_info']['user_ip'])) {
   $_SESSION['user_info']['user_ip'] = $_SERVER['REMOTE_ADDR'];
-  // $user_info['user_ip_date'] =  value will be in fact added when login ;
-  $_SESSION['user_info']['user_host'] = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+  //$_SESSION['user_info']['user_host'] = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+  $_SESSION['user_info']['user_host'] = isset($_SERVER['REMOTE_HOST']) ? $_SERVER['REMOTE_HOST'] : '';
   $_SESSION['user_info']['advertiser'] = isset($_GET['ad']) ? $_GET['ad'] : '';
   $_SESSION['user_info']['referer_url'] = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
 }
-
 
   // define our localization functions
   require(DIR_WS_FUNCTIONS . 'localization.php');
@@ -421,16 +390,11 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
   // entry/item info classes
   require(DIR_WS_CLASSES . 'object_info.php');
 
-
   // file uploading class
   require(DIR_WS_CLASSES . 'upload.php');
 
   // calculate category path
-  if (isset($_GET['cPath'])) {
-    $cPath = $_GET['cPath'];
-  } else {
-    $cPath = '';
-  }
+  $cPath = isset($_GET['cPath']) ? $_GET['cPath'] : '';
   if (strlen($cPath) > 0) {
     $cPath_array = explode('_', $cPath);
     $current_category_id = $cPath_array[(sizeof($cPath_array)-1)];
@@ -441,17 +405,24 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
   // default open navigation box
   if (!isset($_SESSION['selected_box'])) {
     $_SESSION['selected_box'] = 'configuration';
-  }
-  if (isset($_GET['selected_box'])) {
-    $_SESSION['selected_box'] = xtc_db_prepare_input($_GET['selected_box']);
+  } else if(!empty($_GET['selected_box'])) {
+    $_SESSION['selected_box'] = $_GET['selected_box'];
   }
 
   // the following cache blocks are used in the Tools->Cache section
   // ('language' in the filename is automatically replaced by available languages)
-  $cache_blocks = array(array('title' => TEXT_CACHE_CATEGORIES, 'code' => 'categories', 'file' => 'categories_box-language.cache', 'multiple' => true),
-                        array('title' => TEXT_CACHE_MANUFACTURERS, 'code' => 'manufacturers', 'file' => 'manufacturers_box-language.cache', 'multiple' => true),
-                        array('title' => TEXT_CACHE_ALSO_PURCHASED, 'code' => 'also_purchased', 'file' => 'also_purchased-language.cache', 'multiple' => true)
-                       );
+  $cache_blocks = array (array ('title' => TEXT_CACHE_CATEGORIES,
+                               'code' => 'categories',
+                               'file' => 'categories_box-language.cache',
+                               'multiple' => true),
+                        array ('title' => TEXT_CACHE_MANUFACTURERS,
+                                'code' => 'manufacturers',
+                                'file' => 'manufacturers_box-language.cache',
+                                'multiple' => true),
+                        array ('title' => TEXT_CACHE_ALSO_PURCHASED,
+                                'code' => 'also_purchased',
+                                'file' => 'also_purchased-language.cache',
+                                'multiple' => true));
 
   // check if a default currency is set
   if (!defined('DEFAULT_CURRENCY')) {
@@ -466,8 +437,6 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
   // for Customers Status
   xtc_get_customers_statuses();
 
-
-
   $pagename = strtok($current_page, '.');
   if (!isset($_SESSION['customer_id'])) {
     xtc_redirect(xtc_href_link(FILENAME_LOGIN));
@@ -477,14 +446,9 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
     xtc_redirect(xtc_href_link(FILENAME_LOGIN));
   }
 
-
-    // Include Template Engine
-// BOF - Tomcraft - 2009-05-26 - update smarty template engine to 2.6.26
-//  require(DIR_FS_CATALOG.DIR_WS_CLASSES . 'Smarty_2.6.22/Smarty.class.php');
+  // Include Template Engine
   require(DIR_FS_CATALOG.DIR_WS_CLASSES . 'Smarty_2.6.26/Smarty.class.php');
-// EOF - Tomcraft - 2009-05-26 - update smarty template engine to 2.6.26
 
-// BOF - Tomcraft - 2009-11-28 - Included xs:booster
+  // xs:booster
   define('FILENAME_XTBOOSTER','xtbooster.php');
-// EOF - Tomcraft - 2009-11-28 - Included xs:booster
 ?>

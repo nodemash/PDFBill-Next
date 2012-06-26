@@ -166,7 +166,8 @@ class PdfRechnung extends PdfBrief
 		foreach($parts as $part) {
 			// Sum words until max length is reached
 			if($this->GetStringWidth($newtext.$part) < $this->artikel_len) {
-				$newtext .= $lastpart.$part.' ';
+				//$newtext .= $lastpart.$part.' ';
+                $newtext .= $part.' ';
 				$lastpart = "";
             // Word count is now longer than allowed
 			} else {
@@ -190,8 +191,7 @@ class PdfRechnung extends PdfBrief
 				}
 				
 				$this->Ln();
-				$newtext = "";
-				$lastpart = $part.' ';
+                $newtext = $part . " ";
 				$line++;
 			}
 		}
@@ -260,7 +260,7 @@ class PdfRechnung extends PdfBrief
 			$info['title'] = str_replace("::", ":", $info['title']);
             $info['title'] = html_entity_decode($info['title']);
 			
-			if(strpos($text, "<b>") !== false) {
+			if(strpos($text, "<b>") !== false || strpos($text, "<strong>") !== false) {
 				$this->SetFont($this->fontfamily, 'B', 11);
 
 				$text = strip_tags($text);

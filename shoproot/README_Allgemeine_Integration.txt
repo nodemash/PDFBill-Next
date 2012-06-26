@@ -1,14 +1,27 @@
 -----------------------------------------------------------------------------------------
 PDF-RechnungNEXT by Robert Hoppe
-Copyright 2011 Robert Hoppe - xtcm@katado.com - http://www.katado.com
+Copyright 2012 Robert Hoppe - xtcm@katado.com - http://www.katado.com
 
 Please visit http://pdfnext.katado.com for newer Versions
  
 Released under the GNU General Public License 
 -----------------------------------------------------------------------------------------
 
+### => ACHTUNG:
+
+In dieses Modul ist viel Zeit geflossen. Erfuelle mir doch einfach einen meiner 
+Wuensche auf Amazon um deine Dankbarkeit zu zeigen:
+
+http://www.amazon.de/registry/wishlist/2DRXJOGW34YRV
+
+Jeder erfuellter Wunsch steigert meine Motivation an diesem Projekt weiter zu arbeiten!!
+
+
 Initiale Version von MarcusReis aus dem xtcModified Forum
 http://www.xtc-modified.org/forum/topic.php?id=12939
+
+###
+-----------------------------------------------------------------------------------------
 
 -----------------------------------------------------------------------------------------
 
@@ -21,6 +34,7 @@ admin/print_order_pdf.php
 admin/print_packingslip_pdf.php
 inc/xtc_pdf_bill.inc.php
 inc/xtc_utf8_decode.inc.php
+inc/xtc_get_bill_nr.inc.php
 includes/classes/FPDF/font/courier.php
 includes/classes/FPDF/font/desktop.ini
 includes/classes/FPDF/font/helvetica.php
@@ -91,7 +105,6 @@ Danach folgendes einfuegen:
 // includes for PDFBill NEXT
 require_once(DIR_WS_CLASSES . 'class.phpmailer.php');
 require_once(DIR_WS_CLASSES . 'FPDF/PdfRechnung.php');
-require_once(DIR_WS_CLASSES . 'class.phpmailer.php');
 require_once(DIR_WS_CLASSES . 'order.php');
 
 require_once(DIR_FS_INC . 'xtc_php_mail.inc.php');
@@ -143,13 +156,107 @@ Danach folgendes einfuegen:
 admin/orders.php
 
 ____________________________________________________
+Nach der Zeile mit
+
+        if (AFTERBUY_ACTIVATED == 'true') {
+          $contents[] = array ('align' => 'center', 'text' => '<a class="button" href="'.xtc_href_link(FILENAME_ORDERS, xtc_get_all_get_params(array ('oID', 'action')).'oID='.$oInfo->orders_id.'&action=afterbuy_send').'">'.BUTTON_AFTERBUY_SEND.'</a>');
+        }
+
+folgendes Einfügen:
+
+        // PDFBill NEXT Start 
+        // rh s
+        $contents[] = array('align' => 'center', 'text' => '<br/>');
+        $order_bill = xtc_get_bill_nr($oInfo->orders_id);
+        if(is_numeric($order_bill)) {
+            $contents[] = array('align' => 'center', 'text' => '<a class="button" target="_blank" href="'.xtc_href_link(FILENAME_PRINT_ORDER_PDF, 'oID='.$oInfo->orders_id.'&download=1').'">' . BUTTON_INVOICE_PDF . '</a>');
+        } else {
+            $contents[] = array('align' => 'center', 'text' => '<a class="button" href="javascript:void(0)"  onClick="window.open(\'' . xtc_href_link(FILENAME_PDF_BILL_NR,'oID='. $oInfo->orders_id) . '\', \'popup\', \'toolbar=0, width=640, height=600\')">' . BUTTON_SET_BILL_NR . '</a>');
+        }
+        // PDFBill NEXT End
+
+____________________________________________________
+Nach der Zeile mit
+
+require_once (DIR_FS_INC.'xtc_get_attributes_model.inc.php');
+
+folgendes Einfügen:
+
+// PDFBill NEXT Start
+require_once (DIR_FS_INC.'xtc_get_bill_nr.inc.php');
+// PDFBill NEXT End
+
+____________________________________________________
+Nach der Zeile mit
+  case 'update_order' :
+
+folgendes Einfügen:
+
+    // PDFBill NEXT change Start
+    // sende order with current special order status id
+    $sendBill = (is_numeric(PDF_STATUS_SEND_ID))? PDF_STATUS_SEND_ID : 1;
+    if (PDF_STATUS_SEND == 'true' && isset($_POST['status']) && $sendBill == $_POST['status']) {
+        if (!defined('FPDF_FONTPATH')) {
+            define('FPDF_FONTPATH', DIR_FS_CATALOG . DIR_WS_CLASSES . 'FPDF/font/');
+        }
+        require_once(DIR_FS_CATALOG . DIR_WS_CLASSES . 'class.phpmailer.php');
+        require_once(DIR_FS_CATALOG . DIR_WS_CLASSES . 'FPDF/PdfRechnung.php');
+    
+        // include needed functions
+        require_once(DIR_FS_INC . 'xtc_get_order_data.inc.php');
+        require_once(DIR_FS_INC . 'xtc_get_attributes_model.inc.php');
+        require_once(DIR_FS_INC . 'xtc_not_null.inc.php');
+        require_once(DIR_FS_INC . 'xtc_format_price_order.inc.php');
+        require_once(DIR_FS_INC . 'xtc_utf8_decode.inc.php');
+        require_once(DIR_FS_INC . 'xtc_pdf_bill.inc.php');
+
+
+        // generate bill and send to customer
+        xtc_pdf_bill(xtc_db_prepare_input($_GET['oID']), true);
+    }
+    // PDFBill NEXT change End
+
+____________________________________________________
 Zeile 55
 
 Ersetze:
-$orders_query_raw = "select o.orders_id, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.payment_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, s.orders_status_name, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id), ".TABLE_ORDERS_STATUS." s where o.orders_status = s.orders_status_id and s.language_id = '".$_SESSION['languages_id']."' and o.orders_id LIKE '%".xtc_db_input($oID)."%' and ot.class = 'ot_total' order by o.orders_id DESC";
+//select default fields
+$order_select_fields = 'o.orders_id,
+                        o.customers_id,
+                        o.customers_name,
+                        o.payment_method,
+                        o.last_modified,
+                        o.date_purchased,
+                        o.orders_status,
+                        o.currency,
+                        o.currency_value,
+                        o.afterbuy_success,
+                        o.afterbuy_id,
+                        o.language,
+                        o.delivery_country,
+                        o.delivery_country_iso_code_2,
+                        ot.text as order_total
+                        ';
 
 Mit:
-$orders_query_raw = "select o.orders_id, o.bill_nr, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.payment_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, s.orders_status_name, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id), ".TABLE_ORDERS_STATUS." s where o.orders_status = s.orders_status_id and s.language_id = '".$_SESSION['languages_id']."' and o.orders_id LIKE '%".xtc_db_input($oID)."%' and ot.class = 'ot_total' order by o.orders_id DESC";
+//select default fields
+$order_select_fields = 'o.orders_id,
+                        o.customers_id,
+                        o.customers_name,
+                        o.payment_method,
+                        o.last_modified,
+                        o.date_purchased,
+                        o.orders_status,
+                        o.currency,
+                        o.currency_value,
+                        o.afterbuy_success,
+                        o.afterbuy_id,
+                        o.language,
+                        o.delivery_country,
+                        o.delivery_country_iso_code_2,
+                        ot.text as order_total,
+                        o.bill_nr
+                        ';
 
 ____________________________________________________
 Zeile 736
@@ -160,12 +267,8 @@ Fuge danach ein:
 <?php
 // PDFBill NEXT change Start
 // rh s
-$sqlBillNr = "SELECT bill_nr FROM " . TABLE_ORDERS . " WHERE orders_id = '" . $_GET['oID'] . "'";
-$resBillNr = xtc_db_query($sqlBillNr);
-$rowBillNr = xtc_db_fetch_array($resBillNr);
-
-if(isset($rowBillNr['bill_nr']) && $rowBillNr['bill_nr'] != '') {
-    $order_bill = $rowBillNr['bill_nr'];
+$order_bill = xtc_get_bill_nr($_GET['oID']);
+if(is_numeric($order_bill)) {
 ?>
 <span style="padding:5px; font-size:11pt; border:1px solid #aaaaaa; background-color: #ffffff;"><?php echo BUTTON_BILL_NR . $order_bill; ?></span>
 <a class="button" href="Javascript:void(0)" onClick="window.open('<?php echo xtc_href_link(FILENAME_PRINT_ORDER_PDF,'oID='.$_GET['oID']); ?>', 'popup', 'toolbar=0, width=640, height=600')"><?php echo BUTTON_INVOICE_PDF; ?></a>
@@ -174,7 +277,7 @@ if(isset($rowBillNr['bill_nr']) && $rowBillNr['bill_nr'] != '') {
 ?>
 <a class="button" href="Javascript:void(0)" onclick="window.open('<?php echo xtc_href_link(FILENAME_PDF_BILL_NR, 'oID='.$_GET['oID']); ?>', 'popup', 'toolbar=0, width=400, height=250')"><?php echo BUTTON_SET_BILL_NR; ?></a>
 <?php
-} 
+}
 ?>
 <a class="button" href="Javascript:void(0)" onClick="window.open('<?php echo xtc_href_link(FILENAME_PRINT_PACKINGSLIP_PDF,'oID='.$_GET['oID']); ?>', 'popup', 'toolbar=0, width=640, height=600')"><?php echo BUTTON_PACKINGSLIP_PDF; ?></a>
 <?php
@@ -184,44 +287,12 @@ if(isset($rowBillNr['bill_nr']) && $rowBillNr['bill_nr'] != '') {
 ____________________________________________________
 Zeile 808
 Suche nach
- <td class="dataTableHeadingContent" align="right"><?php echo 'Nr'; ?></td>
+ <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ORDERS_ID; ?></td>
 
 Fuge danach ein
                 <?php //PDFBill NEXT Start ?>
                 <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_BILL_NR; ?></td> 
                 <?php //PDFBill NEXT End ?>
-
-____________________________________________________
-Zeile 825
-Suche nach
-$orders_query_raw = "select o.orders_id, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.customers_id, o.payment_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, o.orders_status, s.orders_status_name, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id), ".TABLE_ORDERS_STATUS." s where o.customers_id = '".xtc_db_input($cID)."' and ((o.orders_status = s.orders_status_id) or (o.orders_status = '0' and  s.orders_status_id = '1')) and ot.class = 'ot_total' and s.language_id = '".$_SESSION['languages_id']."' order by orders_id DESC";
-
-ersetze mit
-$orders_query_raw = "select o.orders_id, o.bill_nr, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.customers_id, o.payment_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, o.orders_status, s.orders_status_name, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id), ".TABLE_ORDERS_STATUS." s where o.customers_id = '".xtc_db_input($cID)."' and ((o.orders_status = s.orders_status_id) or (o.orders_status = '0' and  s.orders_status_id = '1')) and ot.class = 'ot_total' and s.language_id = '".$_SESSION['languages_id']."' order by orders_id DESC";
-
-____________________________________________________
-Zeile 829
-suche nach
-$orders_query_raw = "select o.orders_id, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.payment_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, o.orders_status, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id) where o.orders_status = '0' and ot.class = 'ot_total' order by o.orders_id DESC";
-
-ersetze mit 
-$orders_query_raw = "select o.orders_id, o.bill_nr, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.payment_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, o.orders_status, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id) where o.orders_status = '0' and ot.class = 'ot_total' order by o.orders_id DESC";
-
-____________________________________________________
-Zeile 833
-suche nach
-$orders_query_raw = "select o.orders_id, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.payment_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, s.orders_status_name, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id), ".TABLE_ORDERS_STATUS." s where o.orders_status = s.orders_status_id and s.language_id = '".$_SESSION['languages_id']."' and s.orders_status_id = '".xtc_db_input($status)."' and ot.class = 'ot_total' order by o.orders_id DESC";
-
-ersetze mit
-$orders_query_raw = "select o.orders_id, o.bill_nr, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.payment_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, s.orders_status_name, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id), ".TABLE_ORDERS_STATUS." s where o.orders_status = s.orders_status_id and s.language_id = '".$_SESSION['languages_id']."' and s.orders_status_id = '".xtc_db_input($status)."' and ot.class = 'ot_total' order by o.orders_id DESC";
-
-____________________________________________________
-Zeile 840
-suche nach
-$orders_query_raw = "select o.orders_id, o.orders_status, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.payment_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, s.orders_status_name, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id), ".TABLE_ORDERS_STATUS." s where (o.orders_status = s.orders_status_id and s.language_id = '".$_SESSION['languages_id']."' and ot.class = 'ot_total') or (o.orders_status = '0' and ot.class = 'ot_total' and  s.orders_status_id = '1' and s.language_id = '".$_SESSION['languages_id']."') order by o.orders_id DESC";
-
-ersetze mit
-$orders_query_raw = "select o.orders_id, o.bill_nr, o.orders_status, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.payment_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, s.orders_status_name, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id), ".TABLE_ORDERS_STATUS." s where (o.orders_status = s.orders_status_id and s.language_id = '".$_SESSION['languages_id']."' and ot.class = 'ot_total') or (o.orders_status = '0' and ot.class = 'ot_total' and  s.orders_status_id = '1' and s.language_id = '".$_SESSION['languages_id']."') order by o.orders_id DESC";
 
 ____________________________________________________
 Zeile 855
@@ -314,7 +385,7 @@ Suche nach
 
 fuege davor ein
 
-// PDFBill NEXT
+// PDFBill NEXT - Change START
 define('BOX_CONFIGURATION_99', 'PDFBill Configuration');
 define('PDF_BILL_LASTNR_TITLE', 'Last Billnumber');
 define('PDF_BILL_LASTNR_DESC', 'The last Billnumber for the automated generation of Bills.');
@@ -359,6 +430,19 @@ define('PDF_UPDATE_STATUS_TITLE', 'Update order status');
 define('PDF_UPDATE_STATUS_DESC', 'Update status automatically after PDF-Mail.');
 define('PDF_USE_ORDERID_SUFFIX_TITLE', 'Billnumber Suffix');
 define('PDF_USE_ORDERID_SUFFIX_DESC', 'Suffix for the Billnumber. Only used if order number is used as the billnumber.');
+define('PDF_STATUS_SEND_TITLE', 'Send Bill on Order Status Update');
+define('PDF_STATUS_SEND_DESC', '');
+define('PDF_STATUS_SEND_ID_TITLE', 'Send Order Status ID for Bill-PDF');
+define('PDF_STATUS_SEND_ID_DESC', 'The bill will be send on update to this Order Status ID');
+define('PDF_MAIL_SLIP_FORWARDER_TITLE', 'Forward Packaging Slip');
+define('PDF_MAIL_SLIP_FORWARDER_DESC', '');
+define('PDF_MAIL_SLIP_FORWARDER_NAME_TITLE', 'Forwarder name');
+define('PDF_MAIL_SLIP_FORWARDER_NAME_DESC', 'Enter name of the forwarder, who should get the packslip');
+define('PDF_MAIL_SLIP_FORWARDER_EMAIL_TITLE', 'Forwarder email');
+define('PDF_MAIL_SLIP_FORWARDER_EMAIL_DESC', 'Enter email of the forwarder, who should get the packslip');
+define('PDF_MAIL_SLIP_FORWARDER_SUBJECT_TITLE', 'Subject forwarder-email');
+define('PDF_MAIL_SLIP_FORWARDER_SUBJECT_DESC', 'Enter Email-Subject of forwarder-email');
+// PDFBill NEXT - Change END
 
 
 ###################################################
@@ -396,7 +480,7 @@ suche nach
 ?>
 
 fuege vorher ein
-// PDFBill NEXT
+// PDFBill NEXT - Change START
 define('BOX_CONFIGURATION_99', 'PDFBill Konfiguration');
 define('PDF_BILL_LASTNR_TITLE', 'Letzte Rechnungsnummer');
 define('PDF_BILL_LASTNR_DESC', 'Die letzte Rechnungsnummer f&uuml;r die automatische Vergabe.');
@@ -441,6 +525,24 @@ define('PDF_UPDATE_STATUS_TITLE', 'Bestellstatus aktualisieren');
 define('PDF_UPDATE_STATUS_DESC', 'Bestellstatus wird nach dem Mailversand der PDF automatisch aktualisiert.');
 define('PDF_USE_ORDERID_SUFFIX_TITLE', 'Rechnungsnummer Suffix');
 define('PDF_USE_ORDERID_SUFFIX_DESC', 'Suffix f&uuml;r die Rechnungsnummer, falls die Bestellnummer als Rechnungsnummer verwendet wird.');
+define('PDF_STATUS_SEND_TITLE', 'Rechnung bei Umstellung auf Bestellstatus versenden');
+define('PDF_STATUS_SEND_DESC', '');
+define('PDF_STATUS_SEND_ID_TITLE', 'Sende Bestellstatus-ID - Rechnungs-PDF');
+define('PDF_STATUS_SEND_ID_DESC', 'Bei Umstellung auf diese ID wird die Rechnung verschickt.');
+
+define('PDF_STATUS_SEND_TITLE', 'Rechnung bei Umstellung auf Bestellstatus versenden');
+define('PDF_STATUS_SEND_DESC', '');
+define('PDF_STATUS_SEND_ID_TITLE', 'Sende Bestellstatus-ID - Rechnungs-PDF');
+define('PDF_STATUS_SEND_ID_DESC', 'Bei Umstellung auf diese ID wird die Rechnung verschickt.');
+define('PDF_MAIL_SLIP_FORWARDER_TITLE', 'Lieferschein weiterleiten');
+define('PDF_MAIL_SLIP_FORWARDER_DESC', '');
+define('PDF_MAIL_SLIP_FORWARDER_NAME_TITLE', 'Logistiker Name');
+define('PDF_MAIL_SLIP_FORWARDER_NAME_DESC', 'Geben Sie hier den Namen des Logistikers ein, der den Lieferschein erhält');
+define('PDF_MAIL_SLIP_FORWARDER_EMAIL_TITLE', 'Logistikers Email');
+define('PDF_MAIL_SLIP_FORWARDER_EMAIL_DESC', 'Geben Sie hier die E-Mail-Addresse des Logistikers ein, der den Lieferschein erhält');
+define('PDF_MAIL_SLIP_FORWARDER_SUBJECT_TITLE', 'Betreff Logistiker E-Mails');
+define('PDF_MAIL_SLIP_FORWARDER_SUBJECT_DESC', 'Geben Sie hier den Betreff des Logistiker-Emails ein');
+// PDFBill NEXT - Change END
 
 
 ###################################################

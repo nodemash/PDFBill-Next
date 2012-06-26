@@ -472,7 +472,7 @@ define('ENTRY_INVOICE_DATE',    'Rechnungdatum:');
 define('ENTRY_VAT_ERROR', '&nbsp;<span class="errorText">Ung&uuml;ltge USt-IdNr.</span>');
 //EOF - web28 - 2010-07-06 - added missing error text
 
-// PDFBill NEXT
+// PDFBill NEXT - Change START
 define('BOX_CONFIGURATION_99', 'PDFBill Konfiguration');
 define('PDF_BILL_LASTNR_TITLE', 'Letzte Rechnungsnummer');
 define('PDF_BILL_LASTNR_DESC', 'Die letzte Rechnungsnummer f&uuml;r die automatische Vergabe.');
@@ -517,4 +517,22 @@ define('PDF_UPDATE_STATUS_TITLE', 'Bestellstatus aktualisieren');
 define('PDF_UPDATE_STATUS_DESC', 'Bestellstatus wird nach dem Mailversand der PDF automatisch aktualisiert.');
 define('PDF_USE_ORDERID_SUFFIX_TITLE', 'Rechnungsnummer Suffix');
 define('PDF_USE_ORDERID_SUFFIX_DESC', 'Suffix f&uuml;r die Rechnungsnummer, falls die Bestellnummer als Rechnungsnummer verwendet wird.');
+define('PDF_STATUS_SEND_TITLE', 'Rechnung bei Umstellung auf Bestellstatus versenden');
+define('PDF_STATUS_SEND_DESC', '');
+define('PDF_STATUS_SEND_ID_TITLE', 'Sende Bestellstatus-ID - Rechnungs-PDF');
+define('PDF_STATUS_SEND_ID_DESC', 'Bei Umstellung auf diese ID wird die Rechnung verschickt.');
+
+define('PDF_STATUS_SEND_TITLE', 'Rechnung bei Umstellung auf Bestellstatus versenden');
+define('PDF_STATUS_SEND_DESC', '');
+define('PDF_STATUS_SEND_ID_TITLE', 'Sende Bestellstatus-ID - Rechnungs-PDF');
+define('PDF_STATUS_SEND_ID_DESC', 'Bei Umstellung auf diese ID wird die Rechnung verschickt.');
+define('PDF_MAIL_SLIP_FORWARDER_TITLE', 'Lieferschein weiterleiten');
+define('PDF_MAIL_SLIP_FORWARDER_DESC', '');
+define('PDF_MAIL_SLIP_FORWARDER_NAME_TITLE', 'Logistiker Name');
+define('PDF_MAIL_SLIP_FORWARDER_NAME_DESC', 'Geben Sie hier den Namen des Logistikers ein, der den Lieferschein erhält');
+define('PDF_MAIL_SLIP_FORWARDER_EMAIL_TITLE', 'Logistikers Email');
+define('PDF_MAIL_SLIP_FORWARDER_EMAIL_DESC', 'Geben Sie hier die E-Mail-Addresse des Logistikers ein, der den Lieferschein erhält');
+define('PDF_MAIL_SLIP_FORWARDER_SUBJECT_TITLE', 'Betreff Logistiker E-Mails');
+define('PDF_MAIL_SLIP_FORWARDER_SUBJECT_DESC', 'Geben Sie hier den Betreff des Logistiker-Emails ein');
+// PDFBill NEXT - Change END
 ?>

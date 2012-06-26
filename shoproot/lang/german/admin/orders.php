@@ -41,7 +41,6 @@ define('TABLE_HEADING_COMMENTS', 'Kommentar');
 define('TABLE_HEADING_CUSTOMERS', 'Kunden');
 define('TABLE_HEADING_ORDER_TOTAL', 'Gesamtwert');
 define('TABLE_HEADING_DATE_PURCHASED', 'Bestelldatum');
-define('TABLE_HEADING_STATUS', 'Status');
 define('TABLE_HEADING_ACTION', 'Aktion');
 define('TABLE_HEADING_QUANTITY', 'Anzahl');
 define('TABLE_HEADING_PRODUCTS_MODEL', 'Artikel-Nr.');
@@ -133,6 +132,10 @@ define('TEXT_ORDER', 'Bestellung:');
 define('TEXT_ORDER_HISTORY', 'Bestellhistorie:');
 define('TEXT_ORDER_STATUS', 'Bestellstatus:');
 
-// PDFBill NEXT
+define('TABLE_HEADING_ORDERS_ID', 'Best.Nr.');
+define('TEXT_SHIPPING_TO', 'Versand nach');
+
+// PDFBill NEXT - Change START
 define('TABLE_HEADING_BILL_NR', 'Rechnungsnr.');
+// PDFBill NEXT - Change END
 ?>

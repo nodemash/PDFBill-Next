@@ -133,6 +133,12 @@ define('TEXT_ORDER', 'Order:');
 define('TEXT_ORDER_HISTORY', 'Order History:');
 define('TEXT_ORDER_STATUS', 'Order Status:');
 
-// PDFBill NEXT
+define('TABLE_HEADING_ORDERS_ID', 'Ord-ID');
+define('TEXT_SHIPPING_TO', 'Shipping to');
+define('TEXT_SHIPPING_LANG', 'Language');
+
+// PDFBill NEXT - Change START
 define('TABLE_HEADING_BILL_NR', 'Billnr.');
+// PDFBill NEXT - Change END
+
 ?>

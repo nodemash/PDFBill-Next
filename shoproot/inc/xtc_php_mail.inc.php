@@ -152,7 +152,11 @@ function xtc_php_mail($from_email_address, $from_email_name, $to_email_address, 
   $mail->AddReplyTo($reply_address, $reply_address_name);
 
   $mail->WordWrap = 50; // set word wrap to 50 characters
-  $mail->AddAttachment($path_to_attachement);                     // add attachments
+  // PDFBill NEXT - s
+  if ($path_to_attachement != '') {
+      $mail->AddAttachment($path_to_attachement);                     // add attachments
+  }
+  // PDFBill NEXT - e
   //$mail->AddAttachment($path_to_more_attachements);               // optional name
 
   $mail->Subject = $email_subject;

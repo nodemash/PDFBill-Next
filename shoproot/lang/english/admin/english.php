@@ -488,7 +488,7 @@ define('ENTRY_INVOICE_DATE',    'Invoice date:');
 define('ENTRY_VAT_ERROR', '&nbsp;<span class="errorText">OUT OF RANGE VAT Reg.</span>');
 //EOF - web28 - 2010-07-06 - added missing error text
 
-// PDFBill NEXT
+// PDFBill NEXT - Change START
 define('BOX_CONFIGURATION_99', 'PDFBill Configuration');
 define('PDF_BILL_LASTNR_TITLE', 'Last Billnumber');
 define('PDF_BILL_LASTNR_DESC', 'The last Billnumber for the automated generation of Bills.');
@@ -533,4 +533,17 @@ define('PDF_UPDATE_STATUS_TITLE', 'Update order status');
 define('PDF_UPDATE_STATUS_DESC', 'Update status automatically after PDF-Mail.');
 define('PDF_USE_ORDERID_SUFFIX_TITLE', 'Billnumber Suffix');
 define('PDF_USE_ORDERID_SUFFIX_DESC', 'Suffix for the Billnumber. Only used if order number is used as the billnumber.');
+define('PDF_STATUS_SEND_TITLE', 'Send Bill on Order Status Update');
+define('PDF_STATUS_SEND_DESC', '');
+define('PDF_STATUS_SEND_ID_TITLE', 'Send Order Status ID for Bill-PDF');
+define('PDF_STATUS_SEND_ID_DESC', 'The bill will be send on update to this Order Status ID');
+define('PDF_MAIL_SLIP_FORWARDER_TITLE', 'Forward Packaging Slip');
+define('PDF_MAIL_SLIP_FORWARDER_DESC', '');
+define('PDF_MAIL_SLIP_FORWARDER_NAME_TITLE', 'Forwarder name');
+define('PDF_MAIL_SLIP_FORWARDER_NAME_DESC', 'Enter name of the forwarder, who should get the packslip');
+define('PDF_MAIL_SLIP_FORWARDER_EMAIL_TITLE', 'Forwarder email');
+define('PDF_MAIL_SLIP_FORWARDER_EMAIL_DESC', 'Enter email of the forwarder, who should get the packslip');
+define('PDF_MAIL_SLIP_FORWARDER_SUBJECT_TITLE', 'Subject forwarder-email');
+define('PDF_MAIL_SLIP_FORWARDER_SUBJECT_DESC', 'Enter Email-Subject of forwarder-email');
+// PDFBill NEXT - Change END
 ?>

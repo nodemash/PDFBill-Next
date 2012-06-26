@@ -1,4 +1,22 @@
-1.1.6 - 03.12.2011
+1.1.7 - 27.06.2012
+=============================================
+- UPDATE: files to support xtcmodified 1.05d
+- ADD: Direct Button from orders overview
+- FIXED: Show directly PDFBILL Button if USE_ORDER_ID is SET
+- ADD: new xtc_get_bill_nr Function to centralize SQL-Query
+- ADD: SLIP Forwarder
+- ADD: Send Bill on special Status-Update (Backend only!)
+- MISC: Some other format changes and modifications
+
+1.1.6b - 26.01.2012
+=============================================
+- FIXED: Handling of long product names. Thanks to GTB from xtcmodified
+
+1.1.6a - 11.01.2012
+=============================================
+- FIXED: Support for strong-Tag inside order_total-Modules
+
+1.1.6 - 03.01.2012
 =============================================
 - UPDATE: files to support xtcModified 1.05 SP1a/b
 - ADD: database installer (Thanks to h-h-h)

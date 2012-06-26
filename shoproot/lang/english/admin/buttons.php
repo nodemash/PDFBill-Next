@@ -89,9 +89,11 @@ define('BUTTON_DELETE_TEMP_CACHE', 'Delete Templatecache');
 define('BUTTON_VIEW_PRODUCT', 'View Product');
 //EOF - web28 - 2011-07-13 - New Button
 
-// PDFBill NEXT
+// PDFBill NEXT - Change START
 define('BUTTON_INVOICE_PDF', 'Bill PDF');
 define('BUTTON_PACKINGSLIP_PDF', 'Packingslip PDF');
 define('BUTTON_BILL_NR', 'Billnumber:');
 define('BUTTON_SET_BILL_NR', 'Set Billnumber');
+// PDFBill NEXT - Change END
+
 ?>
