@@ -1,3 +1,7 @@
+1.1.7a - 29.06.2012
+=============================================
+- FXIED: missing includes in checkout_process.php
+
 1.1.7 - 27.06.2012
 =============================================
 - UPDATE: files to support xtcmodified 1.05d

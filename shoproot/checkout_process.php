@@ -36,6 +36,21 @@ require_once (DIR_FS_INC.'xtc_calculate_tax.inc.php');
 require_once (DIR_FS_INC.'xtc_address_label.inc.php');
 require_once (DIR_FS_INC.'changedatain.inc.php');
 
+// includes for PDFBill NEXT
+require_once(DIR_WS_CLASSES . 'class.phpmailer.php');
+require_once(DIR_WS_CLASSES . 'FPDF/PdfRechnung.php');
+require_once(DIR_WS_CLASSES . 'class.phpmailer.php');
+require_once(DIR_WS_CLASSES . 'order.php');
+
+require_once(DIR_FS_INC . 'xtc_php_mail.inc.php');
+require_once(DIR_FS_INC . 'xtc_pdf_bill.inc.php');
+require_once(DIR_FS_INC . 'xtc_get_order_data.inc.php');
+require_once(DIR_FS_INC . 'xtc_get_attributes_model.inc.php');
+require_once(DIR_FS_INC . 'xtc_not_null.inc.php');
+require_once(DIR_FS_INC . 'xtc_format_price_order.inc.php');
+require_once(DIR_FS_INC . 'xtc_utf8_decode.inc.php');
+
+
 // initialize smarty
 $smarty = new Smarty;
 
