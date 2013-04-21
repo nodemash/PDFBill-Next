@@ -1,18 +1,19 @@
 <?php
-/* --------------------------------------------------------------
-   $Id: column_left.php 1231 2005-09-21 13:05:36Z mz $
+  /* --------------------------------------------------------------
+   $Id: column_left.php 4298 2013-01-13 20:04:19Z Tomcraft1980 $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   modified eCommerce Shopsoftware
+   http://www.modified-shop.org
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2009 - 2013 [www.modified-shop.org]
    --------------------------------------------------------------
-   based on: 
+   based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(column_left.php,v 1.15 2002/01/11); www.oscommerce.com 
-   (c) 2003	 nextcommerce (column_left.php,v 1.25 2003/08/19); www.nextcommerce.org
+   (c) 2002-2003 osCommerce(column_left.php,v 1.15 2002/01/11); www.oscommerce.com
+   (c) 2003 nextcommerce (column_left.php,v 1.25 2003/08/19); www.nextcommerce.org
+   (c) 2006 XT-Commerce (content_manager.php 1304 2005-10-12)
 
-   Released under the GNU General Public License 
+   Released under the GNU General Public License
    --------------------------------------------------------------*/
  //#############################
  // HINWEIS FÜR MODULE EINBAU
@@ -22,33 +23,31 @@
  // Rubrik Konfiguration wurde in 2 Teile aufgeteilt
  // Durch die neuen Kommentare ist alles übersichtlicher 
  //#############################
+ 
+  defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.' );
 
-  $admin_access_query = xtc_db_query("select * from " . TABLE_ADMIN_ACCESS . " where customers_id = '" . $_SESSION['customer_id'] . "'");
+  $admin_access_query = xtc_db_query("select * from " . TABLE_ADMIN_ACCESS . " where customers_id = '" . (int)$_SESSION['customer_id'] . "'");
   $admin_access = xtc_db_fetch_array($admin_access_query); 
  
-
 // BOF - Tomcraft - 2009-11-02 - NEW LISTSTYLE MENU
-echo '<div class="suckertreemenu">';
+echo '<div id="cssmenu" class="suckertreemenu">';
 echo '<ul id="treemenu1">';
-
 //---------------------------Ausgewählte Admin Sprache als Flagge
-echo ('<div id="lang_flag">' . xtc_image('../lang/' .  $_SESSION['language'] .'/admin/images/' . 'icon.gif', $_SESSION['language']). '</div>');
-
+echo ('<li><div id="lang_flag">' . xtc_image('../lang/' .  $_SESSION['language'] .'/admin/images/' . 'icon.gif', $_SESSION['language']). '</div></li>');
 //---------------------------STARTSEITE
 echo ('<li><a href="' . xtc_href_link('start.php', '', 'NONSSL') . '" id="current"><b>' . TEXT_ADMIN_START . '</b></a></li>'); 
-
 //---------------------------KUNDEN
 echo ('<li>');
   echo ('<div class="dataTableHeadingContent"><strong>'.BOX_HEADING_CUSTOMERS.'</strong></div>');
 echo ('<ul>');
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['customers'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_CUSTOMERS, '', 'NONSSL') . '" class="menuBoxContentLink1"> -' . BOX_CUSTOMERS . '</a></li>';
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['customers_status'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_CUSTOMERS_STATUS, '', 'NONSSL') . '" class="menuBoxContentLink1"> -' . BOX_CUSTOMERS_STATUS . '</a></li>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['customers'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_CUSTOMERS, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CUSTOMERS . '</a></li>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['customers_status'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_CUSTOMERS_STATUS, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CUSTOMERS_STATUS . '</a></li>';
 // BOF - Tomcraft - 2009-11-02 - set global customers-group-permissions
   if (GROUP_CHECK=='true') {
     if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['customers_group'] == '1')) echo '<li><a href="' . xtc_href_link('customers_group.php', '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CUSTOMERS_GROUP . '</a></li>';
   }
 // EOF - Tomcraft - 2009-11-02 - set global customers-group-permissions
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['orders'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_ORDERS, '', 'NONSSL') . '" class="menuBoxContentLink1"> -' . BOX_ORDERS . '</a></li>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['orders'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_ORDERS, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_ORDERS . '</a></li>';
 echo ('</ul>');
 echo ('</li>');
 
@@ -66,9 +65,13 @@ echo ('<ul>');
 echo ('</ul>');
 echo ('</li>');
 
+/******** SHOPGATE **********/
+include_once (DIR_FS_CATALOG.'includes/external/shopgate/base/admin/includes/column_left.php');
+/******** SHOPGATE **********/
+
 // BOF - Tomcraft - 2009-11-28 - Included xs:booster
 //---------------------------XSBOOSTER
-  if (MODULE_XTBOOSTER_STATUS=='True') {
+if (defined('MODULE_XTBOOSTER_STATUS') && MODULE_XTBOOSTER_STATUS =='True') {
 echo ('<li>');
   echo ('<div class="dataTableHeadingContent"><strong>'.BOX_HEADING_XSBOOSTER.'</strong></div>');
 echo ('<ul>');
@@ -84,12 +87,17 @@ echo ('</li>');
 echo ('<li>');
   echo ('<div class="dataTableHeadingContent"><strong>'.BOX_HEADING_MODULES.'</strong></div>');
 echo ('<ul>');
-  // GOOGLE SITEMAP JUNG GESTALTEN - 07.10.2008
   if (($_SESSION['customers_status']['customers_status_id'] == '0')) echo '<li><a href="' . xtc_href_link(FILENAME_GOOGLE_SITEMAP, 'auto=true&ping=true') . '" class="menuBoxContentLink"> -' . BOX_GOOGLE_SITEMAP . '</a></li>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_MODULES, 'set=payment', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_PAYMENT . '</a></li>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_MODULES, 'set=shipping', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_SHIPPING . '</a></li>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_MODULES, 'set=ordertotal', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_ORDER_TOTAL . '</a></li>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['module_export'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_MODULE_EXPORT) . '" class="menuBoxContentLink"> -' . BOX_MODULE_EXPORT . '</a></li>';
+  // BOF - Tomcraft - 2011-06-17 - Added janolaw AGB hosting service  
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['janolaw'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_JANOLAW, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_JANOLAW . '</a></li>';
+  // EOF - Tomcraft - 2011-06-17 - Added janolaw AGB hosting service
+  // BOF - Tomcraft - 2012-12-08 - Added haendlerbund AGB interface  
+  if (($_SESSION['customers_status']['customers_status_id'] == '0' && $admin_access['haendlerbund'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_HAENDLERBUND, '') . '" class="menuBoxContentLink"> -' . BOX_HAENDLERBUND . '</a></li>';
+  // EOF - Tomcraft - 2012-12-08 - Added haendlerbund AGB interface
 echo ('</ul>');
 echo ('</li>');
 
@@ -125,15 +133,15 @@ echo ('<li>');
 echo ('<ul>');
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['module_newsletter'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_MODULE_NEWSLETTER) . '" class="menuBoxContentLink"> -' . BOX_MODULE_NEWSLETTER . '</a></li>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['content_manager'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_CONTENT_MANAGER) . '" class="menuBoxContentLink"> -' . BOX_CONTENT . '</a></li>';
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['blacklist'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_BLACKLIST, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_TOOLS_BLACKLIST . '</a></li>';
+  //if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['blacklist'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_BLACKLIST, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_TOOLS_BLACKLIST . '</a></li>'; //removed blacklist
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['removeoldpics'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_REMOVEOLDPICS, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_REMOVEOLDPICS . '</a></li>'; // franky_n - remove old pictures
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['backup'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_BACKUP) . '" class="menuBoxContentLink"> -' . BOX_BACKUP . '</a></li>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['banner_manager'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_BANNER_MANAGER) . '" class="menuBoxContentLink"> -' . BOX_BANNER_MANAGER . '</a></li>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['server_info'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_SERVER_INFO) . '" class="menuBoxContentLink"> -' . BOX_SERVER_INFO . '</a></li>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['blz_update'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_BLZ_UPDATE) . '" class="menuBoxContentLink"> -' . BOX_BLZ_UPDATE . '</a></li>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['whos_online'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_WHOS_ONLINE) . '" class="menuBoxContentLink"> -' . BOX_WHOS_ONLINE . '</a></li>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['csv_backend'] == '1')) echo '<li><a href="' . xtc_href_link('csv_backend.php') . '" class="menuBoxContentLink"> -' . BOX_IMPORT . '</a></li>';
-// BOF - web28 - 2010-05-07 - PayPal API Modul
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['paypal'] == '1')) echo '<li><a href="' . xtc_href_link('paypal.php') . '" class="menuBoxContentLink"> -' . BOX_PAYPAL . '</a></li>';
-// EOF - web28 - 2010-05-07 - PayPal API Modul
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && (isset($admin_access['paypal']) && $admin_access['paypal'] == '1')) echo '<li><a href="' . xtc_href_link('paypal.php') . '" class="menuBoxContentLink"> -' . BOX_PAYPAL . '</a></li>'; //Tomcraft - 2009-10-03 - Paypal Express Modul in admin access
 echo ('</ul>');
 echo ('</li>');
 
@@ -169,6 +177,7 @@ echo ('<li>');
   echo ('<div class="dataTableHeadingContent"><strong>'.BOX_HEADING_CONFIGURATION.'</strong></div>');
 echo ('<ul>');
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_CONFIGURATION, 'gID=1', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CONFIGURATION_1 . '</a></li>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_CONFIGURATION, 'gID=1000', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CONFIGURATION_1000 . '</a></li>'; //web28 - 2012-08-27 - added My Admin
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_CONFIGURATION, 'gID=2', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CONFIGURATION_2 . '</a></li>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_CONFIGURATION, 'gID=3', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CONFIGURATION_3 . '</a></li>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_CONFIGURATION, 'gID=4', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CONFIGURATION_4 . '</a></li>';
@@ -195,9 +204,7 @@ echo ('</li>');
 echo ('<li>');  
   echo ('<div class="dataTableHeadingContent"><strong>'.BOX_HEADING_CONFIGURATION2.'</strong></div>');
 echo ('<ul>');
-//######### BOF web28 -2010-07-07- SHOP OFFLINE/ONLINE ########
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['shop_offline'] == '1')) echo '<li><a href="' . xtc_href_link('shop_offline.php', '', 'NONSSL') . '" class="menuBoxContentLink"> -'.'Shop online/offline'.'</a></li>';
-//######### EOF web28  -2010-07-07- SHOP OFFLINE/ONLINE ########
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['shop_offline'] == '1')) echo '<li><a href="' . xtc_href_link('shop_offline.php', '', 'NONSSL') . '" class="menuBoxContentLink"> -'.'Shop online/offline'.'</a></li>'; //web28  -2010-07-07- SHOP OFFLINE/ONLINE
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_CONFIGURATION, 'gID=10', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CONFIGURATION_10 . '</a></li>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_CONFIGURATION, 'gID=11', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CONFIGURATION_11 . '</a></li>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_CONFIGURATION, 'gID=14', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CONFIGURATION_14 . '</a></li>';
@@ -207,10 +214,11 @@ echo ('<ul>');
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_CONFIGURATION, 'gID=18', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CONFIGURATION_18 . '</a></li>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_CONFIGURATION, 'gID=19', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CONFIGURATION_19 . '</a></li>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_CONFIGURATION, 'gID=22', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CONFIGURATION_22 . '</a></li>';
+  //BOX_CONFIGURATION_23 - was Econda module
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_CONFIGURATION, 'gID=40', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CONFIGURATION_40 . '</a></li>'; //web28 - -2012-09-05 - added popop window configuration
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<li><a href="' . xtc_href_link(FILENAME_CONFIGURATION, 'gID=24', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CONFIGURATION_24 . '</a></li>'; //Dokuman - 2012-08-27 - added entries for new google analytics & piwik tracking
   echo ('</ul>');
 echo ('</li>');
-
 echo ('</ul>'); 
 echo ('</div>');
 // EOF - Tomcraft - 2009-11-02 - NEW LISTSTYLE MENU
-?>

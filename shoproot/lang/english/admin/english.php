@@ -1,16 +1,17 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: english.php 1231 2005-09-21 13:05:36Z mz $   
+   $Id: english.php 3447 2012-08-21 12:10:42Z dokuman $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   modified eCommerce Shopsoftware
+   http://www.modified-shop.org
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2009 - 2013 [www.modified-shop.org]
    --------------------------------------------------------------
-   based on: 
+   based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(german.php,v 1.99 2003/05/28); www.oscommerce.com 
-   (c) 2003	 nextcommerce (german.php,v 1.24 2003/08/24); www.nextcommerce.org
+   (c) 2002-2003 osCommerce(german.php,v 1.99 2003/05/28); www.oscommerce.com
+   (c) 2003 nextcommerce (german.php,v 1.24 2003/08/24); www.nextcommerce.org
+   (c) 2006 XT-Commerce (english.php)
 
    Released under the GNU General Public License
    --------------------------------------------------------------
@@ -49,7 +50,7 @@ define('HTML_PARAMS','dir="ltr" xml:lang="en"');
 
 
 // page title
-define('TITLE', PROJECT_VERSION);
+define('TITLE', defined('PROJECT_VERSION') ? PROJECT_VERSION : 'undefined');
 
 // header text in includes/header.php
 define('HEADER_TITLE_TOP', 'Administration');
@@ -98,11 +99,14 @@ define('BOX_CONFIGURATION_13', 'Download Options');
 define('BOX_CONFIGURATION_14', 'Gzip Compression');
 define('BOX_CONFIGURATION_15', 'Sessions');
 define('BOX_CONFIGURATION_16', 'Meta-Tags/Searchengines');
-define('BOX_CONFIGURATION_17', 'Specialmodules');
+define('BOX_CONFIGURATION_17', 'Additional Modules');
 define('BOX_CONFIGURATION_18', 'VAT Reg No');
-define('BOX_CONFIGURATION_19', 'xt:C Partner');
+define('BOX_CONFIGURATION_19', 'Partner');
 define('BOX_CONFIGURATION_22', 'Search-Options');
- 
+define('BOX_CONFIGURATION_24', 'PIWIK &amp; Google Analytics');
+define('BOX_CONFIGURATION_40', 'Popup Window Options');
+define('BOX_CONFIGURATION_1000', 'My Admin');
+
 define('BOX_MODULES', 'Payment-/Shipping-/Billing-Modules');
 define('BOX_PAYMENT', 'Payment Systems');
 define('BOX_SHIPPING', 'Shipping Methods');
@@ -137,18 +141,17 @@ define('BOX_FILE_MANAGER', 'File-Manager');
 define('BOX_MAIL', 'E-Mail Center');
 define('BOX_NEWSLETTERS', 'Notification Manager');
 define('BOX_SERVER_INFO', 'Server Info');
+define('BOX_BLZ_UPDATE', 'Update German bank code numbers');
 define('BOX_WHOS_ONLINE', 'Who is Online');
 define('BOX_TPL_BOXES','Boxes Sort Order');
 define('BOX_CURRENCIES', 'Currencies');
 define('BOX_LANGUAGES', 'Languages');
 define('BOX_ORDERS_STATUS', 'Order Status');
 define('BOX_ATTRIBUTES_MANAGER','Attribute Manager');
-
 define('BOX_MODULE_NEWSLETTER','Newsletter');
-
 define('BOX_SHIPPING_STATUS','Shipping status');
 define('BOX_SALES_REPORT','Sales Report');
-define('BOX_MODULE_EXPORT','XT-Modules');
+define('BOX_MODULE_EXPORT','Modules');
 define('BOX_HEADING_GV_ADMIN', 'Vouchers/Coupons');
 define('BOX_GV_ADMIN_QUEUE', 'Gift Voucher Queue');
 define('BOX_GV_ADMIN_MAIL', 'Mail Gift Voucher');
@@ -159,6 +162,9 @@ define('BOX_IMPORT','Import/Export');
 define('BOX_PRODUCTS_VPE','Packing unit');
 define('BOX_CAMPAIGNS_REPORT','Campaign report');
 define('BOX_ORDERS_XSELL_GROUP','Cross-sell groups');
+define('BOX_REMOVEOLDPICS','Remove old pictures'); // Remove old pictures - franky_n - 20110105
+define('BOX_JANOLAW','janolaw AGB Hosting'); // Tomcraft - 2011-06-17 - Added janolaw AGB hosting service
+define('BOX_HAENDLERBUND','H&auml;ndlerbund AGB Service'); // Tomcraft - 2012-12-08 - Added haendlerbund AGB interface
 
 define('TXT_GROUPS','<b>Groups</b>:');
 define('TXT_SYSTEM','System');
@@ -168,16 +174,9 @@ define('TXT_STATISTICS','Statistics');
 define('TXT_TOOLS','Tools');
 define('TEXT_ACCOUNTING','Admin-access for:');
 
-
-
-
-
-
-
-
-
-
-
+/******* SHOPGATE **********/
+include_once (DIR_FS_CATALOG.'includes/external/shopgate/base/lang/english/admin/english.php');
+/******* SHOPGATE **********/
 
 // javascript messages
 define('JS_ERROR', 'Error have occured during the process of your form!\nPlease make the following corrections:\n\n');
@@ -198,7 +197,7 @@ define('JS_SPECIALS_PRODUCTS_PRICE', '* A new price for this product needs to be
 define('JS_GENDER', '* The \'Salutation\' value must be chosen.\n');
 define('JS_FIRST_NAME', '* The \'First Name\' entry must have at least ' . ENTRY_FIRST_NAME_MIN_LENGTH . ' characters.\n');
 define('JS_LAST_NAME', '* The \'Last Name\' entry must have at least ' . ENTRY_LAST_NAME_MIN_LENGTH . ' characters.\n');
-define('JS_DOB', '* The \'Date of Birth\' entry must be in the format: xx/xx/xxxx (month/date/year).\n');
+define('JS_DOB', '* The \'Date of Birth\' entry must be in the format: xx/xx/xxxx (date/month/year).\n');
 define('JS_EMAIL_ADDRESS', '* The \'E-Mail Address\' entry must have at least ' . ENTRY_EMAIL_ADDRESS_MIN_LENGTH . ' characters.\n');
 define('JS_ADDRESS', '* The \'Street Address\' entry must have at least ' . ENTRY_STREET_ADDRESS_MIN_LENGTH . ' characters.\n');
 define('JS_POST_CODE', '* The \'Postcode\' entry must have at least ' . ENTRY_POSTCODE_MIN_LENGTH . ' characters.\n');
@@ -321,6 +320,8 @@ define('TEXT_CACHE_MANUFACTURERS', 'Manufacturers Box');
 define('TEXT_CACHE_ALSO_PURCHASED', 'Also Purchased Module');
 
 define('TEXT_NONE', '--none--');
+define('TEXT_AUTO_PROPORTIONAL', '--auto proportional--');
+define('TEXT_AUTO_MAX', '--auto max--');
 define('TEXT_TOP', 'Top');
 
 define('ERROR_DESTINATION_DOES_NOT_EXIST', 'Error: Destination does not exist.');
@@ -331,10 +332,11 @@ define('SUCCESS_FILE_SAVED_SUCCESSFULLY', 'Success: File upload saved successful
 define('WARNING_NO_FILE_UPLOADED', 'Warnung: No file uploaded.');
 
 define('DELETE_ENTRY','Delete entry?');
-define('TEXT_PAYMENT_ERROR','<b>WARNING:</b><br />Please activate a Payment Module!');
-define('TEXT_SHIPPING_ERROR','<b>WARNING:</b><br />Please activate a Shipping Module!');
+define('TEXT_PAYMENT_ERROR','<b>WARNING:</b> Please activate a Payment Module!');
+define('TEXT_SHIPPING_ERROR','<b>WARNING:</b> Please activate a Shipping Module!');
+define('TEXT_PAYPAL_CONFIG','<b>WARNUNG:</b> Please configure the PayPal payment settings for "Live mode" here: <a href="%s"><strong>Partner -> PayPal<strong></a>.'); //DokuMan - 2012-05-31 - show warning if PayPal payment module activated, but not configured for live mode yet
 
-define('TEXT_NETTO','no tax: ');
+define('TEXT_NETTO','net: ');
 
 define('ENTRY_CID','Customer ID:');
 define('IP','Order IP:');
@@ -394,14 +396,18 @@ define('TXT_ALL','All');
 
 // UST ID
 define('HEADING_TITLE_VAT','Vat-ID');
-
 define('ENTRY_VAT_ID','Vat-ID');
 define('ENTRY_CUSTOMERS_VAT_ID', 'Vat-ID:');
-define('TEXT_VAT_FALSE','<font color="#ff0000">Checked/False!</font>');
-define('TEXT_VAT_TRUE','<font color="#ff0000">Checked/True!</font>');
-define('TEXT_VAT_UNKNOWN_COUNTRY','<font color="#ff0000">Not Checked/Unknown Country!</font>');
-define('TEXT_VAT_UNKNOWN_ALGORITHM','<font color="#ff0000">Not Checked/No Check available!</font>');
-define('ENTRY_VAT_ID_ERROR', '<font color="#ff0000">* Your Vat ID is False!</font>');
+define('TEXT_VAT_FALSE','<span class="messageStackError">Checked/VAT is invalid!</span>');
+define('TEXT_VAT_TRUE','<span class="messageStackSuccess">Checked/VAT is valid!</span>');
+define('TEXT_VAT_UNKNOWN_COUNTRY','<span class="messageStackError">Not Checked/Unknown country!</span>');
+define('TEXT_VAT_INVALID_INPUT','<span class="messageStackError">Not Checked/The provided CountryCode is invalid or the VAT number is empty!</span>');
+define('TEXT_VAT_SERVICE_UNAVAILABLE','<span class="messageStackError">Not Checked/The SOAP service is unavailable, try again later!</span>');
+define('TEXT_VAT_MS_UNAVAILABLE','<span class="messageStackError">Not Checked/The Member State service is unavailable, try again later or with another Member State!</span>');
+define('TEXT_VAT_TIMEOUT','<span class="messageStackError">Not Checked/The Member State service could not be reached in time, try again later or with another Member State!</span>');
+define('TEXT_VAT_SERVER_BUSY','<span class="messageStackError">Not Checked/The service cannot process your request. Try again later!</span>');
+define('TEXT_VAT_NO_PHP5_SOAP_SUPPORT','<span class="messageStackError">Not Checked/Your System lacks PHP5 SOAP support!</span>');
+define('TEXT_VAT_CONNECTION_NOT_POSSIBLE','<span class="messageStackError">ERROR: Connection to webservice not possible (SOAP-ERROR)!</span>');
 
 define('ERROR_GIF_MERGE','Missing GDlib Gif-Support, merge failed');
 define('ERROR_GIF_UPLOAD','Missing GDlib Gif-Support, processing of Gif image failed');
@@ -412,10 +418,8 @@ define('TEXT_REFERER','Referer: ');
 define('BOX_GOOGLE_SITEMAP', 'Google Sitemap');
 // EOF - Tomcraft - 2009-06-17 Google Sitemap
 
-
 // BOF - Tomcraft - 2009-10-03 - Paypal Express Modul
 define('BOX_PAYPAL','PayPal');
-
 // EOF - Tomcraft - 2009-10-03 - Paypal Express Modul
 
 // BOF - Dokuman - 2009-10-02 - added moneybookers payment module version 2.4
@@ -424,7 +428,7 @@ define('_PAYMENT_MONEYBOOKERS_EMAILID_DESC','Email address you have registered w
 define('_PAYMENT_MONEYBOOKERS_MERCHANTID_TITLE','Merchant ID');
 define('_PAYMENT_MONEYBOOKERS_MERCHANTID_DESC','Your Moneybookers Merchant ID');
 define('_PAYMENT_MONEYBOOKERS_PWD_TITLE','Moneybookers Secret Word');
-define('_PAYMENT_MONEYBOOKERS_PWD_DESC','The secret word can be found in your Moneybookers profile (this is not your password!). It must be lower-case characters and numbers only.<br />To activate the processing at Moneybookers: Send an email including your Moneybookers email address and shopsystems domain name<br />To: <a href="mailto:ecommerce@moneybookers.com?subject=XTCOMMERCE: Activation of Moneybookers Quick Checkout">ecommerce@moneybookers.com</a>');
+define('_PAYMENT_MONEYBOOKERS_PWD_DESC','The secret word can be found in your Moneybookers profile (this is not your password!). It must be lower-case characters and numbers only.<br />To activate the processing at Moneybookers: Send an email including your Moneybookers email address and shopsystems domain name<br />To: <a href="mailto:ecommerce@moneybookers.com?subject=modified eCommerce Shopsoftware: Activation of Moneybookers Quick Checkout">ecommerce@moneybookers.com</a>');
 define('_PAYMENT_MONEYBOOKERS_TMP_STATUS_ID_TITLE','order status - temporary order');
 define('_PAYMENT_MONEYBOOKERS_TMP_STATUS_ID_DESC','A temporary order is created after submitting "send order" during order process. If problems occur you find an order with this status.');
 define('_PAYMENT_MONEYBOOKERS_PROCESSED_STATUS_ID_TITLE','order status - payment OK');
@@ -438,7 +442,7 @@ define('MB_TEXT_MBTID', 'TR ID:');
 define('MB_TEXT_MBERRTXT', 'Status:');
 define('MB_ERROR_NO_MERCHANT','There is no Moneybookers account associated with this email address.');
 define('MB_MERCHANT_OK','Moneybookers account OK, merchant ID %s received and saved.');
-define('MB_INFO','<img src="../images/icons/moneybookers/MBbanner.jpg"><br /><br />xt:Commerce-user may accept credit cards, debit notes, DIRECTebanking.com, Giropay and other major local payment payments after one single activation. You do not need the hassle of contracts with every payment processor if going with Moneybookers. All is done with <a href="https://www.moneybookers.com/app/register.pl" target="_blank"><b>free Moneybookers account</b></a>. Additional payment options are free of charge, and there are <b>no monthy fees or activation costs</b>.<br /><br /><b>Your advantage:</b><br />- more sales by accepting all major payments<br />- reduced costs and effort - just one contract<br />- easy processing for your customer - direct payment without need to create an extra account<br />- one click activation and integration<br />- good <a href="http://www.moneybookers.com/app/help.pl?s=m_fees" target="_blank"><b>conditions</b></a><br />- instant payment notification and proof of customer details<br />- no extra costs, even abroad<br />- 11 mio. customers worldwide');
+define('MB_INFO','<img src="../images/icons/moneybookers/MBbanner.jpg"><br /><br />You may accept credit cards, debit notes, DIRECTebanking.com, Giropay and other major local payment payments after one single activation. You do not need the hassle of contracts with every payment processor if going with Moneybookers. All is done with <a href="https://www.moneybookers.com/app/register.pl" target="_blank"><b>free Moneybookers account</b></a>. Additional payment options are free of charge, and there are <b>no monthy fees or activation costs</b>.<br /><br /><b>Your advantage:</b><br />- more sales by accepting all major payments<br />- reduced costs and effort - just one contract<br />- easy processing for your customer - direct payment without need to create an extra account<br />- one click activation and integration<br />- good <a href="http://www.moneybookers.com/app/help.pl?s=m_fees" target="_blank"><b>conditions</b></a><br />- instant payment notification and proof of customer details<br />- no extra costs, even abroad<br />- 11 mio. customers worldwide');
 // EOF - Dokuman - 2009-10-02 - added moneybookers payment module version 2.4
 
 // BOF - Tomcraft - 2009-11-02 - set global customers-group-permissions
@@ -469,7 +473,6 @@ define('BUTTON_SET','Check All');
 define('BUTTON_UNSET','Uncheck All');
 //EOF - web28 - 2010.05.30 - accounting - set all checkboxes 
 
-
 //BOF - DokuMan - 2010-08-12 - added possibility to reset admin statistics
 define('TEXT_ROWS','Row');
 define('TABLE_HEADING_RESET','Reset statistics');
@@ -487,6 +490,12 @@ define('ENTRY_INVOICE_DATE',    'Invoice date:');
 //BOF - web28 - 2010-07-06 - added missing error text
 define('ENTRY_VAT_ERROR', '&nbsp;<span class="errorText">OUT OF RANGE VAT Reg.</span>');
 //EOF - web28 - 2010-07-06 - added missing error text
+
+define ('CONFIG_INT_VALUE_ERROR', '"% s" ERROR: Please enter numbers only input was ignored% s');
+define ('CONFIG_MAX_VALUE_WARNING', '"% s" WARNING:% s input was ignored [maximum:% s]');
+define ('CONFIG_MIN_VALUE_WARNING', '"% s" WARNING:% s input was ignored [Minimum:% s]');
+
+define ('WHOS_ONLINE_TIME_LAST_CLICK_INFO', 'Display period in seconds:% s After this time, the entries will be deleted.');
 
 // PDFBill NEXT - Change START
 define('BOX_CONFIGURATION_99', 'PDFBill Configuration');

@@ -1,18 +1,19 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: configuration.php 1286 2005-10-07 10:10:18Z mz $   
+   $Id: configuration.php 3130 2012-06-28 11:17:12Z Tomcraft1980 $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   modified eCommerce Shopsoftware
+   http://www.modified-shop.org
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2009 - 2013 [www.modified-shop.org]
    -----------------------------------------------------------------------------------------
-   based on: 
+   based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(configuration.php,v 1.8 2002/01/04); www.oscommerce.com
-   (c) 2003	 nextcommerce (configuration.php,v 1.16 2003/08/25); www.nextcommerce.org 
+   (c) 2003	 nextcommerce (configuration.php,v 1.16 2003/08/25); www.nextcommerce.org
+   (c) 2006 XT-Commerce
 
-   Released under the GNU General Public License 
+   Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
 define('TABLE_HEADING_CONFIGURATION_TITLE', 'Name');
@@ -51,9 +52,7 @@ define('SEND_EXTRA_ORDER_EMAILS_TO_TITLE' , 'Senden einer extra Bestell-E-Mail a
 define('SEND_EXTRA_ORDER_EMAILS_TO_DESC' , 'Wenn zus&auml;tzlich eine Kopie des Bestell-E-Mails versendet werden soll, bitte in dieser Weise die Empfangs-Adressen auflisten: Name 1 &lt;E-Mail@adresse1&gt;, Name 2 &lt;E-Mail@adresse2&gt;');
 
 define('SEARCH_ENGINE_FRIENDLY_URLS_TITLE' , 'Suchmaschinenfreundliche URLs benutzen?');
-// BOF - Dokuman - 2009-11-12 - enhance explanation of SEO-URL procedure
 define('SEARCH_ENGINE_FRIENDLY_URLS_DESC' , 'Die Seiten URLs k&ouml;nnen automatisch f&uuml;r Suchmaschinen optimiert angezeigt werden.<br /><br /><strong>F&uuml;r suchmaschinenoptimierte URLs muss die Datei _.htaccess im Hauptverzeichnis des Shops aktiviert bzw. in .htaccess umbenannt werden! Au&szlig;erdem muss der Webserver <a href="http://www.modrewrite.de/" target="_blank">mod_rewrite</a> unterst&uuml;tzen!</strong> (Fragen sie ihren Webhoster, wenn sie das nicht &uuml;berpr&uuml;fen k&ouml;nnen.)');
-// EOF - Dokuman - 2009-11-12 - enhance explanation of SEO-URL procedure
 
 define('DISPLAY_CART_TITLE' , 'Soll Warenkorb nach dem Einf&uuml;gen angezeigt werden?');
 define('DISPLAY_CART_DESC' , 'Nach dem Hinzuf&uuml;gen eines Artikels zum Warenkorb, oder zur&uuml;ck zum Artikel?');
@@ -124,9 +123,9 @@ define('MIN_DISPLAY_BESTSELLERS_TITLE' , 'Bestseller');
 define('MIN_DISPLAY_BESTSELLERS_DESC' , 'Minimum Anzahl der Bestseller, die angezeigt werden sollen');
 define('MIN_DISPLAY_ALSO_PURCHASED_TITLE' , 'Ebenfalls gekauft');
 define('MIN_DISPLAY_ALSO_PURCHASED_DESC' , 'Minimum Anzahl der ebenfalls gekauften Artikel, die bei der Artikelansicht angezeigt werden sollen');
- 
+
 define('MAX_ADDRESS_BOOK_ENTRIES_TITLE' , 'Adressbuch Eintr&auml;ge');
-define('MAX_ADDRESS_BOOK_ENTRIES_DESC' , 'Maximum erlaubte Anzahl an Adressbucheintr&auml;gen');
+define('MAX_ADDRESS_BOOK_ENTRIES_DESC' , 'Maximum Anzahl an Adressbucheintr&auml;gen pro Kunde');
 define('MAX_DISPLAY_SEARCH_RESULTS_TITLE' , 'Suchergebnisse');
 define('MAX_DISPLAY_SEARCH_RESULTS_DESC' , 'Anzahl der Artikel die als Suchergebnis angezeigt werden sollen');
 define('MAX_DISPLAY_PAGE_LINKS_TITLE' , 'Seiten bl&auml;ttern');
@@ -164,24 +163,24 @@ define('MAX_DISPLAY_PRODUCTS_IN_ORDER_HISTORY_BOX_DESC' , 'Maximum Anzahl an Art
 define('MAX_DISPLAY_ORDER_HISTORY_TITLE' , 'Bestell&uuml;bersicht');
 define('MAX_DISPLAY_ORDER_HISTORY_DESC' , 'Maximum Anzahl an Bestellungen die in der &Uuml;bersicht im Kundenbereich des Shop angezeigt werden sollen.');
 define('MAX_PRODUCTS_QTY_TITLE', 'Maximale Produktanzahl');
-define('MAX_PRODUCTS_QTY_DESC', 'Maximale Produktanzahl, die man eingeben kann');
+define('MAX_PRODUCTS_QTY_DESC', 'Maximale Anzahl eines Artikels im Warenkorb');
 define('MAX_DISPLAY_NEW_PRODUCTS_DAYS_TITLE' , 'Anzahl der Tage f&uuml;r Neue Produkte');
 define('MAX_DISPLAY_NEW_PRODUCTS_DAYS_DESC' , 'Maximum Anzahl an Tagen die neue Artikel angezeigt werden sollen');
 
 define('PRODUCT_IMAGE_THUMBNAIL_WIDTH_TITLE' , 'Breite der Artikel-Thumbnails');
-define('PRODUCT_IMAGE_THUMBNAIL_WIDTH_DESC' , 'Maximale Breite der Artikel-Thumbnails in Pixel');
+define('PRODUCT_IMAGE_THUMBNAIL_WIDTH_DESC' , 'Maximale Breite der Artikel-Thumbnails in Pixel (Standard: 120). Bei gr&ouml;&szlig;eren Werten ist evtl. "productPreviewImage" in der stylesheet.css Datei des Templates anzupassen.');
 define('PRODUCT_IMAGE_THUMBNAIL_HEIGHT_TITLE' , 'H&ouml;he der Artikel-Thumbnails');
-define('PRODUCT_IMAGE_THUMBNAIL_HEIGHT_DESC' , 'Maximale H&ouml;he der Artikel-Thumbnails in Pixel');
+define('PRODUCT_IMAGE_THUMBNAIL_HEIGHT_DESC' , 'Maximale H&ouml;he der Artikel-Thumbnails in Pixel (Standard: 80)');
 
 define('PRODUCT_IMAGE_INFO_WIDTH_TITLE' , 'Breite der Artikel-Info Bilder');
-define('PRODUCT_IMAGE_INFO_WIDTH_DESC' , 'Maximale Breite der Artikel-Info Bilder in Pixel');
+define('PRODUCT_IMAGE_INFO_WIDTH_DESC' , 'Maximale Breite der Artikel-Info Bilder in Pixel (Standard: 200).');
 define('PRODUCT_IMAGE_INFO_HEIGHT_TITLE' , 'H&ouml;he der Artikel-Info Bilder');
-define('PRODUCT_IMAGE_INFO_HEIGHT_DESC' , 'Maximale H&ouml;he der Artikel-Info Bilder in Pixel');
+define('PRODUCT_IMAGE_INFO_HEIGHT_DESC' , 'Maximale H&ouml;he der Artikel-Info Bilder in Pixel (Standard: 160)');
 
 define('PRODUCT_IMAGE_POPUP_WIDTH_TITLE' , 'Breite der Artikel-Popup Bilder');
-define('PRODUCT_IMAGE_POPUP_WIDTH_DESC' , 'Maximale Breite der Artikel-Popup Bilder in Pixel');
+define('PRODUCT_IMAGE_POPUP_WIDTH_DESC' , 'Maximale Breite der Artikel-Popup Bilder in Pixel (Standard: 800)');
 define('PRODUCT_IMAGE_POPUP_HEIGHT_TITLE' , 'H&ouml;he der Artikel-Popup Bilder');
-define('PRODUCT_IMAGE_POPUP_HEIGHT_DESC' , 'Maximale H&ouml;he der Artikel-Popup Bilder in Pixel');
+define('PRODUCT_IMAGE_POPUP_HEIGHT_DESC' , 'Maximale H&ouml;he der Artikel-Popup Bilder in Pixel (Standard: 640)');
 
 define('SMALL_IMAGE_WIDTH_TITLE' , 'Breite der Artikel Bilder');
 define('SMALL_IMAGE_WIDTH_DESC' , 'Maximale Breite der Artikel Bilder in Pixel');
@@ -259,8 +258,6 @@ define('PRODUCT_IMAGE_INFO_DROP_SHADOW_DESC' , 'Artikel-Info Bilder:Drop-Shadow<
 define('PRODUCT_IMAGE_INFO_MOTION_BLUR_TITLE' , 'Artikel-Info Bilder:Motion-Blur');
 define('PRODUCT_IMAGE_INFO_MOTION_BLUR_DESC' , 'Artikel-Info Bilder:Motion-Blur<br /><br />Default Wert: (4,FFFFFF)<br /><br />fading parallel lines<br />Verwendung:<br />(int number of lines,hex background colour)');
 
-//so this image is the biggest in the shop this 
-
 define('PRODUCT_IMAGE_POPUP_BEVEL_TITLE' , 'Artikel-Popup Bilder:Bevel');
 define('PRODUCT_IMAGE_POPUP_BEVEL_DESC' , 'Artikel-Popup Bilder:Bevel<br /><br />Default Wert: (8,FFCCCC,330000)<br /><br />shaded bevelled edges<br />Verwendung:<br />(edge width,hex light colour,hex dark colour)');
 
@@ -286,7 +283,7 @@ define('PRODUCT_IMAGE_POPUP_MOTION_BLUR_TITLE' , 'Artikel-Popup Bilder:Motion-Bl
 define('PRODUCT_IMAGE_POPUP_MOTION_BLUR_DESC' , 'Artikel-Popup Bilder:Motion-Blur<br /><br />Default Wert: (4,FFFFFF)<br /><br />fading parallel lines<br />Verwendung:<br />(int number of lines,hex background colour)');
 
 define('IMAGE_MANIPULATOR_TITLE','GDlib processing');
-define('IMAGE_MANIPULATOR_DESC','Image Manipulator f&uuml;r GD2 oder GD1');
+define('IMAGE_MANIPULATOR_DESC','Image Manipulator f&uuml;r GD2 oder GD1<br /><br /><b>HINWEIS:</b> image_manipulator_GD2_advanced.php unterst&uuml;tzt transparente PNG\'s');
 
 
 define('ACCOUNT_GENDER_TITLE' , 'Anrede');
@@ -311,23 +308,21 @@ define('SHIPPING_ORIGIN_COUNTRY_TITLE' , 'Versandland');
 define('SHIPPING_ORIGIN_COUNTRY_DESC' , 'W&auml;hlen Sie das Versandland aus, zur Berechnung korrekter Versandgeb&uuml;hren.');
 define('SHIPPING_ORIGIN_ZIP_TITLE' , 'Postleitzahl des Versandstandortes');
 define('SHIPPING_ORIGIN_ZIP_DESC' , 'Bitte geben Sie die Postleitzahl des Versandstandortes ein, der zur Berechnung der Versandkosten in Frage kommt.');
-define('SHIPPING_MAX_WEIGHT_TITLE' , 'Maximalgewicht, dass als ein Paket versendet werden kann');
+define('SHIPPING_MAX_WEIGHT_TITLE' , 'Maximalgewicht, das als ein Paket versendet werden kann');
 define('SHIPPING_MAX_WEIGHT_DESC' , 'Versandpartner (Post/UPS etc.) haben ein maximales Paketgewicht. Geben Sie einen Wert daf&uuml;r ein.');
 define('SHIPPING_BOX_WEIGHT_TITLE' , 'Paketleergewicht.');
 define('SHIPPING_BOX_WEIGHT_DESC' , 'Wie hoch ist das Gewicht eines durchschnittlichen kleinen bis mittleren Leerpaketes?');
 define('SHIPPING_BOX_PADDING_TITLE' , 'Bei gr&ouml;sseren Leerpaketen - Gewichtszuwachs in %.');
 define('SHIPPING_BOX_PADDING_DESC' , 'F&uuml;r etwa 10% geben Sie 10 ein');
-// BOF - Tomcraft - 2009-10-10 - modified SHOW_SHIPPING_XXXX Text
-//define('SHOW_SHIPPING_DESC' , 'Verlinkte Anzeige von "zzgl. Versandkosten" in den Produktinformationen.');
-//define('SHOW_SHIPPING_TITLE' , 'Versandkosten in Produktinfos');
-define('SHOW_SHIPPING_DESC' , 'Verlinkte Anzeige von "zzgl. Versandkosten" im Warenkorb.');
 define('SHOW_SHIPPING_TITLE' , 'Versandkosten im Warenkorb');
-// EOF - Tomcraft - 2009-10-10 - modified SHOW_SHIPPING_XXXX Text
-define('SHIPPING_INFOS_DESC' , 'Sprachgruppen ID der Versandkosten (Default 1) f&uuml;r die Verlinkung.');
+define('SHOW_SHIPPING_DESC' , 'Verlinkte Anzeige von "zzgl. Versandkosten" im Warenkorb.');
 define('SHIPPING_INFOS_TITLE' , 'Versandkosten ID');
+define('SHIPPING_INFOS_DESC' , 'Sprachgruppen ID der Versandkosten (Default 1) f&uuml;r die Verlinkung.');
+define('SHIPPING_DEFAULT_TAX_CLASS_METHOD_TITLE' , 'Berechnungsmethode der Default-Steuerklasse');
+define('SHIPPING_DEFAULT_TAX_CLASS_METHOD_DESC' , 'keine: keine Versandkostensteuer ausweisen<br />auto proportional: Versandkostensteuer anteilig zur Bestellung ausweisen<br />auto max: Steuersatz der gr&ouml;&szlig;ten Umsatzgruppe als Versandkostensteuer ausweisen');
 
 define('PRODUCT_LIST_FILTER_TITLE' , 'Anzeige der Sortierungsfilter in Artikellisten?');
-define('PRODUCT_LIST_FILTER_DESC' , 'Anzeige der Sortierungsfilter f&uuml;r Warengruppen/Hersteller etc Filter (0=inaktiv; 1=aktiv)');
+define('PRODUCT_LIST_FILTER_DESC' , 'Anzeige der Sortierungsfilter f&uuml;r Warengruppen/Hersteller etc. Filter (false=inaktiv; true=aktiv)');
 
 define('STOCK_CHECK_TITLE' , '&Uuml;berpr&uuml;fen des Warenbestandes');
 define('STOCK_CHECK_DESC' , 'Pr&uuml;fen ob noch genug Ware zum Ausliefern von Bestellungen verf&uuml;gbar ist.');
@@ -341,24 +336,24 @@ define('STOCK_ALLOW_CHECKOUT_DESC' , 'M&ouml;chten Sie auch dann erlauben zu bes
 define('STOCK_MARK_PRODUCT_OUT_OF_STOCK_TITLE' , 'Kennzeichnung vergriffener Artikel');
 define('STOCK_MARK_PRODUCT_OUT_OF_STOCK_DESC' , 'Dem Kunden kenntlich machen, welche Artikel nicht mehr verf&uuml;gbar sind.');
 define('STOCK_REORDER_LEVEL_TITLE' , 'Meldung an den Admin dass ein Artikel nachbestellt werden muss');
-define('STOCK_REORDER_LEVEL_DESC' , 'Ab welcher St&uuml;ckzahl soll diese Meldung erscheinen?');
-define('STORE_PAGE_PARSE_TIME_TITLE' , 'Speichern der Berechnungszeit der Seite');
+define('STOCK_REORDER_LEVEL_DESC' , 'Ab welcher St&uuml;ckzahl soll diese Meldung erscheinen? (GEPLANTE FUNKTION)');
+define('STORE_PAGE_PARSE_TIME_TITLE' , 'Speichern der Berechnungszeit des Shop-Seitenaufbaus');
 define('STORE_PAGE_PARSE_TIME_DESC' , 'Speicher der Zeit die ben&ouml;tigt wird, um Skripte bis zum Output der Seite zu berechnen');
-define('STORE_PAGE_PARSE_TIME_LOG_TITLE' , 'Speicherort des Logfile der Berechnungszeit');
-define('STORE_PAGE_PARSE_TIME_LOG_DESC' , 'Ordner und Filenamen eintragen f&uuml;r den Logfile f&uuml;r Berechnung der Parsing Dauer');
-define('STORE_PARSE_DATE_TIME_FORMAT_TITLE' , 'Log Datum Format');
-define('STORE_PARSE_DATE_TIME_FORMAT_DESC' , 'Das Datumsformat f&uuml;r Logging');
+define('STORE_PAGE_PARSE_TIME_LOG_TITLE' , 'Speicherort der Logdatei');
+define('STORE_PAGE_PARSE_TIME_LOG_DESC' , 'Hier den Speicherort/Dateiname eintragen, in dem die Berechnungszeit f&uuml;r den Seitenaufbau, sowie die Datenbank Abfragen gespeichert werden.<br/><strong>Achtung: Datei kann bei l&auml;ngerer Laufzeit sehr gro&szlig; werden!</strong>.<br/><br/>Standard-Datei "page_parse_time.log":<br/><strong>Frontend:</strong> Berechnungszeit und Datenbank Abfragen im Frontend des Shops werden im Root-Verzeichnis in der Datei "<strong>page_parse_time.log</strong>" gespeichert.<br/><strong>Administrationsbereich (Backend):</strong> Berechnungszeit und Datenbank Abfragen im Administrationsbereich des Shops werden automatisch in der Datei "<strong>admin/page_parse_time.log</strong>" gespeichert.');
+define('STORE_PARSE_DATE_TIME_FORMAT_TITLE' , 'Datumsformat in der Log-Datei');
+define('STORE_PARSE_DATE_TIME_FORMAT_DESC' , 'Das Datumsformat f&uuml;r Logging (Standard: %d/%m/%Y %H:%M:%S)');
 
 define('DISPLAY_PAGE_PARSE_TIME_TITLE' , 'Berechnungszeiten der Seiten anzeigen');
 define('DISPLAY_PAGE_PARSE_TIME_DESC' , 'Wenn das Speichern der Berechnungszeiten f&uuml;r Seiten eingeschaltet ist, k&ouml;nnen diese im Footer angezeigt werden.');
-define('STORE_DB_TRANSACTIONS_TITLE' , 'Speichern der Database Queries');
-define('STORE_DB_TRANSACTIONS_DESC' , 'Speichern der einzelnen Datenbank Queries im Logfile f&uuml;r Berechnungszeiten (PHP4 only)');
+define('STORE_DB_TRANSACTIONS_TITLE' , 'Speichern der Datenbank Abfragen');
+define('STORE_DB_TRANSACTIONS_DESC' , 'Speichern der einzelnen Datenbank Abfragen im Logfile f&uuml;r Berechnungszeiten');
 
 define('USE_CACHE_TITLE' , 'Cache benutzen');
 define('USE_CACHE_DESC' , 'Die Cache Features verwenden');
 
 define('DB_CACHE_TITLE','DB Cache');
-define('DB_CACHE_DESC','SELECT Abfragen k&ouml;nnen von xt:Commerce gecached werden, um die Datenbankabfragen zu veringern, und die Geschwindigkeit zu erh&ouml;hen');
+define('DB_CACHE_DESC','SELECT Abfragen k&ouml;nnen von xt:Commerce gecached werden, um die Datenbankabfragen zu verringern, und die Geschwindigkeit zu erh&ouml;hen');
 
 define('DB_CACHE_EXPIRE_TITLE','DB Cache Lebenszeit');
 define('DB_CACHE_EXPIRE_DESC','Zeit in Sekunden, bevor Cache Datein mit Daten aus der Datenbank automatisch &Uuml;berschrieben werden.');
@@ -370,7 +365,7 @@ define('ACCOUNT_OPTIONS_TITLE','Art der Kontoerstellung');
 define('ACCOUNT_OPTIONS_DESC','Wie m&ouml;chten Sie die Anmeldeprozedur in Ihrem Shop gestallten?<br />Sie haben die Wahl zwischen regul&auml;ren Kundenkonten und "Einmalbestellungen" ohne Erstellung eines Kundenkontos (es wird ein Konto erstellt, aber dies ist f&uuml;r den Kunden nicht ersichtlich)');
 
 define('EMAIL_TRANSPORT_TITLE' , 'E-Mail Transport Methode');
-define('EMAIL_TRANSPORT_DESC' , 'Definiert ob der Server eine lokale Verbindung zum "Sendmail-Programm" benutzt oder ob er eine SMTP Verbindung &uuml;ber TCP/IP ben&ouml;tigt. Server die auf Windows oder MacOS laufen sollten SMTP verwenden.');
+define('EMAIL_TRANSPORT_DESC' , '<b>Empfehlung: smtp</b> - Definiert ob der Server eine lokale Verbindung zum "Sendmail-Programm" benutzt oder ob er eine SMTP Verbindung &uuml;ber TCP/IP ben&ouml;tigt. Server die auf Windows oder MacOS laufen sollten SMTP verwenden.');
 
 define('EMAIL_LINEFEED_TITLE' , 'E-Mail Linefeeds');
 define('EMAIL_LINEFEED_DESC' , 'Definiert die Zeichen die benutzt werden sollen um die Mail Header zu trennen.');
@@ -394,6 +389,10 @@ define('SMTP_AUTH_TITLE' , 'SMTP AUTH');
 define('SMTP_AUTH_DESC' , 'Erfordert der SMTP Server eine sichere Authentifizierung?');
 define('SMTP_PORT_TITLE' , 'SMTP Port');
 define('SMTP_PORT_DESC' , 'Geben sie den SMTP Port Ihres SMTP Servers ein (default: 25)?');
+
+//DokuMan - 2011-09-20 - E-Mail SQL errors
+define('EMAIL_SQL_ERRORS_TITLE','SQL Fehlermeldungen als E-Mail versenden');
+define('EMAIL_SQL_ERRORS_DESC','Bei "true" wird an die E-Mailadresse des Shop-Betreibers eine E-Mail mit der SQL-Fehlermeldung gesendet. Die SQL-Fehlermeldung dagegen wird vor dem Kunden versteckt.<br />Bei "false" wird die entsprechende Fehlermeldung direkt und f&uuml;r alle sichtbar ausgegeben (Standard).');
 
 //Constants for contact_us
 define('CONTACT_US_EMAIL_ADDRESS_TITLE' , 'Kontakt - E-Mail Adresse');
@@ -433,10 +432,10 @@ define('EMAIL_BILLING_FORWARDING_STRING_DESC' , 'Geben Sie weitere Mailadressen 
 define('EMAIL_BILLING_REPLY_ADDRESS_TITLE' , 'Verrechnung - Antwortadresse');
 define('EMAIL_BILLING_REPLY_ADDRESS_DESC' , 'Bitte geben Sie eine E-Mailadresse ein, an die Ihre Kunden Antworten k&ouml;nnen.');
 define('EMAIL_BILLING_REPLY_ADDRESS_NAME_TITLE' , 'Verrechnung - Antwortadresse, Name');
-define('EMAIL_BILLING_REPLY_ADDRESS_NAME_DESC' , 'Absendername f&uuml;r replay E-Mails.');
-define('EMAIL_BILLING_SUBJECT_TITLE' , 'Verrechnung - E-Mail Betreff');
-define('EMAIL_BILLING_SUBJECT_DESC' , 'Geben Sie bitte einen E-Mailbetreff f&uuml;r E-Mails des <b>Verrechnungs-Systems</b> Ihres Shops ein.');
-define('EMAIL_BILLING_SUBJECT_ORDER_TITLE','Verrechnung - E-Mail Betreff');
+define('EMAIL_BILLING_REPLY_ADDRESS_NAME_DESC' , 'Absendername f&uuml;r Antwort E-Mails.');
+define('EMAIL_BILLING_SUBJECT_TITLE' , 'Verrechnung - E-Mail Betreff Status&auml;nderungen');
+define('EMAIL_BILLING_SUBJECT_DESC' , 'Geben Sie bitte einen E-Mailbetreff f&uuml;r E-Mails des <b>Verrechnungs-Systems</b> Ihres Shops ein (Status&auml;nderungen).');
+define('EMAIL_BILLING_SUBJECT_ORDER_TITLE','Verrechnung - E-Mail Betreff f&uuml;r Bestellungen');
 define('EMAIL_BILLING_SUBJECT_ORDER_DESC','Geben Sie bitte einen E-Mailbetreff f&uuml;r Ihre Bestellmails an. (zb: <b>Ihre Bestellung {$nr},am {$date}</b>) ps: folgende Variablen stehen zur Verf&uuml;gung, {$nr},{$date},{$firstname},{$lastname}');
 
 define('DOWNLOAD_ENABLED_TITLE' , 'Download von Artikeln erlauben');
@@ -544,7 +543,7 @@ define('GROUP_CHECK_TITLE','Kundengruppencheck');
 define('GROUP_CHECK_DESC','Nur bestimmten Kundengruppen Zugang zu einzelnen Kategorien, Produkten, Contentelementen erlauben? (Nach Aktivierung erscheinen Eingabem&ouml;glichkeiten bei Artikeln, Kategorien und im Contentmanager)');
 
 define('ACTIVATE_NAVIGATOR_TITLE','Artikelnavigator aktivieren?');
-define('ACTIVATE_NAVIGATOR_DESC','Artikelnavigator in der Artikeldetailansicht aktivieren/deaktivieren (aus performancegr&uuml;nden bei hoher Artikelanzahl)');
+define('ACTIVATE_NAVIGATOR_DESC','Artikelnavigator in der Artikeldetailansicht aktivieren/deaktivieren (aus Performancegr&uuml;nden bei hoher Artikelanzahl)');
 
 define('QUICKLINK_ACTIVATED_TITLE','Multilink/Kopierfunktion aktivieren');
 define('QUICKLINK_ACTIVATED_DESC','Die Multilink/Kopierfunktion erleichtert das Kopieren/Verlinken eines Artikels in mehrere Kategorien, durch die M&ouml;glichkeit einzelne Kategorien per Checkbox zu selektieren');
@@ -552,12 +551,8 @@ define('QUICKLINK_ACTIVATED_DESC','Die Multilink/Kopierfunktion erleichtert das 
 define('ACTIVATE_REVERSE_CROSS_SELLING_TITLE','Reverse Cross-Marketing');
 define('ACTIVATE_REVERSE_CROSS_SELLING_DESC','Reverse Cross-Marketing Funktion aktivieren?');
 
-// BOF - Tomcraft - 2009-06-18 - make clear this is a list of NOT allowed download payment modules
-//define('DOWNLOAD_UNALLOWED_PAYMENT_TITLE', 'Download Zahlungsmodule');
-//define('DOWNLOAD_UNALLOWED_PAYMENT_DESC', 'Nicht Erlaubte Zahlungsweisen f&uuml;r Downloadprodukte durch Komma getrennt. Z.B. {banktransfer,cod,invoice,moneyorder}');
 define('DOWNLOAD_UNALLOWED_PAYMENT_TITLE', 'Unerlaubte Download-Zahlungsmodule');
 define('DOWNLOAD_UNALLOWED_PAYMENT_DESC', '<strong>NICHT</strong> Erlaubte Zahlungsweisen f&uuml;r Downloadprodukte durch Komma getrennt. Z.B. {banktransfer,cod,invoice,moneyorder}');
-// EOF - Tomcraft - 2009-06-18 - make clear this is a list of NOT allowed download payment modules
 define('DOWNLOAD_MIN_ORDERS_STATUS_TITLE', 'Min. Bestellstatus');
 define('DOWNLOAD_MIN_ORDERS_STATUS_DESC', 'Min. Bestellstatus, ab dem bestellte Downloads freigegeben sind.');
 
@@ -566,14 +561,14 @@ define('STORE_OWNER_VAT_ID_TITLE' , 'UST ID des Shopbetreibers');
 define('STORE_OWNER_VAT_ID_DESC' , 'Die Umsatzsteuer ihres Unternehmens');
 define('DEFAULT_CUSTOMERS_VAT_STATUS_ID_TITLE' , 'Kundenstatus f&uuml;r UST ID gepr&uuml;fte Kunden (Ausland)');
 define('DEFAULT_CUSTOMERS_VAT_STATUS_ID_DESC' , 'W&auml;hlen Sie den Kundenstatus(Gruppe) f&uuml;r UST ID gepr&uuml;fte Kunden aus!');
-define('ACCOUNT_COMPANY_VAT_CHECK_TITLE' , 'Umsatzsteuer ID &Uuml;berpr&uuml;fen');
-define('ACCOUNT_COMPANY_VAT_CHECK_DESC' , 'Die Umsatzsteuer ID auf Plausibilit&auml;t &Uuml;berpr&uuml;fen');
-define('ACCOUNT_COMPANY_VAT_LIVE_CHECK_TITLE' , 'Umsatzsteuer ID Live &Uuml;berpr&uuml;fen');
-define('ACCOUNT_COMPANY_VAT_LIVE_CHECK_DESC' , 'Die Umsatzsteuer ID auf Live Plausibilit&ouml;t &Uuml;berpr&uuml;fen falls keine Berechnungsgrundlage vorhanden? (Gateway des Bundesamt f&uuml;r Finanzen)');
+define('ACCOUNT_COMPANY_VAT_CHECK_TITLE' , 'Umsatzsteuer ID abfragen');
+define('ACCOUNT_COMPANY_VAT_CHECK_DESC' , 'Die Umsatzsteuer ID soll durch Kunden eingegeben werden k&ouml;nnen. Bei false wird das Eingabefeld nicht mehr angezeigt.');
+define('ACCOUNT_COMPANY_VAT_LIVE_CHECK_TITLE' , 'Umsatzsteuer ID online auf Plausibilit&auml;t &uuml;berpr&uuml;fen');
+define('ACCOUNT_COMPANY_VAT_LIVE_CHECK_DESC' , 'Die Umsatzsteuer ID wird online auf Plausibilit&auml;t &uuml;berpr&uuml;ft. Dazu wird der Webservice des Steuerportals der EU (<a href="http://ec.europa.eu/taxation_customs" style="font-style:italic">http://ec.europa.eu/taxation_customs</a>).<br/>Ben&ouml;tigt PHP5 mit aktivierter "SOAP" Unterst&uuml;tztung! <strong><span class="messageStackSuccess">Die "PHP5 SOAP"-Unterst&uuml;tztung ist derzeit '.(in_array ('soap', get_loaded_extensions()) ? '' : '<span class="messageStackError">NICHT</span>').' aktiviert!</span></strong>');
 define('ACCOUNT_COMPANY_VAT_GROUP_TITLE' , 'Kundengruppe nach UST ID Check anpassen?');
-define('ACCOUNT_COMPANY_VAT_GROUP_DESC' , 'Durch einschalten dieser Option wird die Kundengruppe nach einen postiven UST ID Check ge&auml;ndert');
+define('ACCOUNT_COMPANY_VAT_GROUP_DESC' , 'Durch Einschalten dieser Option wird die Kundengruppe nach einen postiven UST ID Check ge&auml;ndert');
 define('ACCOUNT_VAT_BLOCK_ERROR_TITLE' , 'Eintragung falscher oder ungepr&uuml;fter USt-IdNr. Nummern sperren?');
-define('ACCOUNT_VAT_BLOCK_ERROR_DESC' , 'Durch einschalten dieser Option werden nur gepr&uuml;fte und richtige USt-IdNr. eingetragen');
+define('ACCOUNT_VAT_BLOCK_ERROR_DESC' , 'Durch Einschalten dieser Option werden nur gepr&uuml;fte und richtige USt-IdNr. eingetragen');
 define('DEFAULT_CUSTOMERS_VAT_STATUS_ID_LOCAL_TITLE','Kundenstatus f&uuml;r UST ID Gepr&uuml;fte Kunden (Inland)');
 define('DEFAULT_CUSTOMERS_VAT_STATUS_ID_LOCAL_DESC','W&auml;hlen Sie den Kundenstatus(Gruppe) f&uuml;r UST ID gepr&uuml;fte Kunden aus!');
 
@@ -596,7 +591,11 @@ define('AFTERBUY_USERID_TITLE','User ID');
 define('AFTERBUY_USERID_DESC','Ihre Afterbuy User ID');
 define('AFTERBUY_ORDERSTATUS_TITLE','Bestellstatus');
 define('AFTERBUY_ORDERSTATUS_DESC','Bestellstatus nach erfolgreicher &Uuml;betragung der Bestelldaten');
-define('AFTERBUY_URL','Eine Beschreibung von Afterbuy finden Sie hier: <a href="http://www.xt-commerce.com/modules/wfsection/dossier-65.html" target="new">http://www.xt-commerce.com/modules/wfsection/dossier-65.html</a>');
+define('AFTERBUY_URL','Eine Beschreibung von Afterbuy finden Sie hier: <a href="http://www.afterbuy.de" target="new">http://www.afterbuy.de</a>');
+define('AFTERBUY_DEALERS_TITLE', 'Als H&auml;ndler markieren');
+define('AFTERBUY_DEALERS_DESC', 'geben Sie hier die Gruppen IDs der H&auml;ndler ein, die in Afterbuy als H&auml;ndler eingehen sollen.<br />Beispiel: <em>6,5,8</em>. Es d&uuml;rfen keine Leerzeichen enhalten sein!');
+define('AFTERBUY_IGNORE_GROUPE_TITLE', 'Kundengruppe ignorieren');
+define('AFTERBUY_IGNORE_GROUPE_DESC', 'welche Kundengruppen sollen ignoiert werden?<br />Beispiel: <em>6,5,8</em>. Es d&uuml;rfen keine Leerzeichen enhalten sein!');
 
 // Search-Options
 define('SEARCH_IN_DESC_TITLE','Suche in Produktbeschreibungen');
@@ -610,56 +609,65 @@ define('REVOCATION_ID_DESC','Content ID des Widerrufrechts');
 define('DISPLAY_REVOCATION_ON_CHECKOUT_TITLE','Anzeige Widerrufrecht?');
 define('DISPLAY_REVOCATION_ON_CHECKOUT_DESC','Widerrufrecht auf checkout_confirmation anzeigen?');
 
-// BOF - web28 - 2010-05-07 - PayPal API Modul
+// BOF - Tomcraft - 2009-10-03 - Paypal Express Modul
 define('PAYPAL_MODE_TITLE','PayPal-Modus:');
-define('PAYPAL_MODE_DESC','Live (Normal) oder Testbetrieb (Sandbox)');
+define('PAYPAL_MODE_DESC','Live (Normal) oder Testbetrieb (Sandbox). Je nach Modus muss bei PayPal zun&auml;chst ein API-Zugriff erstellt werden: <br/>Link: <a href="https://www.paypal.com/de/cgi-bin/webscr?cmd=_get-api-signature&generic-flow=true" target="_blank"><strong>API-Zugriff f&uuml;r live-Modus einrichten</strong></a><br/>Link: <a href="https://www.sandbox.paypal.com/de/cgi-bin/webscr?cmd=_get-api-signature&generic-flow=true" target="_blank"><strong>API-Zugriff f&uuml;r sandbox-Modus einrichten</strong></a><br/>Sie haben noch gar kein PayPal Konto? <a href="https://www.paypal.com/de/cgi-bin/webscr?cmd=_registration-run" target="_blank"><strong>Klicken Sie hier, um eins zu erstellen.</strong></a>');
 define('PAYPAL_API_USER_TITLE','PayPal-API-Benutzer (Live)');
-define('PAYPAL_API_USER_DESC','trage hier den Benutzernamen ein.');
+define('PAYPAL_API_USER_DESC','Tragen Sie hier den Benutzernamen ein.');
 define('PAYPAL_API_PWD_TITLE','PayPal-API-Passwort (Live)');
-define('PAYPAL_API_PWD_DESC','trage hier das Passwort ein.');
+define('PAYPAL_API_PWD_DESC','Tragen Sie hier das Passwort ein.');
 define('PAYPAL_API_SIGNATURE_TITLE','PayPal-API-Signatur (Live)');
-define('PAYPAL_API_SIGNATURE_DESC','trage hier die API Signatur ein.');
+define('PAYPAL_API_SIGNATURE_DESC','Tragen Sie hier die API Signatur ein.');
 define('PAYPAL_API_SANDBOX_USER_TITLE','PayPal-API-Benutzer (Sandbox)');
-define('PAYPAL_API_SANDBOX_USER_DESC','trage hier den Benutzernamen ein.');
+define('PAYPAL_API_SANDBOX_USER_DESC','Tragen Sie hier den Benutzernamen ein.');
 define('PAYPAL_API_SANDBOX_PWD_TITLE','PayPal-API-Passwort (Sandbox)');
-define('PAYPAL_API_SANDBOX_PWD_DESC','trage hier das Passwort ein.');
+define('PAYPAL_API_SANDBOX_PWD_DESC','Tragen Sie hier das Passwort ein.');
 define('PAYPAL_API_SANDBOX_SIGNATURE_TITLE','PayPal-API-Signatur (Sandbox)');
-define('PAYPAL_API_SANDBOX_SIGNATURE_DESC','trage hier die API Signatur ein.');
+define('PAYPAL_API_SANDBOX_SIGNATURE_DESC','Tragen Sie hier die API Signatur ein.');
 define('PAYPAL_API_VERSION_TITLE','PayPal-API-Version');
-define('PAYPAL_API_VERSION_DESC','trage hier die aktuelle PayPal API Version ein - z.B.: 62.0');
+define('PAYPAL_API_VERSION_DESC','Tragen Sie hier die aktuelle PayPal API Version ein - z.B.: 84.0');
 define('PAYPAL_API_IMAGE_TITLE','PayPal Shop-Logo');
-define('PAYPAL_API_IMAGE_DESC','trage hier die Logo-Datei ein, die bei PayPal angezeigt werden soll.<br />Achtung: Wird nur &uuml;bertragen wenn der Shop mit SSL arbeitet.<br />Das Bild darf max. 750px breit und 90px hoch sein.<br />Aufgerufen wird die Datei aus: '.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+define('PAYPAL_API_IMAGE_DESC','Tragen Sie hier die Logo-Datei ein, die bei PayPal angezeigt werden soll.<br />Achtung: Wird nur &uuml;bertragen, wenn der Shop mit SSL arbeitet.<br />Das Bild darf max. 750px breit und 90px hoch sein.<br />Aufgerufen wird die Datei aus: '.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
 define('PAYPAL_API_CO_BACK_TITLE','PayPal Hintergrund-Farbe');
-define('PAYPAL_API_CO_BACK_DESC','trage hier die Hintergrundfarbe ein, die bei PayPal angezeigt werden soll. z.B. FEE8B9');
+define('PAYPAL_API_CO_BACK_DESC','Tragen Sie hier die Hintergrundfarbe ein, die bei PayPal angezeigt werden soll. z.B. FEE8B9');
 define('PAYPAL_API_CO_BORD_TITLE','PayPal Rahmen-Farbe');
-define('PAYPAL_API_CO_BORD_DESC','trage hier die Rahmenfarbe ein, die bei PayPal angezeigt werden soll. z.B. E4C558');
+define('PAYPAL_API_CO_BORD_DESC','Tragen Sie hier die Rahmenfarbe ein, die bei PayPal angezeigt werden soll. z.B. E4C558');
 define('PAYPAL_ERROR_DEBUG_TITLE','PayPal Fehler Anzeige');
 define('PAYPAL_ERROR_DEBUG_DESC','Soll der original PayPal Fehler angezeigt werden? Normal=false');
 define('PAYPAL_ORDER_STATUS_TMP_ID_TITLE','Bestellstatus "abgebrochen"');
-define('PAYPAL_ORDER_STATUS_TMP_ID_DESC','w&auml;hle den Bestellstatus f&uuml;r ein abgebrochenen Aktion aus (z.B. PayPal Abbruch)');
+define('PAYPAL_ORDER_STATUS_TMP_ID_DESC','W&auml;hlen Sie den Bestellstatus f&uuml;r eine abgebrochene Aktion aus (z.B. PayPal Abbruch)');
 define('PAYPAL_ORDER_STATUS_SUCCESS_ID_TITLE','Bestellstatus OK');
-define('PAYPAL_ORDER_STATUS_SUCCESS_ID_DESC','w&auml;hle den Bestellstatus f&uuml;r eine erfolgreiche Transaktion aus (z.B. Offen PP bezahlt)');
+define('PAYPAL_ORDER_STATUS_SUCCESS_ID_DESC','W&auml;hlen Sie den Bestellstatus f&uuml;r eine erfolgreiche Transaktion aus (z.B. Offen PP bezahlt)');
 define('PAYPAL_ORDER_STATUS_PENDING_ID_TITLE','Bestellstatus "in Bearbeitung"');
-define('PAYPAL_ORDER_STATUS_PENDING_ID_DESC','w&auml;hle den Bestellstatus f&uuml;r eine Transaktion aus, die noch nicht von PayPal bearbeitet wurde (z.B. Offen PP wartend)');
+define('PAYPAL_ORDER_STATUS_PENDING_ID_DESC','W&auml;hlen Sie den Bestellstatus f&uuml;r eine Transaktion aus, die noch nicht von PayPal bearbeitet wurde (z.B. Offen PP wartend)');
 define('PAYPAL_ORDER_STATUS_REJECTED_ID_TITLE','Bestellstatus "abgewiesen"');
-define('PAYPAL_ORDER_STATUS_REJECTED_ID_DESC','w&auml;hle den Bestellstatus f&uuml;r eine abgelehnte Transaktion aus (z.B. PayPal abgelehnt)');
+define('PAYPAL_ORDER_STATUS_REJECTED_ID_DESC','W&auml;hlen Sie den Bestellstatus f&uuml;r eine abgelehnte Transaktion aus (z.B. PayPal abgelehnt)');
 define('PAYPAL_COUNTRY_MODE_TITLE','PayPal-L&auml;ndermodus');
-define('PAYPAL_COUNTRY_MODE_DESC','w&auml;hle hier die Einstellung f&uuml;r den L&auml;ndermodus. Verschiedene Funktionen von PayPal sind nur in UK m&ouml;glich (z.b. DirectPayment )');
+define('PAYPAL_COUNTRY_MODE_DESC','W&auml;hlen Sie hier die Einstellung f&uuml;r den L&auml;ndermodus. Verschiedene Funktionen von PayPal sind nur in UK m&ouml;glich (z.b. DirectPayment )');
 define('PAYPAL_EXPRESS_ADDRESS_CHANGE_TITLE','PayPal-Express-Adressdaten');
 define('PAYPAL_EXPRESS_ADDRESS_CHANGE_DESC','Erlaubt das &Auml;ndern der von PayPal &uuml;bermittelten Adressdaten');
 define('PAYPAL_EXPRESS_ADDRESS_OVERRIDE_TITLE','Lieferadresse &uuml;berschreiben');
 define('PAYPAL_EXPRESS_ADDRESS_OVERRIDE_DESC','Erlaubt das &Auml;ndern der von PayPal &uuml;bermittelten Adressdaten (bestehendes Konto)');
-// EOF - web28 - 2010-05-07 - PayPal API Modul
+define('PAYPAL_INVOICE_TITLE','Shop-Kenner f&uuml;r PayPal Rg.Nr.');
+define('PAYPAL_INVOICE_DESC','Buchstabe(n), die vor die Order-Nr. als Shop-Kenner gesetzt werden und als Rechnungs-Nr. von PayPal benutzt werden.<br />Durch unterschiedliche Shop-Kenner k&ouml;nnen mehrere Shops mit einem PayPal Konto arbeiten, ohne dass es bei gleichen Order-Nummern zu gleichen Rechnungs-Nummern im PayPal Konto kommt.');
+// EOF - Tomcraft - 2009-10-03 - Paypal Express Modul
 
 // BOF - Tomcraft - 2009-11-02 - New admin top menu
 define('USE_ADMIN_TOP_MENU_TITLE' , 'Admin Top Navigation');
-define('USE_ADMIN_TOP_MENU_DESC' , 'Admin Top Navigation aktivieren?');
+define('USE_ADMIN_TOP_MENU_DESC' , 'Admin Top Navigation aktivieren? Ansonsten wird das Men&uuml; am linken Rand angezeigt (klassisch)');
 // EOF - Tomcraft - 2009-11-02 - New admin top menu
 
 // BOF - Tomcraft - 2009-11-02 - Admin language tabs
 define('USE_ADMIN_LANG_TABS_TITLE' , 'Sprachtabs bei Kategorien/Artikel');
 define('USE_ADMIN_LANG_TABS_DESC' , 'Sprachtabs bei den Eingabefeldern f&uuml;r Kategorien/Artikel aktivieren?');
 // EOF - Tomcraft - 2009-11-02 - Admin language tabs
+
+// BOF - Hendrik - 2010-08-11 - Thumbnails in admin products list
+define('USE_ADMIN_THUMBS_IN_LIST_TITLE' , 'Artikelliste Bilder');
+define('USE_ADMIN_THUMBS_IN_LIST_DESC' , 'In der Admin Artikelliste eine zus&auml;tzliche Spalte mit Bildern der Kategorien / Artikel anzeigen?');
+define('USE_ADMIN_THUMBS_IN_LIST_STYLE_TITLE', 'Artikelliste Bilder CSS-Style');
+define('USE_ADMIN_THUMBS_IN_LIST_STYLE_DESC', 'Hier k&ouml;nnen einfache CSS Style Angaben eingegeben werden - z.B. f&uuml;r die maximale Breite: max-width:90px;');
+// EOF - Hendrik - 2010-08-11 - Thumbnails in admin products list
 
 // BOF - Tomcraft - 2009-11-05 - Advanced contact form
 define('USE_CONTACT_EMAIL_ADDRESS_TITLE' , 'Kontaktformular - Sendeoption');
@@ -670,6 +678,119 @@ define('USE_CONTACT_EMAIL_ADDRESS_DESC' , '"Kontakt E-Mail" Adresse des Shops zu
 define('DELETE_CACHE_SUCCESSFUL', 'Cache erfolgreich geleert.');
 define('DELETE_TEMP_CACHE_SUCCESSFUL', 'Templatecache erfolgreich geleert.');
 // EOF - Dokuman - 2010-02-04 - delete cache files in admin section
+
+// BOF - DokuMan - 2010-08-13 - set Google RSS Feed in admin section
+define('GOOGLE_RSS_FEED_REFID_TITLE' , 'Google RSS Feed - refID');
+define('GOOGLE_RSS_FEED_REFID_DESC' , 'Tragen Sie hier die Kampagnen-ID ein. Diese wird jedem Link des Google RSS Feeds automatisch hinzugef&uuml;gt.');
+// EOF - DokuMan - 2010-08-13 - set Google RSS Feed in admin section
+
+// BOF - web28 - 2010-08-17 -  Bildgroessenberechnung kleinerer Bilder
+define('PRODUCT_IMAGE_NO_ENLARGE_UNDER_DEFAULT_TITLE','Skalierung von Bildern mit geringer Aufl&ouml;sung');
+define('PRODUCT_IMAGE_NO_ENLARGE_UNDER_DEFAULT_DESC','Aktivieren Sie die Einstellung <strong>false</strong> um zu verhindern, dass Produktbilder geringerer Aufl&ouml;sung auf die eingestellten default Werte f&uuml;r Breite und H&ouml;he skaliert werden. Aktivieren Sie die Einstellung <strong>true</strong>, werden auch Bilder geringerer Aufl&ouml;sung auf die eingestellten default Bildgr&ouml;&szlig;enwerte skaliert. In diesem Fall k&ouml;nnen diese Bilder aber sehr unscharf und pixelig dargestellt werden.');
+// EOF - web28 - 2010-08-17 -  Bildgroessenberechnung kleinerer Bilder
+
+//BOF - hendrik - 2011-05-14 - independent invoice number and date
+define('IBN_BILLNR_TITLE', 'N&auml;chste Rechnungsnummer');
+define('IBN_BILLNR_DESC', 'Beim Zuweisung einer Bestellung wird diese Nummer als n&auml;chstes vergeben.');
+define('IBN_BILLNR_FORMAT_TITLE', 'Rechnungsnummer Format');       //ibillnr
+define('IBN_BILLNR_FORMAT_DESC', 'Aufbauschema Rechn.Nr.: {n}=laufende Nummer, {d}=Tag, {m}=Monat, {y}=Jahr, <br>z.B. "100{n}-{d}-{m}-{y}" ergibt "10099-28-02-2007"');
+//EOF - hendrik - 2011-05-14 - independent invoice number and date
+
+//BOC - h-h-h - 2011-12-23 - Button "Buy Now" optional - default off
+define('SHOW_BUTTON_BUY_NOW_TITLE', 'Zeige "Jetzt Kaufen" in den Produktlisten');
+define('SHOW_BUTTON_BUY_NOW_DESC', '<b>Achtung:</b><br /> Dies kann zu Abmahnungen f&uuml;hren, wenn dem Kunden nicht alle wichtigen Informationen schon in den Listenseiten gezeigt werden!');
+//EOC - h-h-h - 2011-12-23 - Button "Buy Now" optional - default off
+
+//split page results
+define('MAX_DISPLAY_ORDER_RESULTS_TITLE', 'Anzahl der Bestellungen pro Seite');
+define('MAX_DISPLAY_ORDER_RESULTS_DESC', 'Maximum Anzahl der Bestellungen die in der &Uuml;bersicht pro Seite angezeigt werden sollen.');
+define('MAX_DISPLAY_LIST_PRODUCTS_TITLE', 'Anzahl der Artikel pro Seite');
+define('MAX_DISPLAY_LIST_PRODUCTS_DESC', 'Maximum Anzahl der Artikel die in der &Uuml;bersicht pro Seite angezeigt werden sollen.');
+define('MAX_DISPLAY_LIST_CUSTOMERS_TITLE', 'Anzahl der Kunden pro Seite');
+define('MAX_DISPLAY_LIST_CUSTOMERS_DESC', 'Maximum Anzahl der Kunden die in der &Uuml;bersicht pro Seite angezeigt werden sollen.');
+define('MAX_ROW_LISTS_ATTR_OPTIONS_TITLE', 'Artikelmerkmale: Anzahl der Artikelmerkmale pro Seite');
+define('MAX_ROW_LISTS_ATTR_OPTIONS_DESC', 'Maximum Anzahl der Artikelmerkmale (Optionen) die pro Seite angezeigt werden sollen.');
+define('MAX_ROW_LISTS_ATTR_VALUES_TITLE', 'Artikelmerkmale: Anzahl der Optionswerte pro Seite');
+define('MAX_ROW_LISTS_ATTR_VALUES_DESC', 'Maximum Anzahl der Optionswerte die pro Seite angezeigt werden sollen.');
+
+//whos online
+define('WHOS_ONLINE_TIME_LAST_CLICK_TITLE', 'Wer ist Online - Anzeigezeitraum in Sek.');
+define('WHOS_ONLINE_TIME_LAST_CLICK_DESC', 'Anzeigedauer der Online User in der "Wer ist Online" Tabelle, nach dieser Zeit werden die Eintr&auml;ge gel&ouml;scht. (min. Wert: 900)');
+
+//sessions
+define('SESSION_LIFE_ADMIN_TITLE', 'Session Lebenszeit Admin: ');
+define('SESSION_LIFE_ADMIN_DESC', 'Zeitdauer in Sekunden nach der die Sessionzeit f&uuml;r Admins abl&auml;uft (wird ausgeloggt) - Standard 7200 ');
+define('SESSION_LIFE_CUSTOMERS_TITLE', 'Session Lebenszeit Kunden:');
+define('SESSION_LIFE_CUSTOMERS_DESC', 'Zeitdauer in Sekunden nach der die Sessionzeit f&uuml;r Kunden abl&auml;uft (wird ausgeloggt) - Standard 1440 ');
+
+//checkout confirmation options
+define('CHECKOUT_USE_PRODUCTS_SHORT_DESCRIPTION_TITLE','Bestellbest&auml;tigungsseite: Kurzbeschreibung');
+define('CHECKOUT_USE_PRODUCTS_SHORT_DESCRIPTION_DESC','Soll auf der Bestellbest&auml;tigungsseite die Artikel-Kurzbeschreibung angezeigt werden? Hinweis: Die Kurzbeschreibung wird dann angezeigt, wenn es KEINE Artikel-Bestellbeschreibung gibt. Mit False wird die Kurzbeschreibung grunds&auml;tzlich nicht angezeigt!');
+define('CHECKOUT_SHOW_PRODUCTS_IMAGES_TITLE','Bestellbest&auml;tigungsseite: Produktbilder');
+define('CHECKOUT_SHOW_PRODUCTS_IMAGES_DESC','Sollen auf der Bestellbest&auml;tigungsseite die Artikelbilder angezeigt werden?');
+define('CHECKOUT_SHOW_PRODUCTS_MODEL_TITLE','Bestellbest&auml;tigungsseite: Artikel-Nr.');
+define('CHECKOUT_SHOW_PRODUCTS_MODEL_DESC','Sollen auf der Bestellbest&auml;tigungsseite die Artikel-Nr. angezeigt werden?');
+
+// email billing attachments
+define('EMAIL_BILLING_ATTACHMENTS_TITLE', 'Verrechnung - E-Mail Anh&auml;nge f&uuml;r Bestellungen ');
+define('EMAIL_BILLING_ATTACHMENTS_DESC', 'Beispiel f&uuml;r Anh&auml;nge - die Dateien befinden sich im Shopverzeichnis <b>pdf</b>. Mehrere Anh&auml;nge mit Komma ohne Leerzeichen trennen:<br /> pdf/agb.pdf,pdf/widerruf.pdf');
+
+// email images
+define('SHOW_IMAGES_IN_EMAIL_TITLE', 'Artikelbilder in Bestell - E-Mail einf&uuml;gen');
+define('SHOW_IMAGES_IN_EMAIL_DESC', 'Artikelbilder in die HTML-Bestellbest&auml;tigungs - E-Mail einf&uuml;gen (erh&ouml;ht die Gefahr, das die E-Mail als SPAM eingestuft wird)');
+define('SHOW_IMAGES_IN_EMAIL_DIR_TITLE', 'E-Mail Bilderordner ');
+define('SHOW_IMAGES_IN_EMAIL_DIR_DESC', 'Auswahl E-Mail Bilderordner');
+define('SHOW_IMAGES_IN_EMAIL_STYLE_TITLE', 'E-Mail Bilder CSS-Style');
+define('SHOW_IMAGES_IN_EMAIL_STYLE_DESC', 'Hier k&ouml;nnen einfache CSS Style Angaben eingegeben werden - z.B. f&uuml;r die maximale Breite: max-width:90px;');
+
+//popup windows configuration
+define('POPUP_SHIPPING_LINK_PARAMETERS_TITLE', 'Versandkosten Popup Fenster URL-Parameter');
+define('POPUP_SHIPPING_LINK_PARAMETERS_DESC', 'Hier k&ouml;nnen die URL-Parameter eingegeben werden - Standard: &KeepThis=true&TB_iframe=true&height=400&width=600');
+define('POPUP_SHIPPING_LINK_CLASS_TITLE', 'Versandkosten Popup Fenster CSS-Klasse');
+define('POPUP_SHIPPING_LINK_CLASS_DESC', 'Hier k&ouml;nnen CSS-Klassen eingegeben werden - Standard: thickbox');
+define('POPUP_CONTENT_LINK_PARAMETERS_TITLE', 'Content-Seiten Popup Fenster URL-Parameter');
+define('POPUP_CONTENT_LINK_PARAMETERS_DESC', 'Hier k&ouml;nnen die URL-Parameter eingegeben werden - Standard: &KeepThis=true&TB_iframe=true&height=400&width=600');
+define('POPUP_CONTENT_LINK_CLASS_TITLE', 'Content-Seiten Popup Fenster CSS-Klasse');
+define('POPUP_CONTENT_LINK_CLASS_DESC', 'Hier k&ouml;nnen CSS-Klassen eingegeben werden - Standard: thickbox');
+define('POPUP_PRODUCT_LINK_PARAMETERS_TITLE', 'Produkt-Seiten Popup Fenster URL-Parameter');
+define('POPUP_PRODUCT_LINK_PARAMETERS_DESC', 'Hier k&ouml;nnen die URL-Parameter eingegeben werden - Standard: &KeepThis=true&TB_iframe=true&height=450&width=750');
+define('POPUP_PRODUCT_LINK_CLASS_TITLE', 'Produkt-Seiten Popup Fenster CSS-Klasse');
+define('POPUP_PRODUCT_LINK_CLASS_DESC', 'Hier k&ouml;nnen CSS-Klassen eingegeben werden - Standard: thickbox');
+define('POPUP_COUPON_HELP_LINK_PARAMETERS_TITLE', 'Coupon Hilfe Popup Fenster URL-Parameter');
+define('POPUP_COUPON_HELP_LINK_PARAMETERS_DESC', 'Hier k&ouml;nnen die URL-Parameter eingegeben werden - Standard: &KeepThis=true&TB_iframe=true&height=400&width=600');
+define('POPUP_COUPON_HELP_LINK_CLASS_TITLE', 'Coupon Hilfe Popup Fenster CSS-Klasse');
+define('POPUP_COUPON_HELP_LINK_CLASS_DESC', 'Hier k&ouml;nnen CSS-Klassen eingegeben werden - Standard: thickbox');
+
+define('POPUP_PRODUCT_PRINT_SIZE_TITLE', 'Produkt Druckansicht Fenstergr&ouml;&szlig;e');
+define('POPUP_PRODUCT_PRINT_SIZE_DESC', 'Hier kann die Gr&ouml;&szlig;e des Popup-Fensters definiert werden - Standard: width=640, height=600');
+define('POPUP_PRINT_ORDER_SIZE_TITLE', 'Bestellung Druckansicht Fenstergr&ouml;&szlig;e');
+define('POPUP_PRINT_ORDER_SIZE_DESC', 'Hier kann die Gr&ouml;&szlig;e des Popup-Fensters definiert werden - Standard: width=640, height=600');
+
+// BOF - Dokuman - 2012-08-27 - added entries for new google analytics & piwik tracking
+define('TRACKING_COUNT_ADMIN_ACTIVE_TITLE' , 'Seitenaufrufe des Shopbetreibers mitz&auml;hlen');
+define('TRACKING_COUNT_ADMIN_ACTIVE_DESC' , 'Wird diese Option aktiviert, so werden auch alle Zugriffe des Administrator-Users des Shopbetreibers mitgez&auml;hlt, die (durch die h&auml;ufigeren  Zugriffe auf den Shop) die Besucherstatistik verf&auml;lschen k&ouml;nnen.');
+define('TRACKING_GOOGLEANALYTICS_ACTIVE_TITLE' , 'Google Analytics Tracking aktivieren');
+define('TRACKING_GOOGLEANALYTICS_ACTIVE_DESC' , 'Wird diese Option aktiviert, so werden alle Seitenaufrufe an Google Analytics &uuml;bermittelt und k&ouml;nnen sp&auml;ter ausgewertet werden. Dazu ist vorher die Anlage eines Kontos bei <a href="http://www.google.com/analytics/" target="_blank"><b>Google Analytics</b></a> erforderlich.');
+define('TRACKING_GOOGLEANALYTICS_ID_TITLE' , 'Google Analytics Kontonummer');
+define('TRACKING_GOOGLEANALYTICS_ID_DESC' , 'Tragen Sie hier die Google Analytics Kontonummer im Format "UA-XXXXXXXX-X" ein, die Sie nach einer erfolgreichen Kontoerstellen bekommen haben.');
+define('TRACKING_PIWIK_ACTIVE_TITLE' , 'PIWIK Web-Analytics Tracking aktivieren');
+define('TRACKING_PIWIK_ACTIVE_DESC' , 'Um PIWIK nutzen zu k&ouml;nnen, m&uuml;ssen Sie es zun&auml;chst herunterladen und auf Ihrem Webspace installieren, siehe auch <a href="http://http://de.piwik.org/" target="_blank"><b>PIWIK Web-Analytics</b></a>. Im Gegensatz zu Google Analytics werden die Daten lokal gespeichert, d.h. Sie als Shopbetreiber haben die Datenhoheit.');
+define('TRACKING_PIWIK_LOCAL_PATH_TITLE' , 'PIWIK Installationsverzeichnis (ohne "http://")');
+define('TRACKING_PIWIK_LOCAL_PATH_DESC' , 'Tragen Sie hier das Verzeichnis ein, nachdem PIWIK erfolgreich installiert worden ist. Als Pfad ist hier der komplette Domainname ohne "http://" einzutragen, z.B. "www.domain.de/piwik".');
+define('TRACKING_PIWIK_ID_TITLE' , 'PIWIK Seiten-ID');
+define('TRACKING_PIWIK_ID_DESC' , 'In der PIWIK Administrationsoberfl&auml;che wird pro angelegter Domain wird eine ID vergeben (meist "1")');
+define('TRACKING_PIWIK_GOAL_TITLE' , 'PIWIK Kampagnen-Nummer (optional)');
+define('TRACKING_PIWIK_GOAL_DESC' , 'Tragen Sie hier eine Kampagnen-Nummer ein, wenn Sie vordefinierte Ziele nachverfolgen m&ouml;chten. Details siehe <a href="http://piwik.org/docs/tracking-goals-web-analytics/" target="_blank"><b>PIWIK: Tracking Goal Conversions</b></a>');
+// EOF - Dokuman - 2012-08-27 - added entries for new google analytics & piwik tracking
+
+define('CONFIRM_SAVE_ENTRY_TITLE', 'Best&auml;tigungsabfrage beim Speichern von Artikeln/Kategorien');
+define('CONFIRM_SAVE_ENTRY_DESC', 'Soll eine Best&auml;tigungsabfrage beim Speichern von Artikeln/Kategorien erfolgen? Standard: true (ja)');
+
+define('WHOS_ONLINE_IP_WHOIS_SERVICE_TITLE', 'Wer ist Online - Whois Lookup URL');
+define('WHOS_ONLINE_IP_WHOIS_SERVICE_DESC', 'http://www.utrace.de/?query= oder http://whois.domaintools.com/');
+
+define('STOCK_CHECKOUT_UPDATE_PRODUCTS_STATUS_TITLE', 'Bestellabschlu&szlig; - Ausverkaufte Artikel deaktivieren');
+define('STOCK_CHECKOUT_UPDATE_PRODUCTS_STATUS_DESC', 'Soll ein ausverkaufter Artikel (Lagermenge 0) am Ende der Bestellung automatisch deaktiviert werden? Der Artikel ist dann nicht mehr im Shop sichtbar!<br />Bei Artikeln die in K&uuml;rze wieder lieferbar sind, sollte die Option auf "false" gesetzt werden');
 
 // PDFBill NEXT - Change START
 define('BILL_LASTNR_TITLE' , 'Letzte Rechnungsnummer');

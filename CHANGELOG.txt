@@ -1,6 +1,11 @@
+1.1.8 - 21.04.2013
+=============================================
+- FIXED: Euro-Sign Problems
+- FIXED: German Umlaut Problems on the Payment Method
+
 1.1.7a - 29.06.2012
 =============================================
-- FXIED: missing includes in checkout_process.php
+- FIXED: missing includes in checkout_process.php
 
 1.1.7 - 27.06.2012
 =============================================

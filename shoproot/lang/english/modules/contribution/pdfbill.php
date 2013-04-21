@@ -41,6 +41,7 @@ define('TEXT_PDF_ARTIKEL', "Product");
 define('TEXT_PDF_ARTIKELNR', "Product No.");
 define('TEXT_PDF_EINZELPREIS', "Singleprice");
 define('TEXT_PDF_PREIS', "Price");
+define('TEXT_PDF_POSITION', "Pos.");
 
 define('TEXT_PDF_DANKE_MANN', "Dear Mr. %s,\nThank you for shopping with XXXX! The details of your order are listed bellow.");
 define('TEXT_PDF_DANKE_FRAU', "Dear Mrs. %s,\nThank you for shopping with XXXX! The details of your order are listed bellow.");
@@ -49,5 +50,8 @@ define('TEXT_PDF_DANKE_UNISEX', "Dear Customer,\nThank you for shopping with XXX
 define('TEXT_PDF_KOMMENTAR', "Comments");
 define('TEXT_PDF_SCHLUSSTEXT', "Thank you for your purchase!\n\nPlease come visit us again at XXXX!\n\n\nThe date of the delivery note corresponds to the service date.\nOur general terms and conditions apply.");
 define('TEXT_PDF_LSCHLUSSTEXT', "Thank you for your purchase!\n\nPlease come visit us again at XXXX!\n\n\nThe date of the delivery note corresponds to the service date.\nOur general terms and conditions apply.");
+
+// eurofix - please do not change
+define('EURO',chr(128));
 
 ?>

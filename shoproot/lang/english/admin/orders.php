@@ -2,10 +2,10 @@
 /* --------------------------------------------------------------
    $Id: orders.php 1185 2010-08-20 09:00:29Z web28 $   
 
-   XT-Commerce - community made shopping
-   http://www.xtc-modified.org
+   modified eCommerce Shopsoftware
+   http://www.modified-shop.org
 
-   Copyright (c) 2010 xtcModified
+   Copyright (c) 2009 - 2013 [www.modified-shop.org]
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
@@ -117,6 +117,10 @@ define('ENTRY_CUSTOMERS_GROUP','Customers Group:');
 define('ENTRY_CUSTOMERS_VAT_ID','VAT Reg No:');
 define('TEXT_VALIDATING','Not validated');
 
+// BOF - Tomcraft - 2009-10-03 - Paypal Express Modul
+define('TEXT_INFO_PAYPAL_DELETE', 'Delete PayPal Transaktion data also.');
+// EOF - Tomcraft - 2009-10-03 - Paypal Express Modul
+
 // BOF - Tomcraft - 2010-04-22 - Added a missing language definition
 define('TEXT_PRODUCTS', 'Products');
 // EOF - Tomcraft - 2010-04-22 - Added a missing language definition
@@ -137,8 +141,9 @@ define('TABLE_HEADING_ORDERS_ID', 'Ord-ID');
 define('TEXT_SHIPPING_TO', 'Shipping to');
 define('TEXT_SHIPPING_LANG', 'Language');
 
+define('TABLE_HEADING_COMMENTS_SENT', 'Comment is sent');
+
 // PDFBill NEXT - Change START
 define('TABLE_HEADING_BILL_NR', 'Billnr.');
 // PDFBill NEXT - Change END
-
 ?>

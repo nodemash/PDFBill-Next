@@ -1,21 +1,21 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: configuration.php 1286 2005-10-07 10:10:18Z mz $   
+   $Id: configuration.php 3130 2012-06-28 11:17:12Z Tomcraft1980 $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   modified eCommerce Shopsoftware
+   http://www.modified-shop.org
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2009 - 2013 [www.modified-shop.org]
    -----------------------------------------------------------------------------------------
-   based on: 
+   based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
    (c) 2002-2003 osCommerce(configuration.php,v 1.8 2002/01/04); www.oscommerce.com
-   (c) 2003	 nextcommerce (configuration.php,v 1.16 2003/08/25); www.nextcommerce.org 
-   
-   Released under the GNU General Public License 
+   (c) 2003 nextcommerce (configuration.php,v 1.16 2003/08/25); www.nextcommerce.org
+   (c) 2006 XT-Commerce
+
+   Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
-   
-   // revised 12/2009 vr (tonne1@users.sourceforge.net)
+
 
 define('TABLE_HEADING_CONFIGURATION_TITLE', 'Title');
 define('TABLE_HEADING_CONFIGURATION_VALUE', 'Value');
@@ -53,9 +53,7 @@ define('SEND_EXTRA_ORDER_EMAILS_TO_TITLE' , 'Send Copies of Order E-Mails to:');
 define('SEND_EXTRA_ORDER_EMAILS_TO_DESC' , 'Send copies of order e-mails to the following e-mail addresses, like: Name1 &lt;e-mail@address1&gt;, Name2 &lt;e-mail@address2&gt;');
 
 define('SEARCH_ENGINE_FRIENDLY_URLS_TITLE' , 'Use Search-Engine Safe URLs?');
-// BOF - Dokuman - 2009-11-12 - enhance explanation of SEO-URL procedure
 define('SEARCH_ENGINE_FRIENDLY_URLS_DESC' , 'Use search-engine friendly URLs for all site links.<br /><br /><strong>For search-engine optimized URLs, the file _.htaccess in the root directory has to be activated, i.e. renamed to .htaccess! Moreover, your webserver has to support the <a href="http://www.modrewrite.com/" target="_blank">mod_rewrite</a> module!</strong> (Please ask your webhoster if you are unsure how to check that.)');
-// EOF - Dokuman - 2009-11-12 - enhance explanation of SEO-URL procedure
 
 define('DISPLAY_CART_TITLE' , 'Display Cart After Adding a Product?');
 define('DISPLAY_CART_DESC' , 'Display the shopping cart after adding a product or return back to product?');
@@ -166,24 +164,24 @@ define('MAX_DISPLAY_PRODUCTS_IN_ORDER_HISTORY_BOX_DESC' , 'Maximum number of pro
 define('MAX_DISPLAY_ORDER_HISTORY_TITLE' , 'Order History');
 define('MAX_DISPLAY_ORDER_HISTORY_DESC' , 'Maximum number of orders to display in the order history page');
 define('MAX_PRODUCTS_QTY_TITLE', 'Maximum Quantity');
-define('MAX_PRODUCTS_QTY_DESC', 'Maximum quantity input length');
+define('MAX_PRODUCTS_QTY_DESC', 'Maximum quantity per product in cart');
 define('MAX_DISPLAY_NEW_PRODUCTS_DAYS_TITLE' , 'Maximum Age (days) for New Products');
 define('MAX_DISPLAY_NEW_PRODUCTS_DAYS_DESC' , 'Maximum age (in days) for products to be displayed as "new products"');
 
 define('PRODUCT_IMAGE_THUMBNAIL_WIDTH_TITLE' , 'Width of Product Thumbnails');
-define('PRODUCT_IMAGE_THUMBNAIL_WIDTH_DESC' , 'Maximum width of product thumbnails (in pixels)');
+define('PRODUCT_IMAGE_THUMBNAIL_WIDTH_DESC' , 'Maximum width of product thumbnails (in pixels) (Standard: 120). For larger values possibly "productPreviewImage" is adjusted in the templates stylesheet.css file.');
 define('PRODUCT_IMAGE_THUMBNAIL_HEIGHT_TITLE' , 'Height of Product Thumbnails');
-define('PRODUCT_IMAGE_THUMBNAIL_HEIGHT_DESC' , 'Maximum height of product thumbnails (in pixels)');
+define('PRODUCT_IMAGE_THUMBNAIL_HEIGHT_DESC' , 'Maximum height of product thumbnails (in pixels) (Standard: 80).');
 
 define('PRODUCT_IMAGE_INFO_WIDTH_TITLE' , 'Width of Product Info Images');
-define('PRODUCT_IMAGE_INFO_WIDTH_DESC' , 'Maximum width of product info images (in pixels)');
+define('PRODUCT_IMAGE_INFO_WIDTH_DESC' , 'Maximum width of product info images (in pixels) (Standard: 200).');
 define('PRODUCT_IMAGE_INFO_HEIGHT_TITLE' , 'Height of Product Info Images');
-define('PRODUCT_IMAGE_INFO_HEIGHT_DESC' , 'Maximum height of product info images (in pixels)');
+define('PRODUCT_IMAGE_INFO_HEIGHT_DESC' , 'Maximum height of product info images (in pixels) (Standard: 160).');
 
 define('PRODUCT_IMAGE_POPUP_WIDTH_TITLE' , 'Width of Popup Images');
-define('PRODUCT_IMAGE_POPUP_WIDTH_DESC' , 'Maximum width of popup images (in pixels)');
+define('PRODUCT_IMAGE_POPUP_WIDTH_DESC' , 'Maximum width of popup images (in pixels) (Standard: 800).');
 define('PRODUCT_IMAGE_POPUP_HEIGHT_TITLE' , 'Height of Popup Images');
-define('PRODUCT_IMAGE_POPUP_HEIGHT_DESC' , 'Maximum height of popup images (in pixels');
+define('PRODUCT_IMAGE_POPUP_HEIGHT_DESC' , 'Maximum height of popup images (in pixels) (Standard: 640).');
 
 define('SMALL_IMAGE_WIDTH_TITLE' , 'Small Image Width');
 define('SMALL_IMAGE_WIDTH_DESC' , 'Width of small images (in pixels)');
@@ -261,8 +259,6 @@ define('PRODUCT_IMAGE_INFO_DROP_SHADOW_DESC' , 'Product Images:Drop-Shadow<br />
 define('PRODUCT_IMAGE_INFO_MOTION_BLUR_TITLE' , 'Product Images:Motion-Blur');
 define('PRODUCT_IMAGE_INFO_MOTION_BLUR_DESC' , 'Product Images:Motion-Blur<br /><br />Default-values: (4,FFFFFF)<br /><br />fading parallel lines<br />Usage:<br />(int number of lines,hex background colour)');
 
-//so this image is the biggest in the shop this
-
 define('PRODUCT_IMAGE_POPUP_BEVEL_TITLE' , 'Product Popup Images:Bevel');
 define('PRODUCT_IMAGE_POPUP_BEVEL_DESC' , 'Product Popup Images:Bevel<br /><br />Default-values: (8,FFCCCC,330000)<br /><br />shaded bevelled edges<br />Usage:<br />(edge width,hex light colour,hex dark colour)');
 
@@ -288,7 +284,7 @@ define('PRODUCT_IMAGE_POPUP_MOTION_BLUR_TITLE' , 'Product Popup Images:Motion-Bl
 define('PRODUCT_IMAGE_POPUP_MOTION_BLUR_DESC' , 'Product Popup Images:Motion-Blur<br /><br />Default-values: (4,FFFFFF)<br /><br />fading parallel lines<br />Usage:<br />(int number of lines,hex background colour)');
 
 define('IMAGE_MANIPULATOR_TITLE','GDlib processing');
-define('IMAGE_MANIPULATOR_DESC','Image Manipulator for GD2 or GD1');
+define('IMAGE_MANIPULATOR_DESC','Image Manipulator for GD2 or GD1<br /><br /><b>NOTE:</b> image_manipulator_GD2_advanced.php support transparent PNG\s');
 
 
 define('ACCOUNT_GENDER_TITLE' , 'Salutation');
@@ -323,8 +319,10 @@ define('SHOW_SHIPPING_TITLE' , 'Shipping Costs in Shopping Cart');
 define('SHOW_SHIPPING_DESC' , 'Show link to shipping costs in shopping cart');
 define('SHIPPING_INFOS_TITLE' , 'Group ID');
 define('SHIPPING_INFOS_DESC' , 'Group ID of shipping costs content');
+define('SHIPPING_DEFAULT_TAX_CLASS_METHOD_TITLE' , 'Calculation method of default tax class');
+define('SHIPPING_DEFAULT_TAX_CLASS_METHOD_DESC' , 'none: do not show shipping tax<br />auto proportional: show shipping tax proportional to order<br />auto max: show shipping tax, use tax rate of biggest turnover group');
 
-define('PRODUCT_LIST_FILTER_TITLE' , 'Display Category/Manufacturer Filter (0=disable; 1=enable)');
+define('PRODUCT_LIST_FILTER_TITLE' , 'Display Category/Manufacturer Filter (false=disable; true=enable)');
 define('PRODUCT_LIST_FILTER_DESC' , 'Do you want to display the Category/Manufacturer Filter?');
 
 define('STOCK_CHECK_TITLE' , 'Check Stock Level');
@@ -338,19 +336,19 @@ define('STOCK_ALLOW_CHECKOUT_TITLE' , 'Allow Checkout');
 define('STOCK_ALLOW_CHECKOUT_DESC' , 'Allow customer to checkout even if there is insufficient stock');
 define('STOCK_MARK_PRODUCT_OUT_OF_STOCK_TITLE' , 'Mark product out of stock');
 define('STOCK_MARK_PRODUCT_OUT_OF_STOCK_DESC' , 'Display on-screen message so customers can see which product has insufficient stock');
-define('STOCK_REORDER_LEVEL_TITLE' , 'Stock Re-order Level');
-define('STOCK_REORDER_LEVEL_DESC' , 'Define when stock needs to be re-ordered');
-define('STORE_PAGE_PARSE_TIME_TITLE' , 'Store Page Parse Time');
+define('STOCK_REORDER_LEVEL_TITLE' , 'Stock re-order level');
+define('STOCK_REORDER_LEVEL_DESC' , 'Define when stock needs to be re-ordered (planned function)');
+define('STORE_PAGE_PARSE_TIME_TITLE' , 'Store page parse time');
 define('STORE_PAGE_PARSE_TIME_DESC' , 'Store the time it takes to parse a page');
-define('STORE_PAGE_PARSE_TIME_LOG_TITLE' , 'Log Destination');
-define('STORE_PAGE_PARSE_TIME_LOG_DESC' , 'Directory and filename of the page parse time log');
-define('STORE_PARSE_DATE_TIME_FORMAT_TITLE' , 'Log Date Format');
-define('STORE_PARSE_DATE_TIME_FORMAT_DESC' , 'The date format');
+define('STORE_PAGE_PARSE_TIME_LOG_TITLE' , 'Log file destination');
+define('STORE_PAGE_PARSE_TIME_LOG_DESC' , 'Enter storage location/filename, where the page parse time as well as the database queries will be stored.<br/><strong>Caution: File can get very big in size in long logging sessions !</strong>.<br/><br/>Default value "page_parse_time.log":<br/><strong>Frontend:</strong> Parse time and database queries in the shop frontend will be stored in the root directory in the file "<strong>page_parse_time.log</strong>".<br/><strong>Administration (Backend):</strong> Parse time and database queries in the shop backend will be stored in the file "<strong>admin/page_parse_time.log</strong>".');
+define('STORE_PARSE_DATE_TIME_FORMAT_TITLE' , 'Log file date format');
+define('STORE_PARSE_DATE_TIME_FORMAT_DESC' , 'The date format (Default: %d/%m/%Y %H:%M:%S)');
 
 define('DISPLAY_PAGE_PARSE_TIME_TITLE' , 'Display The Page Parse Time');
 define('DISPLAY_PAGE_PARSE_TIME_DESC' , 'Display the page parse time (store page parse time must be enabled)');
 define('STORE_DB_TRANSACTIONS_TITLE' , 'Store Database Queries');
-define('STORE_DB_TRANSACTIONS_DESC' , 'Store the database queries in the page parse time log (PHP4 only)');
+define('STORE_DB_TRANSACTIONS_DESC' , 'Store the database queries in the page parse time log file');
 
 define('USE_CACHE_TITLE' , 'Use Cache');
 define('USE_CACHE_DESC' , 'Use caching features');
@@ -392,6 +390,10 @@ define('SMTP_AUTH_TITLE' , 'SMTP AUTH');
 define('SMTP_AUTH_DESC' , 'Enable secure authentication for your SMTP Server');
 define('SMTP_PORT_TITLE' , 'SMTP Port');
 define('SMTP_PORT_DESC' , 'Please enter the SMTP port of your SMTP server(default: 25)?');
+
+//DokuMan - 2011-09-20 - E-Mail SQL errors
+define('EMAIL_SQL_ERRORS_TITLE','Send SQL error messages to shop owner via email');
+define('EMAIL_SQL_ERRORS_DESC','When "true" an email will be sent to the shop owner\'s email address containing the appropriate SQL error message. The SQL error message itself will be hidden from the customer.<br />When "false" the SQL error message will be displayed directly and visible for everybody (default).');
 
 //Constants for contact_us
 define('CONTACT_US_EMAIL_ADDRESS_TITLE' , 'Contact Us - E-Mail Address');
@@ -454,20 +456,18 @@ define('GZIP_LEVEL_DESC' , 'Set a compression level from 0-9 (0 = minimum, 9 = m
 define('SESSION_WARNING', '<br /><br /><font color="#FF0000"><strong>ATTENTION:</strong></font>
 This feature might reduce the operability of the shop system. Change it only when you are aware of the following consequences and your webserver supports the corresponding feature.');
 
-
 define('SESSION_WRITE_DIRECTORY_TITLE' , 'Session Directory');
 define('SESSION_WRITE_DIRECTORY_DESC' , 'If sessions are file based, store them in this directory.');
 define('SESSION_FORCE_COOKIE_USE_TITLE' , 'Force Cookie Use');
-// klären, vr
-define('SESSION_FORCE_COOKIE_USE_DESC' , 'Force the use of sessions when cookies are only enabled.');
+define('SESSION_FORCE_COOKIE_USE_DESC' , 'Force the use of sessions when cookies are only enabled (Default &quot;false&quot;)'.SESSION_WARNING);
 define('SESSION_CHECK_SSL_SESSION_ID_TITLE' , 'Check SSL Session ID');
-define('SESSION_CHECK_SSL_SESSION_ID_DESC' , 'Validate the SSL_SESSION_ID on every secure HTTPS page request.');
+define('SESSION_CHECK_SSL_SESSION_ID_DESC' , 'Validate the SSL_SESSION_ID on every secure HTTPS page request. (Default &quot;false&quot;)'.SESSION_WARNING);
 define('SESSION_CHECK_USER_AGENT_TITLE' , 'Check User Agent');
-define('SESSION_CHECK_USER_AGENT_DESC' , 'Validate the client\'s browser user agent on every page request.');
+define('SESSION_CHECK_USER_AGENT_DESC' , 'Validate the client\'s browser user agent on every page request. (Default &quot;false&quot;)'.SESSION_WARNING);
 define('SESSION_CHECK_IP_ADDRESS_TITLE' , 'Check IP Address');
-define('SESSION_CHECK_IP_ADDRESS_DESC' , 'Validate the client\'s IP address on every page request.');
+define('SESSION_CHECK_IP_ADDRESS_DESC' , 'Validate the client\'s IP address on every page request. (Default &quot;false&quot;)'.SESSION_WARNING);
 define('SESSION_RECREATE_TITLE' , 'Recreate Session');
-define('SESSION_RECREATE_DESC' , 'Recreate the session to generate a new session ID when a customer logs on or creates an account (PHP >=4.1 needed).');
+define('SESSION_RECREATE_DESC' , 'Recreate the session to generate a new session ID when a customer logs on or creates an account (PHP >=4.1 needed). (Default &quot;false&quot;)'.SESSION_WARNING);
 
 define('DISPLAY_CONDITIONS_ON_CHECKOUT_TITLE' , 'Display Conditions on Checkout');
 define('DISPLAY_CONDITIONS_ON_CHECKOUT_DESC' , 'Display terms and conditions and request approval on checkout');
@@ -482,7 +482,7 @@ define('META_PUBLISHER_TITLE' , 'Publisher');
 define('META_PUBLISHER_DESC' , '<meta name="publisher">');
 define('META_COMPANY_TITLE' , 'Company');
 define('META_COMPANY_DESC' , '<meta name="company">');
-define('META_TOPIC_TITLE' , 'Page Topic');
+define('META_TOPIC_TITLE' , 'page-topic');
 define('META_TOPIC_DESC' , '<meta name="page-topic">');
 define('META_REPLY_TO_TITLE' , 'Reply-To');
 define('META_REPLY_TO_DESC' , '<meta name="reply-to">');
@@ -551,12 +551,8 @@ define('ACTIVATE_NAVIGATOR_DESC','activate/deactivate product navigator in produ
 define('QUICKLINK_ACTIVATED_TITLE','Activate Multilink / Copy Function');
 define('QUICKLINK_ACTIVATED_DESC','Allows selection of multiple categories when performing "copy product to"');
 
-// BOF - Tomcraft - 2009-06-18 - make clear this is a list of NOT allowed download payment modules
-//define('DOWNLOAD_UNALLOWED_PAYMENT_TITLE', 'Download Paymentmodules');
-//define('DOWNLOAD_UNALLOWED_PAYMENT_DESC', 'Not allowed Payment modules for downloads. List, seperated by comma, e.g. {banktransfer,cod,invoice,moneyorder}');
 define('DOWNLOAD_UNALLOWED_PAYMENT_TITLE', 'Disallowed Download Payment Modules');
 define('DOWNLOAD_UNALLOWED_PAYMENT_DESC', '<strong>DISALLOWED</strong> payment modules for downloads. Comma separated list, e.g. {banktransfer,cod,invoice,moneyorder}');
-// EOF - Tomcraft - 2009-06-18 - make clear this is a list of NOT allowed download payment modules
 define('DOWNLOAD_MIN_ORDERS_STATUS_TITLE', 'Min. Order Status');
 define('DOWNLOAD_MIN_ORDERS_STATUS_DESC', 'Min. order status to allow download of files.');
 
@@ -566,9 +562,9 @@ define('STORE_OWNER_VAT_ID_DESC' , 'The VAT Reg No of the Shop Owner');
 define('DEFAULT_CUSTOMERS_VAT_STATUS_ID_TITLE' , 'Customers Group Approved VAT Reg No (Foreign Country)');
 define('DEFAULT_CUSTOMERS_VAT_STATUS_ID_DESC' , 'Customers group for customers whose VAT Reg No has been checked and approved, shop country <> customer\'s country');
 define('ACCOUNT_COMPANY_VAT_CHECK_TITLE' , 'Validate VAT Reg No');
-define('ACCOUNT_COMPANY_VAT_CHECK_DESC' , 'Validate VAT Reg No (check correct syntax)');
-define('ACCOUNT_COMPANY_VAT_LIVE_CHECK_TITLE' , 'Validate VAT Reg No Live');
-define('ACCOUNT_COMPANY_VAT_LIVE_CHECK_DESC' , 'Validate VAT Reg No live (if no syntax check available for country), live check will use validation gateway of German "Bundesamt f&uuml;r Finanzen"');
+define('ACCOUNT_COMPANY_VAT_CHECK_DESC' , 'Customers may enter a VAT Registration number. If false, the box disappears');
+define('ACCOUNT_COMPANY_VAT_LIVE_CHECK_TITLE' , 'Validate VAT Reg No online for plausability');
+define('ACCOUNT_COMPANY_VAT_LIVE_CHECK_DESC' , 'Validate VAT Registration number online for plausability using the webservice of the taxation portal of the EU (<a href="http://ec.europa.eu/taxation_customs" style="font-style:italic">http://ec.europa.eu/taxation_customs</a>).<br/>Requires PHP5 with activated "SOAP" support! <strong><span class="messageStackSuccess">The "PHP5 SOAP"-support is actually '.(in_array ('soap', get_loaded_extensions()) ? '' : '<span class="messageStackError">NOT</span>').' active!</span></strong>');
 define('ACCOUNT_COMPANY_VAT_GROUP_TITLE' , 'Automatic Pruning?');
 define('ACCOUNT_COMPANY_VAT_GROUP_DESC' , 'Set to true, the customers group will be changed automatically if a valid VAT Reg No is used');
 define('ACCOUNT_VAT_BLOCK_ERROR_TITLE' , 'Allow Invalid VAT Reg No?');
@@ -595,7 +591,11 @@ define('AFTERBUY_USERID_TITLE','User ID');
 define('AFTERBUY_USERID_DESC','Your Afterbuy user ID');
 define('AFTERBUY_ORDERSTATUS_TITLE','Order Status');
 define('AFTERBUY_ORDERSTATUS_DESC','Order status for exported orders');
-define('AFTERBUY_URL','You will find detailed Afterbuy info here: <a href="http://www.xt-commerce.com/modules/wfsection/dossier-65.html" target="new">http://www.xt-commerce.com/modules/wfsection/dossier-65.html</a>');
+define('AFTERBUY_URL','You will find detailed Afterbuy info here: <a href="http://www.afterbuy.de" target="new">http://www.afterbuy.de</a>');
+define('AFTERBUY_DEALERS_TITLE', 'mark as Dealer');
+define('AFTERBUY_DEALERS_DESC', 'Example: <em>6,5,8</em>');
+define('AFTERBUY_IGNORE_GROUPE_TITLE', 'Customer group ignor');
+define('AFTERBUY_IGNORE_GROUPE_DESC', 'Example: <em>6,5,8</em>.');
 
 // Search-Options
 define('SEARCH_IN_DESC_TITLE','Search in Products Descriptions');
@@ -609,9 +609,9 @@ define('REVOCATION_ID_DESC','Content ID of revocation content');
 define('DISPLAY_REVOCATION_ON_CHECKOUT_TITLE','Display right of revocation?');
 define('DISPLAY_REVOCATION_ON_CHECKOUT_DESC','Display right of revocation on checkout_confirmation?');
 
-// BOF - web28 - 2010-05-07 - PayPal API Modul
+// BOF - Tomcraft - 2009-10-03 - Paypal Express Modul
 define('PAYPAL_MODE_TITLE','PayPal Mode:');
-define('PAYPAL_MODE_DESC','Live (Default) or Test (Sandbox)');
+define('PAYPAL_MODE_DESC','Live (Default) or Test (Sandbox). Depending on the mode, you first have to create the PayPal API access: <br/>Link: <a href="https://www.paypal.com/de/cgi-bin/webscr?cmd=_get-api-signature&generic-flow=true" target="_blank"><strong>Create API-access for live-mode</strong></a><br/>Link: <a href="https://www.sandbox.paypal.com/de/cgi-bin/webscr?cmd=_get-api-signature&generic-flow=true" target="_blank"><strong>Create API-access for sandbox-mode</strong></a><br/>You still have no PayPal account? <a href="https://www.paypal.com/de/cgi-bin/webscr?cmd=_registration-run" target="_blank"><strong>Click here to create one.</strong></a>');
 define('PAYPAL_API_USER_TITLE','PayPal API-User (Live)');
 define('PAYPAL_API_USER_DESC','Enter user name (live)');
 define('PAYPAL_API_PWD_TITLE','PayPal API-Password (Live)');
@@ -625,7 +625,7 @@ define('PAYPAL_API_SANDBOX_PWD_DESC','Enter password (sandbox)');
 define('PAYPAL_API_SANDBOX_SIGNATURE_TITLE','PayPal API-Signature (Sandbox)');
 define('PAYPAL_API_SANDBOX_SIGNATURE_DESC','Enter API signature (sandbox)');
 define('PAYPAL_API_VERSION_TITLE','PayPal API-Version');
-define('PAYPAL_API_VERSION_DESC','Enter PayPal API version, e.g. 62.0');
+define('PAYPAL_API_VERSION_DESC','Enter PayPal API version, e.g. 84.0');
 define('PAYPAL_API_IMAGE_TITLE','PayPal Shop Logo');
 define('PAYPAL_API_IMAGE_DESC','Please enter the name of the logo file to be displayed with PayPal.<br />Note: Only displayed if the shop uses SSL.<br />Max. width: 750px, max. height: 90px.<br />The logo file is called from: '.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
 define('PAYPAL_API_CO_BACK_TITLE','PayPal Background Colour');
@@ -648,17 +648,26 @@ define('PAYPAL_EXPRESS_ADDRESS_CHANGE_TITLE','PayPal-Express Address Data');
 define('PAYPAL_EXPRESS_ADDRESS_CHANGE_DESC','Permits changing address data transferred by PayPal.');
 define('PAYPAL_EXPRESS_ADDRESS_OVERRIDE_TITLE','Ship-To-Address Overwrite');
 define('PAYPAL_EXPRESS_ADDRESS_OVERRIDE_DESC','Permits changing address data transferred by PayPal (existing account)');
-// EOF - web28 - 2010-05-07 - PayPal API Modul
+define('PAYPAL_INVOICE_TITLE','Shop connoisseur for PayPal Invoice-No.');
+define('PAYPAL_INVOICE_DESC','Letter(s) before the Order-No. as Shop connoisseurs to be set and as Invoice-No. of PayPal to be used. By different Shop connoisseurs several shops with a PayPal account can work, without which it comes with same order-numbers to same invoice-numbers in the PayPal account.');
+// EOF - Tomcraft - 2009-10-03 - Paypal Express Modul
 
 // BOF - Tomcraft - 2009-11-02 - New admin top menu
 define('USE_ADMIN_TOP_MENU_TITLE' , 'Admin Top Navigation');
-define('USE_ADMIN_TOP_MENU_DESC' , 'Activate Admin Top Navigation?');
+define('USE_ADMIN_TOP_MENU_DESC' , 'Activate Admin Top Navigation? Otherwise the menu will be displayed on the left (classic view)');
 // EOF - Tomcraft - 2009-11-02 - New admin top menu
 
 // BOF - Tomcraft - 2009-11-02 - Admin language tabs
 define('USE_ADMIN_LANG_TABS_TITLE' , 'Language Tabs with Categories / Articles');
 define('USE_ADMIN_LANG_TABS_DESC' , 'Use language tabs with categories / articles?');
 // EOF - Tomcraft - 2009-11-02 - Admin language tabs
+
+// BOF - Hendrik - 2010-08-11 - Thumbnails in admin products list
+define('USE_ADMIN_THUMBS_IN_LIST_TITLE' , 'Admin products list images');
+define('USE_ADMIN_THUMBS_IN_LIST_DESC' , 'Show an extra column in Admin products list with images of the categories / products?');
+define('USE_ADMIN_THUMBS_IN_LIST_STYLE_TITLE', 'Admin products list images CSS-Style');
+define('USE_ADMIN_THUMBS_IN_LIST_STYLE_DESC', 'Here, simple CSS style information to be entered - for example, the maximum width: max-width: 90px;');// EOF - Hendrik - 2010-08-11 - Thumbnails in admin products list
+// EOF - Hendrik - 2010-08-11 - Thumbnails in admin products list
 
 // BOF - Tomcraft - 2009-11-05 - Advanced contact form
 define('USE_CONTACT_EMAIL_ADDRESS_TITLE' , 'Contact Us - sending option');
@@ -669,10 +678,122 @@ define('USE_CONTACT_EMAIL_ADDRESS_DESC' , 'Use "Contact Us" e-mail address for s
 define('DELETE_CACHE_SUCCESSFUL', 'Cache deleted successfully.');
 define('DELETE_TEMP_CACHE_SUCCESSFUL', 'Templatecache deleted successfully.');
 // EOF - Dokuman - 2010-02-04 - delete cache files in admin section
- 
+
+// BOF - DokuMan - 2010-08-13 - set Google RSS Feed in admin section
+define('GOOGLE_RSS_FEED_REFID_TITLE' , 'Google RSS Feed - refID');
+define('GOOGLE_RSS_FEED_REFID_DESC' , 'Enter your campaign ID here. It will be appended to every link of the Google RSS Feed automaticallyt.');
+// EOF - DokuMan - 2010-08-13 - set Google RSS Feed in admin section
+
+// BOF - web28 - 2010-08-17 -  Bildgrößenberechnung kleinerer Bilder
+define('PRODUCT_IMAGE_NO_ENLARGE_UNDER_DEFAULT_TITLE','Upscaling low-res images)');
+define('PRODUCT_IMAGE_NO_ENLARGE_UNDER_DEFAULT_DESC','If set to <strong>false</strong>, upscaling of low-res images to default settings for image size is disabled. Set to <strong>true</strong> to enable upscaling of low-res images. In this case those images will be shown blurry.');
+// EOF - web28 - 2010-08-17 -  Bildgrößenberechnung kleinerer Bilder
+
+//BOF - hendrik - 2011-05-14 - independent invoice number and date
+define('IBN_BILLNR_TITLE', 'Next invoice number');
+define('IBN_BILLNR_DESC', 'When assigning an invoice number, this number is given next.');
+define('IBN_BILLNR_FORMAT_TITLE', 'Invoice number format');
+define('IBN_BILLNR_FORMAT_DESC', 'Format invoice number.: {n}=number, {d}=day, {m}=month, {y}=year, <br>example. "100{n}-{d}-{m}-{y}" => "10099-28-02-2007"');
+//EOF - hendrik - 2011-05-14 - independent invoice number and date
+
+//BOC - h-h-h - 2011-12-23 - Button "Buy Now" optional - default off
+define('SHOW_BUTTON_BUY_NOW_TITLE', 'Show "Buy Now" in productlists');
+define('SHOW_BUTTON_BUY_NOW_DESC', '<b>Caution:</b><br /> This option is judicially critical if customers can\'t see all important informations directly in the productlists .');
+//EOC - h-h-h - 2011-12-23 - Button "Buy Now" optional - default off
+
+//split page results
+define('MAX_DISPLAY_ORDER_RESULTS_TITLE', 'Number of orders per page');
+define('MAX_DISPLAY_ORDER_RESULTS_DESC', 'Maximum number of orders that are to be displayed in the grid per page.');
+define('MAX_DISPLAY_LIST_PRODUCTS_TITLE', 'Number of products per page');
+define('MAX_DISPLAY_LIST_PRODUCTS_DESC', 'Maximum number of products that are to be displayed in the grid per page.');
+define('MAX_DISPLAY_LIST_CUSTOMERS_TITLE', 'Number of customres per page');
+define('MAX_DISPLAY_LIST_CUSTOMERS_DESC', 'Maximum number of customers that are to be displayed in the grid per page.');
+define ('MAX_ROW_LISTS_ATTR_OPTIONS_TITLE', 'Product Options: Number of Product Options per page');
+define ('MAX_ROW_LISTS_ATTR_OPTIONS_DESC', 'Maximum number of Product Options to be displayed per page.');
+define ('MAX_ROW_LISTS_ATTR_VALUES_TITLE', 'Product Options: Number of Option Values per page');
+define ('MAX_ROW_LISTS_ATTR_VALUES_DESC', 'Maximum number of Option Values to be displayed per page.');
+
+// Whos online
+define ('WHOS_ONLINE_TIME_LAST_CLICK_TITLE', 'Who\'s Online - Display period in seconds');
+define ('WHOS_ONLINE_TIME_LAST_CLICK_DESC', 'Timing of online users in the "Who\'s Online" table, afterwhich time the entries are deleted (min value: 900).');
+
+//Sessions
+define ('SESSION_LIFE_ADMIN_TITLE', 'Session Lifetime Admin');
+define ('SESSION_LIFE_ADMIN_DESC', 'time in seconds after the expiry of the session time for Admins (logged out) - Default 7200');
+define ('SESSION_LIFE_CUSTOMERS_TITLE', 'Session lifetime customer');
+define ('SESSION_LIFE_CUSTOMERS_DESC', 'time in seconds after the expiry of the session time for customers (logging out) - Default 1440');
+
+//checkout confirmation options
+define ('CHECKOUT_USE_PRODUCTS_SHORT_DESCRIPTION_TITLE', 'Order Confirmation page: Description');
+define ('CHECKOUT_USE_PRODUCTS_SHORT_DESCRIPTION_DESC', 'On the order confirmation page you want the Item Description will be displayed? Note: The short description is displayed when there is NO Item Order Description True, the description does not always displayed.');
+define ('CHECKOUT_SHOW_PRODUCTS_IMAGES_TITLE', 'Order Confirmation page: Product images');
+define ('CHECKOUT_SHOW_PRODUCTS_IMAGES_DESC', 'If on the order confirmation page, the product images are displayed?');
+define ('CHECKOUT_SHOW_PRODUCTS_MODEL_TITLE', 'Order Confirmation Page: Item no.');
+define ('CHECKOUT_SHOW_PRODUCTS_MODEL_DESC', 'on the order confirmation page you want the item number will be displayed.');
+
+// Billing email attachments
+define ('EMAIL_BILLING_ATTACHMENTS_TITLE', 'Billing - e-mail attachments for orders');
+define ('EMAIL_BILLING_ATTACHMENTS_DESC', 'Example of attachments - the files are in the shop directory <b>pdf</b>, separate multiple attachments with comma and no space:<br /> pdf/agb.pdf,pdf/widerruf.pdf.');
+
+// email images
+define ('SHOW_IMAGES_IN_EMAIL_TITLE', 'Product Images in Order - Insert email');
+define ('SHOW_IMAGES_IN_EMAIL_DESC', 'Product images in the HTML order confirmation - Insert Email (increases risk, which is classified the e-mail as SPAM)');
+define ('SHOW_IMAGES_IN_EMAIL_DIR_TITLE', 'Email pictures folder');
+define ('SHOW_IMAGES_IN_EMAIL_DIR_DESC', 'Select email pictures folder');
+define ('SHOW_IMAGES_IN_EMAIL_STYLE_TITLE', 'Email images CSS style');
+define ('SHOW_IMAGES_IN_EMAIL_STYLE_DESC', 'Here, simple CSS style information to be entered - for example, the maximum width: max-width: 90px;');
+
+// Popup window configuration
+define ('POPUP_SHIPPING_LINK_PARAMETERS_TITLE', 'Returns popup window URL parameter');
+define ('POPUP_SHIPPING_LINK_PARAMETERS_DESC', 'Here, the URL parameters are entered - Default: & Keep This = true & type = spare true & height = 400 & width = 600');
+define ('POPUP_SHIPPING_LINK_CLASS_TITLE', 'Returns popup CSS class');
+define ('POPUP_SHIPPING_LINK_CLASS_DESC', 'Here CSS classes to be entered - Default: thickbox');
+define ('POPUP_CONTENT_LINK_PARAMETERS_TITLE', 'content pages, pop-up URL parameters');
+define ('POPUP_CONTENT_LINK_PARAMETERS_DESC', 'Here, the URL parameters are entered - Default: & Keep This = true & type = spare true & height = 400 & width = 600');
+define ('POPUP_CONTENT_LINK_CLASS_TITLE', 'content pages popup CSS class');
+define ('POPUP_CONTENT_LINK_CLASS_DESC', 'Here CSS classes to be entered - Default: thickbox');
+define ('POPUP_PRODUCT_LINK_PARAMETERS_TITLE', 'Product pages popup URL parameter');
+define ('POPUP_PRODUCT_LINK_PARAMETERS_DESC', 'Here, the URL parameters are entered - Default: & Keep This = true & type = spare true & height = 450 & width = 750');
+define ('POPUP_PRODUCT_LINK_CLASS_TITLE', 'Product pages popup CSS class');
+define ('POPUP_PRODUCT_LINK_CLASS_DESC', 'Here CSS classes to be entered - Default: thickbox');
+define ('POPUP_COUPON_HELP_LINK_PARAMETERS_TITLE', 'Coupon Help popup window URL parameter');
+define ('POPUP_COUPON_HELP_LINK_PARAMETERS_DESC', 'Here, the URL parameters are entered - Default: & Keep This = true & type = spare true & height = 450 & width = 750');
+define ('POPUP_COUPON_HELP_LINK_CLASS_TITLE', 'Coupon Help popup CSS class');
+define ('POPUP_COUPON_HELP_LINK_CLASS_DESC', 'Here CSS classes to be entered - Default: thickbox');
+
+define ('POPUP_PRODUCT_PRINT_SIZE_TITLE', 'product Print view window size');
+define ('POPUP_PRODUCT_PRINT_SIZE_DESC', 'Sets the size of the popup window to be defined - default: width = 640, height = 600');
+define ('POPUP_PRINT_ORDER_SIZE_TITLE', 'order window size Print view');
+define ('POPUP_PRINT_ORDER_SIZE_DESC', 'Sets the size of the popup window to be defined - default: width = 640, height = 600');
+
+// BOF - Dokuman - 2012-08-27 - added entries for new google analytics & piwik tracking
+define('TRACKING_COUNT_ADMIN_ACTIVE_TITLE' , 'Count page views of the shop owner');
+define('TRACKING_COUNT_ADMIN_ACTIVE_DESC' , 'By activating this option, all page views of the administration usersof the shop owner will be counted as well. This will falsify the visitor stats.');
+define('TRACKING_GOOGLEANALYTICS_ACTIVE_TITLE' , 'Activate Google Analytics tracking');
+define('TRACKING_GOOGLEANALYTICS_ACTIVE_DESC' , 'By activating this option, all page views will be submitted to Google Analytics for later evaluation. Before using this option, you need to register at <a href="http://www.google.com/analytics/" target="_blank"><b>Google Analytics</b></a> and create a new account.');
+define('TRACKING_GOOGLEANALYTICS_ID_TITLE' , 'Google Analytics account number');
+define('TRACKING_GOOGLEANALYTICS_ID_DESC' , 'Enter your Google Analytics account number in the format "UA-XXXXXXXX-X" which you received after successfully creating an account.');
+define('TRACKING_PIWIK_ACTIVE_TITLE' , 'Activate PIWIK Web-Analytics tracking');
+define('TRACKING_PIWIK_ACTIVE_DESC' , 'In order to use PIWIK at all, you have to download and install it to your webspace at first. See also <a href="http://http://de.piwik.org/" target="_blank"><b>PIWIK Web-Analytics</b></a>. In comparison to Google Analytics all data will be stored locally, i.e. you as show owner have complete control over all data.');
+define('TRACKING_PIWIK_LOCAL_PATH_TITLE' , 'PIWIK install path (without "http://")');
+define('TRACKING_PIWIK_LOCAL_PATH_DESC' , 'Enter the path when PIWIK was installed successfully. The complete path of the domain has to be given, but without "http://", e.g. "www.domain.de/piwik".');
+define('TRACKING_PIWIK_ID_TITLE' , 'PIWIK page ID');
+define('TRACKING_PIWIK_ID_DESC' , 'In the PIWIK administration a page ID will be created per domain (usually "1")');
+define('TRACKING_PIWIK_GOAL_TITLE' , 'PIWIK campaign number (optional)');
+define('TRACKING_PIWIK_GOAL_DESC' , 'Enter your campaign number, if you want to track predefined goals.. Details see <a href="http://piwik.org/docs/tracking-goals-web-analytics/" target="_blank"><b>PIWIK: Tracking Goal Conversions</b></a>');
+// EOF - Dokuman - 2012-08-27 - added entries for new google analytics & piwik tracking
+
+define ('CONFIRM_SAVE_ENTRY_TITLE', 'Confirmation when saving articles/category');
+define ('CONFIRM_SAVE_ENTRY_DESC', 'Should be made a confirmation message when saving products/categories? Default: true (yes)');
+
+define('WHOS_ONLINE_IP_WHOIS_SERVICE_TITLE', 'Who\'s Online - Whois Lookup URL');
+define('WHOS_ONLINE_IP_WHOIS_SERVICE_DESC', 'http://www.utrace.de/?query= or http://whois.domaintools.com/');
+
+define('STOCK_CHECKOUT_UPDATE_PRODUCTS_STATUS_TITLE', 'Completion of order - disable Sold out?');
+define('STOCK_CHECKOUT_UPDATE_PRODUCTS_STATUS_DESC', 'If a sold-out items (stocks 0) be disabled at the end of the order automatically? The article is no longer visible in the shop! <br /> On Products are available again shortly, the option should be set to "false"');
+
 // PDFBill NEXT - Change START
 define('BILL_LASTNR_TITLE' , 'Last bill number');
 define('BILL_LASTNR_DESC' , 'Last bill number. <b>Please do not change!</b>');
 // PDFBill NEXT - Change END
-
 ?>

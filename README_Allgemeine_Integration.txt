@@ -301,12 +301,12 @@ suche nach
 
 Fuege danach ein
                 <?php // PDFBill NEXT Start ?>
-                <td class="dataTableContent" align="right"><?php echo $orders['bill_nr']; ?></td>
-                <?php // PDFBill NEXT End ?>
+                      <td class="dataTableContent" align="right"><?php echo (PDF_USE_ORDERID == 'true')? $orders['orders_id'] : $orders['bill_nr']; ?></td>
+                      <?php // PDFBill NEXT End ?>
 
 
 ###################################################
-admin/includes/application_top.php
+admin/includes/filenames.php
 
 ____________________________________________________
 Zeile 148

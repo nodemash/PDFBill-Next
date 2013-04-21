@@ -42,6 +42,7 @@ define('TEXT_PDF_ARTIKEL', "Artikel");
 define('TEXT_PDF_ARTIKELNR', "Artikel-Nr.");
 define('TEXT_PDF_EINZELPREIS', "Einzelpreis");
 define('TEXT_PDF_PREIS', "Gesamtpreis");
+define('TEXT_PDF_POSITION', "Pos.");
 
 define('TEXT_PDF_DANKE_MANN', "Sehr geehrter Herr %s,\nwir freuen uns, dass Sie bei DOMAIN.de bestellt haben.");
 define('TEXT_PDF_DANKE_FRAU', "Sehr geehrte Frau %s,\nwir freuen uns, dass Sie bei DOMAIN.de bestellt haben.");
@@ -50,5 +51,8 @@ define('TEXT_PDF_DANKE_UNISEX', "Sehr geehrter Kunde / sehr geehrte Kundin,\nwir
 define('TEXT_PDF_KOMMENTAR', " ");
 define('TEXT_PDF_SCHLUSSTEXT', "Vielen Dank für Ihren Auftrag!\n\nBesuchen Sie uns wieder unter www.DOMAIN.de!");
 define('TEXT_PDF_LSCHLUSSTEXT', "Vielen Dank für Ihren Auftrag!\n\nBesuchen Sie uns wieder unter www.DOMAIN.de!");
+
+// euro fix - bitte nicht anpassen
+define('EURO',chr(128));
 
 ?>

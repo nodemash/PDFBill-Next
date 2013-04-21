@@ -74,7 +74,7 @@ class PdfRechnung extends PdfBrief
 
     
         if(!$deliverSlip) {
-            $this->Cell(0, 6, TEXT_PDF_ZAHLUNGSWEISE . ': ' . html_entity_decode($payment_method), 0, 1, '', 1);
+            $this->Cell(0, 6, TEXT_PDF_ZAHLUNGSWEISE . ': ' . xtc_utf8_decode(html_entity_decode($payment_method)), 0, 1, '', 1);
         }
 
         // check for given vat_id
@@ -157,6 +157,11 @@ class PdfRechnung extends PdfBrief
      */
 	function ListeProduktHinzu($menge, $artikel, $zusinfos, $artnr, $zusinfoartnr, $einzelpreis, $preis)
 	{
+        // remove euro entity
+        $einzelpreis = str_replace('&euro;', EURO, $einzelpreis);
+        $preis =  str_replace('&euro;', EURO, $preis);
+
+        // set font family
 		$this->SetFont($this->fontfamily,'', 11);
 				
         // split products description into parts
@@ -259,6 +264,10 @@ class PdfRechnung extends PdfBrief
 
 			$info['title'] = str_replace("::", ":", $info['title']);
             $info['title'] = html_entity_decode($info['title']);
+
+            // remove euro entity
+            $text =  str_replace('&euro;', EURO, $text);
+            $info['title'] = str_replace('&euro;', EURO, $info['title']);
 			
 			if(strpos($text, "<b>") !== false || strpos($text, "<strong>") !== false) {
 				$this->SetFont($this->fontfamily, 'B', 11);

@@ -1,16 +1,17 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: english.php 1231 2005-09-21 13:05:36Z mz $   
+   $Id: german.php 3569 2012-08-30 15:39:18Z web28 $
 
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
+   modified eCommerce Shopsoftware
+   http://www.modified-shop.org
 
-   Copyright (c) 2003 XT-Commerce
+   Copyright (c) 2009 - 2013 [www.modified-shop.org]
    --------------------------------------------------------------
-   based on: 
+   based on:
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(german.php,v 1.99 2003/05/28); www.oscommerce.com 
-   (c) 2003  nextcommerce (german.php,v 1.24 2003/08/24); www.nextcommerce.org
+   (c) 2002-2003 osCommerce(german.php,v 1.99 2003/05/28); www.oscommerce.com
+   (c) 2003 nextcommerce (german.php,v 1.24 2003/08/24); www.nextcommerce.org
+   (c) 2006 XT-Commerce (german.php)
 
    Released under the GNU General Public License
    --------------------------------------------------------------
@@ -49,7 +50,7 @@ define('HTML_PARAMS','dir="ltr" xml:lang="de"');
 
 
 // page title
-define('TITLE', PROJECT_VERSION);
+define('TITLE', defined('PROJECT_VERSION') ? PROJECT_VERSION : 'undefined');
 
 // header text in includes/header.php
 define('HEADER_TITLE_TOP', 'Administration');
@@ -77,7 +78,7 @@ define('BOX_HEADING_LOCALIZATION', 'Sprachen/W&auml;hrungen');
 define('BOX_HEADING_TEMPLATES','Templates');
 define('BOX_HEADING_LOCATION_AND_TAXES', 'Land / Steuer');
 define('BOX_HEADING_CATALOG', 'Katalog');
-define('BOX_MODULE_NEWSLETTER','Rundschreiben');
+define('BOX_MODULE_NEWSLETTER','Newsletter');
 
 define('BOX_CONTENT','Content Manager');
 define('TEXT_ALLOWED', 'Erlaubnis');
@@ -101,8 +102,11 @@ define('BOX_CONFIGURATION_15', 'Sessions');
 define('BOX_CONFIGURATION_16', 'Meta-Tags/Suchmaschinen');
 define('BOX_CONFIGURATION_17', 'Zusatzmodule');
 define('BOX_CONFIGURATION_18', 'UST ID');
-define('BOX_CONFIGURATION_19', 'xt:C Partner');
+define('BOX_CONFIGURATION_19', 'Partner');
 define('BOX_CONFIGURATION_22', 'Such-Optionen');
+define('BOX_CONFIGURATION_24', 'PIWIK &amp; Google Analytics');
+define('BOX_CONFIGURATION_40', 'Popup Fenster Optionen');
+define('BOX_CONFIGURATION_1000', 'Adminbereich Optionen');
 
 define('BOX_MODULES', 'Zahlungs-/Versand-/Verrechnungs-Module');
 define('BOX_PAYMENT', 'Zahlungsoptionen');
@@ -136,8 +140,9 @@ define('BOX_CACHE', 'Cache Steuerung');
 define('BOX_DEFINE_LANGUAGE', 'Sprachen definieren');
 define('BOX_FILE_MANAGER', 'Datei-Manager');
 define('BOX_MAIL', 'E-Mail versenden');
-define('BOX_NEWSLETTERS', 'Rundschreiben Manager');
+define('BOX_NEWSLETTERS', 'Newsletter Manager');
 define('BOX_SERVER_INFO', 'Server Info');
+define('BOX_BLZ_UPDATE', 'Bankleitzahlen aktualisieren');
 define('BOX_WHOS_ONLINE', 'Wer ist Online');
 define('BOX_TPL_BOXES','Box Reihenfolge');
 define('BOX_CURRENCIES', 'W&auml;hrungen');
@@ -146,7 +151,7 @@ define('BOX_ORDERS_STATUS', 'Bestellstatus');
 define('BOX_ATTRIBUTES_MANAGER','Attribut Verwaltung');
 define('BOX_SHIPPING_STATUS','Lieferstatus');
 define('BOX_SALES_REPORT','Umsatzstatistik');
-define('BOX_MODULE_EXPORT','XT-Module');
+define('BOX_MODULE_EXPORT','Module');
 define('BOX_HEADING_GV_ADMIN', 'Gutscheine/Coupons');
 define('BOX_GV_ADMIN_QUEUE', 'Gutschein Queue');
 define('BOX_GV_ADMIN_MAIL', 'Gutschein E-Mail');
@@ -158,6 +163,9 @@ define('BOX_IMPORT','Import/Export');
 define('BOX_PRODUCTS_VPE','Verpackungseinheit');
 define('BOX_CAMPAIGNS_REPORT','Kampagnen Report');
 define('BOX_ORDERS_XSELL_GROUP','Cross-Marketing Gruppen');
+define('BOX_REMOVEOLDPICS','Alte Bilder l&ouml;schen'); // Remove old pictures - franky_n - 20110105
+define('BOX_JANOLAW','janolaw AGB Hosting'); // Tomcraft - 2011-06-17 - Added janolaw AGB hosting service
+define('BOX_HAENDLERBUND','H&auml;ndlerbund AGB Service'); // Tomcraft - 2012-12-08 - Added haendlerbund AGB interface
 
 define('TXT_GROUPS','<b>Gruppen</b>:');
 define('TXT_SYSTEM','System');
@@ -166,6 +174,10 @@ define('TXT_PRODUCTS','Artikel/Kategorien');
 define('TXT_STATISTICS','Statistiktools');
 define('TXT_TOOLS','Zusatzprogramme');
 define('TEXT_ACCOUNTING','Zugriffseinstellungen f&uuml;r:');
+
+/******* SHOPGATE **********/
+include_once (DIR_FS_CATALOG.'includes/external/shopgate/base/lang/german/admin/german.php');
+/******* SHOPGATE **********/
 
 // javascript messages
 define('JS_ERROR', 'W&auml;hrend der Eingabe sind Fehler aufgetreten!\nBitte korrigieren Sie folgendes:\n\n');
@@ -232,7 +244,7 @@ define('ENTRY_COUNTRY', 'Land:');
 define('ENTRY_TELEPHONE_NUMBER', 'Telefonnummer:');
 define('ENTRY_TELEPHONE_NUMBER_ERROR', '&nbsp;<span class="errorText">mindestens ' . ENTRY_TELEPHONE_MIN_LENGTH . ' Zahlen</span>');
 define('ENTRY_FAX_NUMBER', 'Telefaxnummer:');
-define('ENTRY_NEWSLETTER', 'Rundschreiben:');
+define('ENTRY_NEWSLETTER', 'Newsletter:');
 define('ENTRY_CUSTOMERS_STATUS', 'Kundengruppe:');
 define('ENTRY_NEWSLETTER_YES', 'abonniert');
 define('ENTRY_NEWSLETTER_NO', 'nicht abonniert');
@@ -280,7 +292,7 @@ define('TEXT_DISPLAY_NUMBER_OF_CUSTOMERS', 'Angezeigt werden <b>%d</b> bis <b>%d
 define('TEXT_DISPLAY_NUMBER_OF_CURRENCIES', 'Angezeigt werden <b>%d</b> bis <b>%d</b> (von insgesamt <b>%d</b> W&auml;hrungen)');
 define('TEXT_DISPLAY_NUMBER_OF_LANGUAGES', 'Angezeigt werden <b>%d</b> bis <b>%d</b> (von insgesamt <b>%d</b> Sprachen)');
 define('TEXT_DISPLAY_NUMBER_OF_MANUFACTURERS', 'Angezeigt werden <b>%d</b> bis <b>%d</b> (von insgesamt <b>%d</b> Herstellern)');
-define('TEXT_DISPLAY_NUMBER_OF_NEWSLETTERS', 'Angezeigt werden <b>%d</b> bis <b>%d</b> (von insgesamt <b>%d</b> Rundschreiben)');
+define('TEXT_DISPLAY_NUMBER_OF_NEWSLETTERS', 'Angezeigt werden <b>%d</b> bis <b>%d</b> (von insgesamt <b>%d</b> Newslettern)');
 define('TEXT_DISPLAY_NUMBER_OF_ORDERS', 'Angezeigt werden <b>%d</b> bis <b>%d</b> (von insgesamt <b>%d</b> Bestellungen)');
 define('TEXT_DISPLAY_NUMBER_OF_ORDERS_STATUS', 'Angezeigt werden <b>%d</b> bis <b>%d</b> (von insgesamt <b>%d</b> Bestellstatus)');
 define('TEXT_DISPLAY_NUMBER_OF_XSELL_GROUP', 'Angezeigt werden <b>%d</b> bis <b>%d</b> (von insgesamt <b>%d</b> Cross-Marketing Gruppen)');
@@ -309,6 +321,8 @@ define('TEXT_CACHE_MANUFACTURERS', 'Hersteller Box');
 define('TEXT_CACHE_ALSO_PURCHASED', 'Ebenfalls gekauft Modul');
 
 define('TEXT_NONE', '--keine--');
+define('TEXT_AUTO_PROPORTIONAL', '--auto proportional--');
+define('TEXT_AUTO_MAX', '--auto max--');
 define('TEXT_TOP', 'Top');
 
 define('ERROR_DESTINATION_DOES_NOT_EXIST', 'Fehler: Speicherort existiert nicht.');
@@ -319,8 +333,9 @@ define('SUCCESS_FILE_SAVED_SUCCESSFULLY', 'Erfolg: Hochgeladene Datei wurde erfo
 define('WARNING_NO_FILE_UPLOADED', 'Warnung: Es wurde keine Datei hochgeladen.');
 
 define('DELETE_ENTRY','Eintrag l&ouml;schen?');
-define('TEXT_PAYMENT_ERROR','<b>WARNUNG:</b><br />Bitte Aktivieren Sie ein Zahlungsmodul!');
-define('TEXT_SHIPPING_ERROR','<b>WARNUNG:</b><br />Bitte Aktivieren Sie ein Versandmodul!');
+define('TEXT_PAYMENT_ERROR','<b>WARNUNG:</b> Bitte Aktivieren Sie ein Zahlungsmodul!');
+define('TEXT_SHIPPING_ERROR','<b>WARNUNG:</b> Bitte Aktivieren Sie ein Versandmodul!');
+define('TEXT_PAYPAL_CONFIG','<b>WARNUNG:</b> Bitte konfigurieren Sie die PayPal-Zahlungseinstellungen f&uuml;r den "Live Modus" unter: <a href="%s"><strong>Partner -> PayPal<strong></a>'); //DokuMan - 2012-05-31 - show warning if PayPal payment module activated, but not configured for live mode yet
 
 define('TEXT_NETTO','Netto: ');
 
@@ -384,10 +399,17 @@ define('TXT_ALL','Alle');
 define('HEADING_TITLE_VAT','USt-IdNr.');
 define('ENTRY_VAT_ID','USt-IdNr.:');
 define('ENTRY_CUSTOMERS_VAT_ID', 'USt-IdNr.:');
-define('TEXT_VAT_FALSE','<font color="#ff0000">Gepr&uuml;ft/Falsch!</font>');
-define('TEXT_VAT_TRUE','<font color="#ff0000">Gepr&uuml;ft/OK!</font>');
-define('TEXT_VAT_UNKNOWN_COUNTRY','<font color="#ff0000">Nicht Gepr&uuml;ft/Land unbekannt!</font>');
-define('TEXT_VAT_UNKNOWN_ALGORITHM','<font color="#ff0000">Nicht Gepr&uuml;ft/Keine &Uuml;berpr&uuml;fung m&ouml;glich!</font>');
+define('TEXT_VAT_FALSE','<span class="messageStackError">Gepr&uuml;ft/USTID ist ung&uuml;ltig!</span>');
+define('TEXT_VAT_TRUE','<span class="messageStackSuccess">Gepr&uuml;ft/USTID ist g&uuml;ltig</span>');
+define('TEXT_VAT_UNKNOWN_COUNTRY','<span class="messageStackError">Nicht Gepr&uuml;ft/Land unbekannt!</span>');
+define('TEXT_VAT_INVALID_INPUT','<span class="messageStackError">Nicht Gepr&uuml;ft/Der &uuml;bergebene L&auml;ndercode ist ung&uuml;ltig oder die USTID ist leer!</span>');
+define('TEXT_VAT_SERVICE_UNAVAILABLE','<span class="messageStackError">Nicht Gepr&uuml;ft/Der SOAP Service ist nicht erreichbar, versuchen sie es sp&auml;ter noch einmal!</span>');
+define('TEXT_VAT_MS_UNAVAILABLE','<span class="messageStackError">Nicht Gepr&uuml;ft/Der Service des Mitgliedsstaats ist nicht erreichbar, versuchen sie es sp&auml;ter noch einmal oder mit einem anderen Mitgliedsstaat!</span>');
+define('TEXT_VAT_TIMEOUT','<span class="messageStackError">Nicht Gepr&uuml;ft/Der Service des Mitgliedsstaats konnte nicht erreicht werden (timeout), versuchen sie es sp&auml;ter noch einmal oder mit einem anderen Mitgliedsstaat!</span>');
+define('TEXT_VAT_SERVER_BUSY','<span class="messageStackError">Nicht Gepr&uuml;ft/Der Service kann ihre Anfrage nicht bearbeiten. Versuchen sie es sp&auml;ter noch einmal!</span>');
+define('TEXT_VAT_NO_PHP5_SOAP_SUPPORT','<span class="messageStackError">Nicht Gepr&uuml;ft/Unterst&uumltzung f&uumlr PHP5 SOAP ist nicht vorhanden!</span>');
+define('TEXT_VAT_CONNECTION_NOT_POSSIBLE','<span class="messageStackError">FEHLER: Verbindung zu Webservice nicht m&ouml;glich (SOAP-FEHLER)!</span>');
+
 define('ERROR_GIF_MERGE','Fehlender GDlib Gif Support, kein Wasserzeichen (Merge) m&ouml;glich');
 define('ERROR_GIF_UPLOAD','Fehlender GDlib Gif Support, kein Upload von GIF Bildern m&ouml;glich');
 
@@ -407,9 +429,9 @@ define('_PAYMENT_MONEYBOOKERS_EMAILID_DESC','E-Mail Adresse mit welcher Sie bei 
 define('_PAYMENT_MONEYBOOKERS_MERCHANTID_TITLE','Moneybookers H&auml;ndler ID');
 define('_PAYMENT_MONEYBOOKERS_MERCHANTID_DESC','Ihre Moneybookers.com H&auml;ndler ID');
 define('_PAYMENT_MONEYBOOKERS_PWD_TITLE','Moneybookers Geheimwort');
-define('_PAYMENT_MONEYBOOKERS_PWD_DESC','Mit der Eingabe des Geheimwortes wird die Verbindung beim Bezahlvorgang verschl&uuml;sselt. So wird h&ouml;chste Sicherheit gew&auml;hrleistet. Geben Sie Ihr Moneybookers Geheimwort ein (dies ist nicht ihr Passwort!). Das Geheimwort darf nur aus Kleinbuchstaben und Zahlen bestehen. Sie k&ouml;nnen Ihr Geheimwort <b><font color="red">nach der Freischaltung</b></font> in Ihrem Moneybookers-Benutzerkonto definieren. (H&auml;ndlereinstellungen).<br /><br /><font color="red">So schalten Sie Ihren Moneybookers.com Account f&uuml;er die xt:Commerce Zahlungsabwicklung frei!</font><br /><br />Senden Sie eine E-Mail mit:<br/>- Ihrer Shopdomain<br/>- Ihrer Moneybookers E-Mail-Adresse<br /><br />An: <a href="mailto:ecommerce@moneybookers.com?subject=XTCOMMERCE: Aktivierung fuer Moneybookers Quick Checkout">ecommerce@moneybookers.com</a>');
+define('_PAYMENT_MONEYBOOKERS_PWD_DESC','Mit der Eingabe des Geheimwortes wird die Verbindung beim Bezahlvorgang verschl&uuml;sselt. So wird h&ouml;chste Sicherheit gew&auml;hrleistet. Geben Sie Ihr Moneybookers Geheimwort ein (dies ist nicht ihr Passwort!). Das Geheimwort darf nur aus Kleinbuchstaben und Zahlen bestehen. Sie k&ouml;nnen Ihr Geheimwort <b><font color="red">nach der Freischaltung</b></font> in Ihrem Moneybookers-Benutzerkonto definieren (H&auml;ndlereinstellungen).<br /><br /><font color="red">So schalten Sie Ihren Moneybookers.com Account f&uuml;r die Zahlungsabwicklung frei!</font><br /><br />Senden Sie eine E-Mail mit:<br/>- Ihrer Shopdomain<br/>- Ihrer Moneybookers E-Mail-Adresse<br /><br />An: <a href="mailto:ecommerce@moneybookers.com?subject=modified eCommerce Shopsoftware: Aktivierung fuer Moneybookers Quick Checkout">ecommerce@moneybookers.com</a>');
 define('_PAYMENT_MONEYBOOKERS_TMP_STATUS_ID_TITLE','Bestellstatus - Zahlungsvorgang');
-define('_PAYMENT_MONEYBOOKERS_TMP_STATUS_ID_DESC',' Sobald der Kunde im Shop auf "Bestellung absenden" dr&uuml;ckt, wird von xt:Commerce eine "Tempor&auml;re Bestellung" angelegt. Dies hat den Vorteil, dass bei Kunden die den Zahlungsvorgang bei Moneybookes abbrechen eine Bestellung aufgezeichnet wurde.');
+define('_PAYMENT_MONEYBOOKERS_TMP_STATUS_ID_DESC',' Sobald der Kunde im Shop auf "Bestellung absenden" dr&uuml;ckt, wird eine "tempor&auml;re Bestellung" angelegt. Dies hat den Vorteil, dass bei Kunden die den Zahlungsvorgang bei Moneybookes abbrechen eine Bestellung aufgezeichnet wurde.');
 define('_PAYMENT_MONEYBOOKERS_PROCESSED_STATUS_ID_TITLE','Bestellstatus - Zahlung OK');
 define('_PAYMENT_MONEYBOOKERS_PROCESSED_STATUS_ID_DESC','Erscheint, wenn die Zahlung von Moneybookers best&auml;tigt wurde.');
 define('_PAYMENT_MONEYBOOKERS_PENDING_STATUS_ID_TITLE','Bestellstatus - Zahlung in Warteschleife');
@@ -422,7 +444,7 @@ define('MB_TEXT_MBTID', 'TR ID:');
 define('MB_TEXT_MBERRTXT', 'Status:');
 define('MB_ERROR_NO_MERCHANT','Es Existiert kein Moneybookers.com Account mit dieser E-Mail Adresse!');
 define('MB_MERCHANT_OK','Moneybookers.com Account korrekt, H&auml;ndler ID %s von Moneybookers.com empfangen und gespeichert.');
-define('MB_INFO','<img src="../images/icons/moneybookers/MBbanner.jpg" /><br /><br />xt:Commerce-Kunden k&ouml;nnen jetzt Kreditkarten, Lastschrift, Sofort&uuml;berweisung, Giropay sowie alle weiteren wichtigen lokalen Bezahloptionen direkt akzeptieren mit einer simplen Aktivierung im Shop. Mit Moneybookers als All-in-One-L&ouml;sung brauchen Sie dabei keine Einzelvertr&auml;ge pro Zahlart abzuschliesen. Sie brauchen lediglich einen <a href="https://www.moneybookers.com/app/register.pl" target="_blank"><b>kostenlosen Moneybookers Account</b></a> um alle wichtigen Bezahloptionen in Ihrem Shop zu akzeptieren. Zus&auml;tzliche Bezahlarten sind ohne Mehrkosten und das Modul beinhaltet <b>keine monatliche Fixkosten oder Installationskosten</b>.<br /><br /><b>Ihre Vorteile:</b><br />-Die Akzeptanz der wichtigsten Bezahloptionensteigern Ihren Umsatz<br />-Ein Anbieter reduziert Ihre Aufw&auml;nde und Ihre Kosten<br />-Ihr Kunde bezahlt direkt und ohne Registrierungsprozedur<br />-Ein-Klick-Aktivierung und Integration<br />-Sehr attraktive <a href="http://www.moneybookers.com/app/help.pl?s=m_fees" target="_blank"><b>Konditionen</b></a> <br />-sofortige Zahlungsbest&auml;tigung und Pr&uuml;fung der Kundendaten<br />-Bezahlabwicklung auch im Ausland und ohne Mehrkosten<br />-6 Millionen Kunden weltweit vertrauen Moneybookers');
+define('MB_INFO','<img src="../images/icons/moneybookers/MBbanner.jpg" /><br /><br />Sie k&ouml;nnen jetzt Kreditkarten, Lastschrift, Sofort&uuml;berweisung, Giropay sowie alle weiteren wichtigen lokalen Bezahloptionen direkt akzeptieren, mit einer simplen Aktivierung im Shop. Mit Moneybookers als All-in-One-L&ouml;sung brauchen Sie dabei keine Einzelvertr&auml;ge pro Zahlart abzuschlie&szlig;en. Sie brauchen lediglich einen <a href="https://www.moneybookers.com/app/register.pl" target="_blank"><b>kostenlosen Moneybookers Account</b></a>, um alle wichtigen Bezahloptionen in Ihrem Shop zu akzeptieren. Zus&auml;tzliche Bezahlarten sind ohne Mehrkosten, das Modul beinhaltet <b>keine monatlichen Fixkosten oder Installationskosten</b>.<br /><br /><b>Ihre Vorteile:</b><br />-Die Akzeptanz der wichtigsten Bezahloptionen steigert Ihren Umsatz<br />-Ein Anbieter reduziert Ihre Aufw&auml;nde und Ihre Kosten<br />-Ihr Kunde bezahlt direkt und ohne Registrierungsprozedur<br />-Ein-Klick-Aktivierung und Integration<br />-Sehr attraktive <a href="http://www.moneybookers.com/app/help.pl?s=m_fees" target="_blank"><b>Konditionen</b></a> <br />-sofortige Zahlungsbest&auml;tigung und Pr&uuml;fung der Kundendaten<br />-Bezahlabwicklung auch im Ausland und ohne Mehrkosten<br />-6 Millionen Kunden weltweit vertrauen Moneybookers');
 // EOF - Dokuman - 2009-10-02 - added moneybookers payment module version 2.4
 
 // BOF - Tomcraft - 2009-11-02 - set global customers-group-permissions
@@ -462,7 +484,6 @@ define('TABLE_HEADING_RESET','Statistik zur&uuml;cksetzen');
 define('BUTTON_CLOSE_WINDOW' , 'Fenster schliessen');
 //EOF - web28 - 2010-11-13 - added BUTTON_CLOSE_WINDOW
 
-
 //BOF - hendrik - 2011-05-14 - independent invoice number and date
 define('ENTRY_INVOICE_NUMBER',  'Rechnungsnummer:'); 
 define('ENTRY_INVOICE_DATE',    'Rechnungdatum:'); 
@@ -471,6 +492,12 @@ define('ENTRY_INVOICE_DATE',    'Rechnungdatum:');
 //BOF - web28 - 2010-07-06 - added missing error text
 define('ENTRY_VAT_ERROR', '&nbsp;<span class="errorText">Ung&uuml;ltge USt-IdNr.</span>');
 //EOF - web28 - 2010-07-06 - added missing error text
+
+define('CONFIG_INT_VALUE_ERROR', '"%s" FEHLER: Bitte nur Zahlen eingeben! Eingabe %s wurde ignoriert!');
+define('CONFIG_MAX_VALUE_WARNING', '"%s" WARNUNG: Eingabe %s wurde ignoriert! [Maximum: %s]');
+define('CONFIG_MIN_VALUE_WARNING', '"%s" WARNUNG: Eingabe %s wurde ignoriert! [Minimum: %s]');
+
+define('WHOS_ONLINE_TIME_LAST_CLICK_INFO', 'Anzeigezeitraum in Sek.: %s. Nach dieser Zeit werden die Eintr&auml;ge gel&ouml;scht.');
 
 // PDFBill NEXT - Change START
 define('BOX_CONFIGURATION_99', 'PDFBill Konfiguration');

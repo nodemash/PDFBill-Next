@@ -101,8 +101,9 @@ function xtc_pdf_bill ($oID, $send=false, $deliverSlip=false)
             $_GET['oID'] = $oID;
         }
 
-        // get billpay stuff
-        require_once(DIR_FS_CATALOG . DIR_WS_INCLUDES . '/billpay/utils/billpay_display_pdf_data.php');
+        // get billpay stuff - uncomment the first line if you're having require-problems
+        #require_once(DIR_FS_CATALOG . DIR_WS_INCLUDES . '/billpay/utils/billpay_display_pdf_data.php');
+        require_once(DIR_WS_INCLUDES . '/billpay/utils/billpay_display_pdf_data.php');
 
         // restore oID for compatibility reasons
         if (isset($oldOID)) {
@@ -210,7 +211,7 @@ function xtc_pdf_bill ($oID, $send=false, $deliverSlip=false)
         // fetch order data
         while ($oder_total_values = xtc_db_fetch_array($resOrderTotal)) {
             $order_data[] = array (
-                'title' => $oder_total_values['title'], 
+                'title' => xtc_utf8_decode($oder_total_values['title']), 
                 'class'=> $oder_total_values['class'], 
                 'value'=> $oder_total_values['value'], 
                 'text' => $oder_total_values['text']
@@ -285,8 +286,15 @@ function xtc_pdf_bill ($oID, $send=false, $deliverSlip=false)
             $smarty->assign('PDF_TYPE', TEXT_PDF_MAIL_RECHNUNG);
         }
 
-        $html_mail = $smarty->fetch(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/admin/mail/' . $_SESSION['language'] . '/invoice_mail.html');
-        $txt_mail = $smarty->fetch(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/admin/mail/' . $_SESSION['language'] . '/invoice_mail.txt');
+        // should we forward the packaging slip to a defined mail?
+        if (PDF_MAIL_SLIP_FORWARDER == 'true') {
+            $mailTemplate = 'forwarder_mail';
+        } else {
+            $mailTemplate = 'invoice_mail';
+        }
+
+        $html_mail = $smarty->fetch(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/admin/mail/' . $_SESSION['language'] . '/' . $mailTemplate . '.html');
+        $txt_mail = $smarty->fetch(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/admin/mail/' . $_SESSION['language'] . '/' . $mailTemplate . '.txt');
 
         // generate mail subject
         if ($deliverSlip == true) {
