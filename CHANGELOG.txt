@@ -1,3 +1,11 @@
+1.1.8b - 24.07.2013
+=============================================
+- UPDATE: Minor update for shop version 1.06 rev 4642
+
+1.1.8a - 23.04.2013
+=============================================
+- FIXED: New font-files to solve problems with some hosted (e.g. all-inkl.com)
+
 1.1.8 - 21.04.2013
 =============================================
 - FIXED: Euro-Sign Problems
